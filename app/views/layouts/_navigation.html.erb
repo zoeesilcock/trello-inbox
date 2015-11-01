@@ -1,0 +1,8 @@
+<ul id="navigation">
+  <% if user_signed_in? %>
+    <li><%= current_user.name %></li>
+    <li><%= link_to 'Sign out', signout_path %></li>
+  <% else %>
+    <li><%= link_to 'Sign in', signin_path %></li>
+  <% end %>
+</ul>

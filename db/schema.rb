@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101220320) do
+ActiveRecord::Schema.define(version: 20151102083810) do
+
+  create_table "inboxes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "title"
+    t.string   "board_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

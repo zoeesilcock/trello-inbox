@@ -5,6 +5,11 @@ en:
   inboxes:
     index:
       title: "Inboxes"
+    show:
+      new_idea: "New idea"
+  ideas:
+    new:
+      title: "Submit idea"
   layouts:
     navigation:
       inboxes: "Inboxes"

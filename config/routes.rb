@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'ideas/new'
+
   root to: 'visitors#index'
 
   resources :inboxes

@@ -2,18 +2,14 @@ require 'rails_helper'
 
 RSpec.describe InboxesController, :type => :controller do
   describe 'GET #index' do
-    context 'not logged in' do
+    context 'not signed in' do
       it 'responds with a redirect to root' do
         get :index
         expect(response).to redirect_to root_url
       end
     end
 
-    context 'logged in' do
-      before do
-        request.env['omniauth.auth'] = auth_mock
-      end
-
+    when_signed_in do
       it 'responds successfully with an HTTP 200 status code' do
         get :index
         expect(response).to be_success
@@ -30,14 +26,14 @@ RSpec.describe InboxesController, :type => :controller do
   describe 'GET #show' do
     let(:inbox) { create :inbox }
 
-    context 'not logged in' do
+    context 'not signed in' do
       it 'responds with a redirect to root' do
         get :show, id: inbox.id
         expect(response).to redirect_to root_url
       end
     end
 
-    context 'logged in' do
+    when_signed_in do
       before do
         request.env['omniauth.auth'] = auth_mock
       end
@@ -56,14 +52,14 @@ RSpec.describe InboxesController, :type => :controller do
   end
 
   describe 'GET #new' do
-    context 'not logged in' do
+    context 'not signed in' do
       it 'responds with a redirect to root' do
         get :new
         expect(response).to redirect_to root_url
       end
     end
 
-    context 'logged in' do
+    when_signed_in do
       before do
         request.env['omniauth.auth'] = auth_mock
       end
@@ -84,20 +80,20 @@ RSpec.describe InboxesController, :type => :controller do
   describe 'POST #create' do
     let(:inbox_attributes) { attributes_for :inbox }
 
-    context 'not logged in' do
+    context 'not signed in' do
       it 'responds with a redirect to root' do
         post :create, inbox: inbox_attributes
         expect(response).to redirect_to root_url
       end
     end
 
-    context 'logged in' do
+    when_signed_in do
       before do
         request.env['omniauth.auth'] = auth_mock
       end
 
-      it 'redirects to the newly created project' do
-        post :create, project: inbox_attributes
+      it 'redirects to the newly created inbox' do
+        post :create, inbox: inbox_attributes
         inbox = Inbox.last
         expect(response).to redirect_to inbox
       end

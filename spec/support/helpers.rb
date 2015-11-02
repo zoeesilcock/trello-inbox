@@ -1,5 +1,5 @@
 RSpec.configure do |config|
   config.include Omniauth::Mock
-  config.include Omniauth::SessionHelpers, type: :feature
+  config.extend Omniauth::SessionHelpers
 end
 OmniAuth.config.test_mode = true

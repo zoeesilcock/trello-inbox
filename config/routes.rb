@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'ideas/new'
-
   root to: 'visitors#index'
 
   resources :inboxes
+  get 'ideas/new'
 
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin

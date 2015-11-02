@@ -1,11 +1,9 @@
 describe SessionsController, :omniauth do
-
   before do
     request.env['omniauth.auth'] = auth_mock
   end
 
   describe "#create" do
-
     it "creates a user" do
       expect {post :create, provider: :twitter}.to change{ User.count }.by(1)
     end
@@ -20,11 +18,9 @@ describe SessionsController, :omniauth do
       post :create, provider: :twitter
       expect(response).to redirect_to root_url
     end
-
   end
 
   describe "#destroy" do
-
     before do
       post :create, provider: :twitter
     end
@@ -39,7 +35,5 @@ describe SessionsController, :omniauth do
       delete :destroy
       expect(response).to redirect_to root_url
     end
-
   end
-
 end

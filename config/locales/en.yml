@@ -1,1 +1,12 @@
 en:
+  visitors:
+    index:
+      title: "Trello Inbox"
+  inboxes:
+    index:
+      title: "Inboxes"
+  layouts:
+    navigation:
+      inboxes: "Inboxes"
+      signin: "Sign in"
+      signout: "Sign out"

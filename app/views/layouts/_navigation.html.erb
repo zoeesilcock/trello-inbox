@@ -1,8 +1,9 @@
 <ul id="navigation">
   <% if user_signed_in? %>
     <li><%= current_user.name %></li>
-    <li><%= link_to 'Sign out', signout_path %></li>
+    <li><%= link_to t('.inboxes'), inboxes_path %></li>
+    <li><%= link_to t('.signout'), signout_path %></li>
   <% else %>
-    <li><%= link_to 'Sign in', signin_path %></li>
+    <li><%= link_to t('.signin'), signin_path %></li>
   <% end %>
 </ul>

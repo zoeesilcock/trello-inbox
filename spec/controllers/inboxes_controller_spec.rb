@@ -34,10 +34,6 @@ RSpec.describe InboxesController, :type => :controller do
     end
 
     when_signed_in do
-      before do
-        request.env['omniauth.auth'] = auth_mock
-      end
-
       it 'responds successfully with an HTTP 200 status code' do
         get :show, id: inbox.id
         expect(response).to be_success
@@ -60,10 +56,6 @@ RSpec.describe InboxesController, :type => :controller do
     end
 
     when_signed_in do
-      before do
-        request.env['omniauth.auth'] = auth_mock
-      end
-
       it 'responds successfully with an HTTP 200 status code' do
         get :new
         expect(response).to be_success
@@ -88,10 +80,6 @@ RSpec.describe InboxesController, :type => :controller do
     end
 
     when_signed_in do
-      before do
-        request.env['omniauth.auth'] = auth_mock
-      end
-
       it 'redirects to the newly created inbox' do
         post :create, inbox: inbox_attributes
         inbox = Inbox.last

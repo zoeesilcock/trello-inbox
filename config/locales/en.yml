@@ -12,6 +12,7 @@ en:
   ideas:
     new:
       title: "Submit idea"
+      submit: "Submit"
   layouts:
     navigation:
       inboxes: "Inboxes"

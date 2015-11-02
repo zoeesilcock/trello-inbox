@@ -1,6 +1,4 @@
 <div class="container-fluid">
-<h1><%= @inbox.title %></h1>
-<button type="button" class="btn btn-default">
-<%= link_to t('.new_idea'), ideas_new_path %>
-</button>
+  <h1><%= @inbox.title %></h1>
+  <%= link_to t('.new_idea'), new_inbox_idea_path(inbox_id: @inbox.id), class: 'btn btn-default' %>
 </div>

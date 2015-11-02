@@ -1,14 +1,6 @@
-<div class="container-fluid">
-  <h1><%= t('.title') %></h1>
-  <form>
-    <div class="form-group">
-      <label for="InputTitle">Idea Title</label>
-      <input type="email" class="form-control" id="InputTitle" placeholder="Your idea title goes here...">
-    </div>
-    <div class="form-group">
-      <label for="InputDescription">Description</label>
-      <textarea class="form-control" id="InputDescription" rows="3" placeholder="Your idea description goes here..."></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit your idea</button>
-  </form>
-</div>
+<h1><%= t('.title') %></h1>
+<%= simple_form_for [@inbox, @idea] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit t('.submit'), class: 'btn btn-default' %>
+<% end %>

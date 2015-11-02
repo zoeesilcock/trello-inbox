@@ -22,7 +22,7 @@ RSpec.describe Idea, type: :model do
       expect(Trello::Board).to receive(:find).and_return(board)
       expect(Trello::Card).to receive(:create).with(hash_including(
         name: idea.title,
-        description: idea.description
+        desc: idea.description
       )).and_return(nil)
 
       idea.save

@@ -11,6 +11,9 @@ class InboxesController < ApplicationController
 
   def new
     @inbox = Inbox.new
+    @boards = Trello::Organization.find(ENV['TRELLO_ORGANIZATION_ID']).boards.map do |board|
+      [board.name, board.id]
+    end
   end
 
   def create

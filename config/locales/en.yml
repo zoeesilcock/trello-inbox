@@ -8,7 +8,7 @@ en:
     show:
       new_idea: "New idea"
     new:
-      submit: "Submit idea"
+      submit: "Create inbox"
   ideas:
     new:
       title: "Submit idea"

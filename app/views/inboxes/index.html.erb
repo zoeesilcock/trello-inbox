@@ -1,7 +1,10 @@
-<h1><%= t('.title') %></h1>
+<div class="container-fluid">
+  <h1><%= t('.title') %></h1>
 
-<ul>
-  <%= render partial: 'inbox', collection: @inboxes %>
-</li>
-
-<%= link_to t('.new_inbox'), new_inbox_path %>
+  <ul>
+    <%= render partial: 'inbox', collection: @inboxes %>
+  </li>
+  <button type="button" class="btn btn-default">
+    <%= link_to t('.new_inbox'), new_inbox_path %>
+  </button>
+</div>

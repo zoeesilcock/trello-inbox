@@ -7,6 +7,8 @@ en:
       title: "Inboxes"
     show:
       new_idea: "New idea"
+    new:
+      submit: "Submit idea"
   ideas:
     new:
       title: "Submit idea"

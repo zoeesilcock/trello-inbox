@@ -1,7 +1,7 @@
-<div class="container-fluid">
-  <h1><%= @inbox.title %></h1>
-  <ul>
-    <%= render partial: 'idea', collection: @inbox.ideas %>
-  </ul>
-  <%= link_to t('.new_idea'), new_inbox_idea_path(inbox_id: @inbox.id), class: 'btn btn-default' %>
-</div>
+<h1><%= @inbox.title %></h1>
+
+<ul>
+  <%= render partial: 'idea', collection: @inbox.ideas %>
+</ul>
+
+<%= link_to t('.new_idea'), new_inbox_idea_path(inbox_id: @inbox.id), class: 'btn btn-default' %>

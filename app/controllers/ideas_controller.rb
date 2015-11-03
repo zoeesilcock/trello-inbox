@@ -11,7 +11,7 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = Idea.new idea_parameters.merge(inbox: @inbox)
+    @idea = Idea.new idea_parameters.merge(inbox: @inbox, user: current_user)
 
     if @idea.save
       redirect_to idea_path(@inbox, @idea)

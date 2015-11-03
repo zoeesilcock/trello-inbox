@@ -3,5 +3,6 @@ FactoryGirl.define do
     title "Super sweet idea"
     description "It's an idea which is super sweet, not much more to say."
     inbox
+    user
   end
 end

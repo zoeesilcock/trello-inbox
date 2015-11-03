@@ -1,7 +1,11 @@
 class Idea < ActiveRecord::Base
   belongs_to :inbox
+  belongs_to :user
+
   validates :title, presence: true
   validates :inbox, presence: true
+  validates :user, presence: true
+
   after_create :create_in_trello
 
   private

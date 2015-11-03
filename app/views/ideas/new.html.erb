@@ -1,5 +1,5 @@
 <h1><%= t('.title') %></h1>
-<%= simple_form_for [@inbox, @idea] do |f| %>
+<%= simple_form_for @idea do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.submit t('.submit'), class: 'btn btn-default' %>

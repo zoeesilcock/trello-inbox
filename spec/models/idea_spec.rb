@@ -13,6 +13,11 @@ RSpec.describe Idea, type: :model do
       idea.inbox_id = nil
       expect(idea).not_to be_valid
     end
+
+    it 'requires a user' do
+      idea.user_id = nil
+      expect(idea).not_to be_valid
+    end
   end
 
   describe 'callbacks' do

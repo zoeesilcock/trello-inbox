@@ -7,8 +7,6 @@ en:
   inboxes:
     index:
       title: "Inboxes"
-    show:
-      new_idea: "New idea"
     new:
       submit: "Create inbox"
   ideas:
@@ -20,5 +18,6 @@ en:
   layouts:
     navigation:
       inboxes: "Inboxes"
+      new_idea: "Add new idea"
       signin: "Sign in"
       signout: "Sign out"

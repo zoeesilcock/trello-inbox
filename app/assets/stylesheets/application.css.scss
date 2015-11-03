@@ -28,7 +28,11 @@ ul {
 }
 
 .avatar {
-  width: 20px;
   border-radius: 100%;
-  margin-right: 10px;
+}
+
+.navbar .avatar {
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
 }

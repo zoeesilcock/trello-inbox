@@ -64,11 +64,10 @@ RSpec.describe IdeasController, :type => :controller do
     end
 
     when_signed_in do
-      it 'redirects to the newly created idea' do
+      it 'redirects to the inbox' do
         expect_any_instance_of(Idea).to receive(:create_in_trello)
         post :create, inbox_id: inbox.id, idea: idea_attributes
-        idea = Idea.last
-        expect(response).to redirect_to idea_url(inbox, idea)
+        expect(response).to redirect_to inbox_url(inbox)
       end
     end
   end

@@ -14,7 +14,8 @@ class Idea < ActiveRecord::Base
     card = Trello::Card.create(
       name: title,
       desc: description,
-      list_id: inbox.board.lists.first.id
+      list_id: inbox.board.lists.first.id,
+      pos: 'bottom'
     )
 
     self.card_id = card.id

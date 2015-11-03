@@ -1,6 +1,9 @@
 <div class="jumbotron text-center">
   <h1><%= t('.title') %></h1>
   <p><%= t('.tagline') %></p>
-
+  <br/>
+  <br/>
   <%= link_to t('.signin'), signin_path, class: 'btn btn-lg btn-success' unless current_user %>
 </div>
+
+<%= render partial: 'inboxes' if current_user %>

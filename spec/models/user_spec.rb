@@ -5,6 +5,7 @@ describe User do
   subject { @user }
 
   it { should respond_to(:name) }
+  it { should respond_to(:avatar) }
 
   it "#name returns a string" do
     expect(@user.name).to match 'Test User'

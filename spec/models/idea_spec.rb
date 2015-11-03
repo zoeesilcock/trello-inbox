@@ -17,15 +17,25 @@ RSpec.describe Idea, type: :model do
 
   describe 'callbacks' do
     let (:board) { double(:board, lists: [double(:list, id: "1")]) }
+    let (:card) { double(:card, id: "trello_card_id") }
 
     it 'creates the card in trello' do
       expect(Trello::Board).to receive(:find).and_return(board)
       expect(Trello::Card).to receive(:create).with(hash_including(
         name: idea.title,
         desc: idea.description
-      )).and_return(nil)
+      )).and_return(card)
 
       idea.save
+    end
+
+    it 'saves the trello card id' do
+      expect(Trello::Board).to receive(:find).and_return(board)
+      expect(Trello::Card).to receive(:create).and_return(card)
+
+      idea.save
+
+      expect(idea.card_id).to eq(card.id)
     end
   end
 end

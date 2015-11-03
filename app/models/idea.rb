@@ -7,10 +7,13 @@ class Idea < ActiveRecord::Base
   private
 
   def create_in_trello
-    Trello::Card.create(
+    card = Trello::Card.create(
       name: title,
       desc: description,
       list_id: inbox.board.lists.first.id
     )
+
+    self.card_id = card.id
+    save
   end
 end

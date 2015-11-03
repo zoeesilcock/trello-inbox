@@ -1,13 +1,16 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_inbox
+
+  def show
+    @idea = Idea.find params[:id]
+  end
 
   def new
-    @inbox = Inbox.find params[:inbox_id]
     @idea = Idea.new inbox: @inbox
   end
 
   def create
-    @inbox = Inbox.find params[:inbox_id]
     @idea = Idea.new idea_parameters.merge(inbox: @inbox)
 
     if @idea.save
@@ -21,5 +24,9 @@ class IdeasController < ApplicationController
 
   def idea_parameters
     params.require(:idea).permit(:title, :description)
+  end
+
+  def find_inbox
+    @inbox = Inbox.find params[:inbox_id]
   end
 end

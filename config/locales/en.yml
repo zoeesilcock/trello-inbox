@@ -13,6 +13,8 @@ en:
     new:
       title: "Submit idea"
       submit: "Submit"
+    show:
+      activity: "Activity"
   layouts:
     navigation:
       inboxes: "Inboxes"

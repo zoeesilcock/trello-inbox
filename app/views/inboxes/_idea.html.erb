@@ -1,4 +1,13 @@
-<li>
-  <h2><%= link_to idea.title, idea_path(@inbox, idea) %></h2>
-  <p><%= idea.description %></p>
+<li class="col-xs-12 col-sm-4">
+  <div class="idea-container">
+    <div class="idea-header">
+      <%= image_tag current_user.avatar, alt: current_user.name, class: 'avatar' %>
+      <div>
+        <p class="name"><%= idea.user.name %></p>
+        <p class="date"><%= idea.created_at.to_formatted_s(:short) %></p>
+      </div>
+    </div>
+    <h2><%= link_to idea.title, idea_path(@inbox, idea) %></h2>
+    <p><%= idea.description %></p>
+  </div>
 </li>

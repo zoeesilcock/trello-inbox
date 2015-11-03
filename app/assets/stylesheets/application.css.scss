@@ -16,6 +16,11 @@
 @import "bootstrap-sprockets";
 @import "variables";
 @import "bootstrap";
+@import "ideas";
+
+body {
+  background: $gray-lighter;
+}
 
 ul {
   list-style: none;

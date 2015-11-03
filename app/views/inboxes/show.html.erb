@@ -1,7 +1,3 @@
-<h1><%= @inbox.title %></h1>
-
-<ul>
+<ul id="ideas" class="row">
   <%= render partial: 'idea', collection: @inbox.ideas %>
 </ul>
-
-<%= link_to t('.new_idea'), new_idea_path(inbox_id: @inbox.id), class: 'btn btn-default' %>

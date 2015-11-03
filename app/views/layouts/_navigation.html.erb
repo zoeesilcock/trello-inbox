@@ -16,7 +16,7 @@
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t('.inboxes') %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <%= render partial: 'layouts/inbox', collection: @inboxes %>
+              <%= render partial: 'layouts/inbox', collection: Inbox.all %>
             </ul>
           </li>
         <% end %>

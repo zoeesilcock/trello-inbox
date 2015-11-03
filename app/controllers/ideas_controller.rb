@@ -14,7 +14,7 @@ class IdeasController < ApplicationController
     @idea = Idea.new idea_parameters.merge(inbox: @inbox)
 
     if @idea.save
-      redirect_to inbox_idea_path(@inbox, @idea)
+      redirect_to idea_path(@inbox, @idea)
     else
       render :new
     end

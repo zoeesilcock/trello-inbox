@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   helper_method :correct_user?
 
   private
+
   def find_inboxes
     @inboxes = Inbox.all
   end

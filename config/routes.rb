@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root to: 'visitors#index'
 
-  resources :inboxes do
-    resources :ideas
+  resources :inboxes, param: :inbox_id do
+    member do
+      resources :ideas
+    end
   end
 
   get '/auth/:provider/callback' => 'sessions#create'

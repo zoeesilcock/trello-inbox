@@ -2,10 +2,11 @@ class InboxesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @inboxes = Inbox.all
   end
 
   def show
-    @inbox = Inbox.find params[:id]
+    @inbox = Inbox.find params[:inbox_id]
   end
 
   def new

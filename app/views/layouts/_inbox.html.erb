@@ -1,1 +1,1 @@
-<li><%= link_to inbox.title, inbox %></li>
+<li class="<%= 'active' if (current_inbox && current_inbox.id == inbox.id) %>"><%= link_to inbox.title, inbox %></li>

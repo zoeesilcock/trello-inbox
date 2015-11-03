@@ -28,20 +28,20 @@ RSpec.describe InboxesController, :type => :controller do
 
     context 'not signed in' do
       it 'responds with a redirect to root' do
-        get :show, id: inbox.id
+        get :show, inbox_id: inbox.id
         expect(response).to redirect_to root_url
       end
     end
 
     when_signed_in do
       it 'responds successfully with an HTTP 200 status code' do
-        get :show, id: inbox.id
+        get :show, inbox_id: inbox.id
         expect(response).to be_success
         expect(response).to have_http_status(200)
       end
 
       it 'renders the show template' do
-        get :show, id: inbox.id
+        get :show, inbox_id: inbox.id
         expect(response).to render_template('show')
       end
     end

@@ -4,4 +4,4 @@
   <%= render partial: 'idea', collection: @inbox.ideas %>
 </ul>
 
-<%= link_to t('.new_idea'), new_inbox_idea_path(inbox_id: @inbox.id), class: 'btn btn-default' %>
+<%= link_to t('.new_idea'), new_idea_path(inbox_id: @inbox.id), class: 'btn btn-default' %>

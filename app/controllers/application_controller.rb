@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :user_signed_in?
+  helper_method :user_is_creator?
   helper_method :correct_user?
 
   private
@@ -26,6 +27,10 @@ class ApplicationController < ActionController::Base
 
   def user_signed_in?
     return true if current_user
+  end
+
+  def user_is_creator?
+    return current_user.creator?
   end
 
   def correct_user?

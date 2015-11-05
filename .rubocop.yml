@@ -8,3 +8,11 @@ AllCops:
    - 'db/seeds.rb'
    - 'db/schema.rb'
    - 'vendor/bundle/**/*'
+Documentation:
+  Enabled: false
+Style/AlignParameters:
+  Enabled: false
+Style/AlignHash:
+  Enabled: false
+Style/AlignArray:
+  Enabled: false

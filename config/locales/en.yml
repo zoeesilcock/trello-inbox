@@ -22,6 +22,8 @@ en:
       new_idea: "Add new idea"
       signin: "Sign in"
       signout: "Sign out"
+    no_inboxes:
+      no_inboxes: "No inboxes yet"
   authentication:
     access_denied: "Access denied."
     please_sign_in: "You need to sign in for access to this page."

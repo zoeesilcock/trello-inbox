@@ -29,14 +29,20 @@ class InboxesController < ApplicationController
     end
   end
 
-  def update
+  def edit
     @inbox = Inbox.find params[:inbox_id]
     authorize @inbox
   end
 
-  def edit
+  def update
     @inbox = Inbox.find params[:inbox_id]
     authorize @inbox
+
+    if @inbox.update_attributes(inbox_parameters)
+      redirect_to inbox_path(@inbox)
+    else
+      render :edit
+    end
   end
 
   def destroy

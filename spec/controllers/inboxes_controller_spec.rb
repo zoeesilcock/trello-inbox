@@ -92,4 +92,61 @@ RSpec.describe InboxesController, :type => :controller do
       end
     end
   end
+
+  describe 'GET #edit' do
+    let(:inbox) { create :inbox }
+
+    context 'not signed in' do
+      it 'responds with a redirect to root' do
+        get :edit, inbox_id: inbox.id
+        expect(response).to redirect_to root_url
+      end
+    end
+
+    when_signed_in_as_creator do
+      before do
+        inbox.update_attribute :user, current_user
+      end
+
+      it 'responds successfully with an HTTP 200 status code' do
+        get :edit, inbox_id: inbox.id
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
+      end
+
+      it 'renders the edit template' do
+        get :edit, inbox_id: inbox.id
+        expect(response).to render_template('edit')
+      end
+    end
+  end
+
+  describe 'POST #update' do
+    let(:inbox) { create :inbox }
+    let(:new_title) { 'Some other title' }
+    let(:inbox_attributes) { attributes_for(:inbox).merge(title: new_title) }
+
+    context 'not signed in' do
+      it 'responds with a redirect to root' do
+        post :update, inbox_id: inbox.id, inbox: inbox_attributes
+        expect(response).to redirect_to root_url
+      end
+    end
+
+    when_signed_in_as_creator do
+      before do
+        inbox.update_attribute :user, current_user
+      end
+
+      it 'redirects to the newly updated inbox' do
+        post :update, inbox_id: inbox.id, inbox: inbox_attributes
+        expect(response).to redirect_to inbox
+      end
+
+      it 'changes the title to the new title' do
+        post :update, inbox_id: inbox.id, inbox: inbox_attributes
+        expect(inbox.reload.title).to eq new_title
+      end
+    end
+  end
 end

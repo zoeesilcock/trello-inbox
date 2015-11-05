@@ -1,5 +1,10 @@
 <li class="col-xs-12 col-sm-4">
   <div class="inbox-container">
+    <% if current_user.owns(inbox) %>
+      <%= link_to edit_inbox_path(inbox), class: 'btn btn-default pull-right' do %>
+        <i class="glyphicon glyphicon-pencil"></i>
+      <% end %>
+    <% end %>
     <h2><%= link_to inbox.title, inbox_path(inbox) %></h2>
     <p>A description of the purpose of the inbox.</p>
   </div>

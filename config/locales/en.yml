@@ -7,8 +7,9 @@ en:
   inboxes:
     index:
       title: "Inboxes"
-    new:
-      submit: "Create inbox"
+    form:
+      create: "Create inbox"
+      update: "Save inbox"
   ideas:
     new:
       title: "Submit idea"

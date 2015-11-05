@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    name "Test User"
+    name 'Test User'
 
     factory :creator do
       creator true

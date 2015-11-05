@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe IdeasController, :type => :controller do
-  let (:inbox) { create :inbox }
+RSpec.describe IdeasController, type: :controller do
+  let(:inbox) { create :inbox }
 
   describe 'GET #show' do
     before do
       expect_any_instance_of(Idea).to receive(:create_in_trello)
     end
 
-    let (:idea) { create :idea }
+    let(:idea) { create :idea }
 
     context 'not signed in' do
       it 'responds with a redirect to root' do

@@ -8,6 +8,8 @@ AllCops:
    - 'db/seeds.rb'
    - 'db/schema.rb'
    - 'vendor/bundle/**/*'
+   - 'config/initializers/simple_form.rb'
+   - 'config/initializers/simple_form_bootstrap.rb'
 Documentation:
   Enabled: false
 Style/AlignParameters:

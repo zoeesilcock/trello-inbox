@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Idea, type: :model do
-  let (:idea) { build :idea }
+  let(:idea) { build :idea }
 
   describe 'validations' do
     it 'requires a title' do
@@ -21,15 +21,17 @@ RSpec.describe Idea, type: :model do
   end
 
   describe 'callbacks' do
-    let (:board) { double(:board, lists: [double(:list, id: "1")]) }
-    let (:card) { double(:card, id: "trello_card_id") }
+    let(:board) { double(:board, lists: [double(:list, id: '1')]) }
+    let(:card) { double(:card, id: 'trello_card_id') }
 
     it 'creates the card in trello' do
       expect(Trello::Board).to receive(:find).and_return(board)
-      expect(Trello::Card).to receive(:create).with(hash_including(
-        name: idea.title,
-        desc: idea.description
-      )).and_return(card)
+      expect(Trello::Card).to receive(:create).with(
+        hash_including(
+          name: idea.title,
+          desc: idea.description
+        )
+      ).and_return(card)
 
       idea.save
     end

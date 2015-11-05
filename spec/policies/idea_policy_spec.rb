@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe IdeaPolicy do
-
   let(:user) { build :user }
   let(:own_idea) { build :idea, user: user }
   let(:others_idea) { build :idea }

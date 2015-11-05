@@ -18,11 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    begin
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    rescue Exception => e
-      nil
-    end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  rescue StandardError
+    nil
   end
 
   def user_signed_in?
@@ -30,26 +28,26 @@ class ApplicationController < ActionController::Base
   end
 
   def user_is_creator?
-    return current_user.creator?
+    current_user.creator?
   end
 
   def correct_user?
     @user = User.find(params[:id])
-    unless current_user == @user
-      redirect_to root_url, alert: I18n.t('authentication.access_denied')
-    end
+    redirect_to root_url,
+      alert: I18n.t('authentication.access_denied') unless current_user == @user
   end
 
   def authenticate_user!
-    if !current_user
-      redirect_to root_url, alert: I18n.t('authentication.please_sign_in')
-    end
+    redirect_to root_url,
+      alert: I18n.t('authentication.please_sign_in') unless current_user
   end
 
   def user_not_authorized(exception)
     policy_name = exception.policy.class.to_s.underscore
 
-    flash[:error] = t "#{policy_name}.#{exception.query}", scope: 'pundit', default: :default
+    flash[:error] = t("#{policy_name}.#{exception.query}"),
+      { scope: 'pundit', default: :default }
+
     redirect_to(request.referrer || root_path)
   end
 end

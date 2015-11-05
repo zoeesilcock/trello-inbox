@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Inbox, type: :model do
-  let (:inbox) { build :inbox }
+  let(:inbox) { build :inbox }
 
   it 'requires a title' do
     inbox.title = nil

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe InboxPolicy do
-
   let(:user) { build :user }
   let(:creator) { build :creator }
   let(:creators_inbox) { build :inbox, user: creator }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InboxesController, :type => :controller do
+RSpec.describe InboxesController, type: :controller do
   describe 'GET #index' do
     context 'not signed in' do
       it 'responds with a redirect to root' do

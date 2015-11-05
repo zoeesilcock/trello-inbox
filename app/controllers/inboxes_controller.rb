@@ -13,7 +13,9 @@ class InboxesController < ApplicationController
   def new
     @inbox = Inbox.new
     authorize @inbox
-    @boards = Trello::Organization.find(ENV['TRELLO_ORGANIZATION_ID']).boards.map do |board|
+    @boards = Trello::Organization.find(
+      ENV['TRELLO_ORGANIZATION_ID']
+    ).boards.map do |board|
       [board.name, board.id]
     end
   end

@@ -43,6 +43,6 @@ class InboxPolicy < ApplicationPolicy
   end
 
   def owner?
-    @inbox.user == @user
+    @user.owns @inbox
   end
 end

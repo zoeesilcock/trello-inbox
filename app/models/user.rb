@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def owns(record)
+    raise 'Incorrect model' unless record.respond_to? :user
+    record.user == self
+  end
 end

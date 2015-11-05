@@ -39,6 +39,6 @@ class IdeaPolicy < ApplicationPolicy
   private
 
   def owner?
-    @idea.user == @user
+    @user.owns @idea
   end
 end

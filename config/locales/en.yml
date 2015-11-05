@@ -21,6 +21,9 @@ en:
       new_idea: "Add new idea"
       signin: "Sign in"
       signout: "Sign out"
+  authentication:
+    access_denied: "Access denied."
+    please_sign_in: "You need to sign in for access to this page."
   pundit:
     default: 'You cannot perform this action.'
     inbox_policy:

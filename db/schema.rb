@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103130118) do
+ActiveRecord::Schema.define(version: 20151105183752) do
 
   create_table "ideas", force: :cascade do |t|
     t.string   "title"
@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 20151103130118) do
     t.string   "name"
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "avatar"
+    t.boolean  "creator",    default: false
   end
 
 end

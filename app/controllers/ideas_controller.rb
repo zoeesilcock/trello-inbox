@@ -4,14 +4,17 @@ class IdeasController < ApplicationController
 
   def show
     @idea = Idea.find params[:id]
+    authorize @idea
   end
 
   def new
     @idea = Idea.new inbox: @inbox
+    authorize @idea
   end
 
   def create
     @idea = Idea.new idea_parameters.merge(inbox: @inbox, user: current_user)
+    authorize @idea
 
     if @idea.save
       redirect_to inbox_path(@inbox)

@@ -27,5 +27,17 @@ module Omniauth
         class_exec(&block)
       end
     end
+
+    def when_signed_in_as_creator(&block)
+      context 'signed in as creator' do
+        let (:current_user) { create :creator }
+
+        before do
+          request.session[:user_id] = current_user.id
+        end
+
+        class_exec(&block)
+      end
+    end
   end
 end

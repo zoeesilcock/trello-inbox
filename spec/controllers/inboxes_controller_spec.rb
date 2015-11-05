@@ -55,7 +55,7 @@ RSpec.describe InboxesController, :type => :controller do
       end
     end
 
-    when_signed_in do
+    when_signed_in_as_creator do
       it 'responds successfully with an HTTP 200 status code' do
         get :new
         expect(response).to be_success
@@ -79,7 +79,7 @@ RSpec.describe InboxesController, :type => :controller do
       end
     end
 
-    when_signed_in do
+    when_signed_in_as_creator do
       it 'redirects to the newly created inbox' do
         post :create, inbox: inbox_attributes
         inbox = Inbox.last
@@ -88,7 +88,7 @@ RSpec.describe InboxesController, :type => :controller do
 
       it 'adds the current user as the creator' do
         post :create, inbox: inbox_attributes
-        expect(Inbox.last.creator).to eq current_user
+        expect(Inbox.last.user).to eq current_user
       end
     end
   end

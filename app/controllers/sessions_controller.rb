@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :skip_authorization
+
   def new
     redirect_to '/auth/google_oauth2'
   end

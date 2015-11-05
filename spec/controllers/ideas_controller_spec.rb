@@ -71,8 +71,9 @@ RSpec.describe IdeasController, :type => :controller do
       end
 
       it 'adds the current user as the creator' do
+        expect_any_instance_of(Idea).to receive(:create_in_trello)
         post :create, inbox_id: inbox.id, idea: idea_attributes
-        expect(Idea.last.creator).to eq current_user
+        expect(Idea.last.user).to eq current_user
       end
     end
   end

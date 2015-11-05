@@ -7,10 +7,12 @@ class InboxesController < ApplicationController
 
   def show
     @inbox = Inbox.find params[:inbox_id]
+    authorize @inbox
   end
 
   def new
     @inbox = Inbox.new
+    authorize @inbox
     @boards = Trello::Organization.find(ENV['TRELLO_ORGANIZATION_ID']).boards.map do |board|
       [board.name, board.id]
     end
@@ -18,12 +20,28 @@ class InboxesController < ApplicationController
 
   def create
     @inbox = Inbox.new inbox_parameters.merge(user: current_user)
+    authorize @inbox
 
     if @inbox.save
       redirect_to inbox_path(@inbox)
     else
       render :new
     end
+  end
+
+  def update
+    @inbox = Inbox.find params[:inbox_id]
+    authorize @inbox
+  end
+
+  def edit
+    @inbox = Inbox.find params[:inbox_id]
+    authorize @inbox
+  end
+
+  def destroy
+    @inbox = Inbox.find params[:inbox_id]
+    authorize @inbox
   end
 
   private

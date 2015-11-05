@@ -10,6 +10,7 @@ gem 'mina-puma', require: false
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'puma'
+gem 'pundit'
 gem 'rails', '4.2.4'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'

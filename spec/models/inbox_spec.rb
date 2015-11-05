@@ -12,4 +12,9 @@ RSpec.describe Inbox, type: :model do
     inbox.board_id = nil
     expect(inbox).not_to be_valid
   end
+
+  it 'requires a user' do
+    inbox.user_id = nil
+    expect(inbox).not_to be_valid
+  end
 end

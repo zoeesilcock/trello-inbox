@@ -85,6 +85,11 @@ RSpec.describe InboxesController, :type => :controller do
         inbox = Inbox.last
         expect(response).to redirect_to inbox
       end
+
+      it 'adds the current user as the creator' do
+        post :create, inbox: inbox_attributes
+        expect(Inbox.last.creator).to eq current_user
+      end
     end
   end
 end

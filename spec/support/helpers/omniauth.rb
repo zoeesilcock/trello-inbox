@@ -18,10 +18,10 @@ module Omniauth
   module SessionHelpers
     def when_signed_in(&block)
       context 'signed in' do
-        let (:user) { create :user }
+        let (:current_user) { create :user }
 
         before do
-          request.session[:user_id] = user.id
+          request.session[:user_id] = current_user.id
         end
 
         class_exec(&block)

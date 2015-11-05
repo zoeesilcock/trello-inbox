@@ -17,7 +17,7 @@ class InboxesController < ApplicationController
   end
 
   def create
-    @inbox = Inbox.new inbox_parameters
+    @inbox = Inbox.new inbox_parameters.merge(user: current_user)
 
     if @inbox.save
       redirect_to inbox_path(@inbox)

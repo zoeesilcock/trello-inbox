@@ -69,6 +69,11 @@ RSpec.describe IdeasController, :type => :controller do
         post :create, inbox_id: inbox.id, idea: idea_attributes
         expect(response).to redirect_to inbox_url(inbox)
       end
+
+      it 'adds the current user as the creator' do
+        post :create, inbox_id: inbox.id, idea: idea_attributes
+        expect(Idea.last.creator).to eq current_user
+      end
     end
   end
 end

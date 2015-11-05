@@ -53,6 +53,7 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
+    bootstrap_flash_messages (1.0.2)
     builder (3.2.2)
     byebug (6.0.2)
     childprocess (0.5.7)
@@ -309,6 +310,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   bootstrap-sass (~> 3.3.5)
+  bootstrap_flash_messages (~> 1.0.1)
   byebug
   coffee-rails (~> 4.1.0)
   database_cleaner

@@ -21,3 +21,11 @@ en:
       new_idea: "Add new idea"
       signin: "Sign in"
       signout: "Sign out"
+  pundit:
+    default: 'You cannot perform this action.'
+    inbox_policy:
+      update?: 'You cannot edit this inbox!'
+      create?: 'You cannot create inboxes!'
+    idea_policy:
+      update?: 'You cannot edit this idea!'
+      create?: 'You cannot create idea!'

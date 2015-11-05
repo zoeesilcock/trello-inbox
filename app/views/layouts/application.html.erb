@@ -9,8 +9,8 @@
 </head>
 <body>
   <%= render partial: 'layouts/navigation' %>
-
   <div class="container">
+    <div id="flash_messages"><%= flash_messages(:close) %></div>
     <%= yield %>
   </div>
 </body>

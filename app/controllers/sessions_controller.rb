@@ -7,11 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env['omniauth.auth']
-
-    user = User.where(
-      provider: auth['provider'],
-      uid: auth['uid'].to_s
-    ).first || User.create_with_omniauth(auth)
+    user = find_user(auth) || User.create_with_omniauth(auth)
 
     reset_session
     session[:user_id] = user.id
@@ -27,5 +23,14 @@ class SessionsController < ApplicationController
   def failure
     redirect_to root_url, alert:
       "Authentication error: #{params[:message].humanize}"
+  end
+
+  private
+
+  def find_user(auth)
+    User.where(
+      provider: auth['provider'],
+      uid: auth['uid'].to_s
+    ).first
   end
 end

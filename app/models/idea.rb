@@ -7,6 +7,7 @@ class Idea < ActiveRecord::Base
   validates :user, presence: true
 
   after_create :create_in_trello
+  after_update :update_in_trello
 
   private
 
@@ -18,7 +19,15 @@ class Idea < ActiveRecord::Base
       pos: 'bottom'
     )
 
-    self.card_id = card.id
-    save
+    update_attribute :card_id, card.id
+  end
+
+  def update_in_trello
+    if (changes.keys & [:title, :description])
+      card = Trello::Card.find self.card_id
+      card.name = title
+      card.desc = description
+      card.save
+    end
   end
 end

@@ -65,6 +65,7 @@ RSpec.describe IdeasController, type: :controller do
 
     when_signed_in do
       before do
+        allow(idea).to receive(:update_in_trello)
         idea.update_attribute :user, current_user
       end
 
@@ -81,7 +82,7 @@ RSpec.describe IdeasController, type: :controller do
     end
   end
 
-  describe 'POST #create' do
+  describe 'POST #update' do
     let(:new_title) { 'A far superior title' }
     let(:idea_attributes) { attributes_for(:idea).merge(title: new_title) }
 
@@ -94,15 +95,18 @@ RSpec.describe IdeasController, type: :controller do
 
     when_signed_in do
       before do
+        allow(idea).to receive(:update_in_trello)
         idea.update_attribute :user, current_user
       end
 
       it 'redirects to the inbox' do
+        expect_any_instance_of(Idea).to receive(:update_in_trello)
         post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
         expect(response).to redirect_to inbox_url(inbox)
       end
 
       it 'changes the title to the new title' do
+        expect_any_instance_of(Idea).to receive(:update_in_trello)
         post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
         expect(idea.reload.title).to eq new_title
       end

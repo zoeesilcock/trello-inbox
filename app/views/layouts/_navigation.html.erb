@@ -45,7 +45,9 @@
 
       <div class="nav navbar-nav navbar-right">
         <% if current_inbox %>
-          <%= link_to t('.new_idea'), new_idea_path(inbox_id: @inbox.id), class: 'btn btn-success navbar-btn' %>
+          <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#new-idea-modal">
+            <%= t('.new_idea') %>
+          </button>
         <% end %>
       </div>
     </div>

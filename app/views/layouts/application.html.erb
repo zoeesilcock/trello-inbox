@@ -12,6 +12,7 @@
   <div class="container">
     <div id="flash_messages"><%= flash_messages(:close) %></div>
     <%= yield %>
+    <%= render partial: 'layouts/new_idea_modal' %>
   </div>
 </body>
 </html>

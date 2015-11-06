@@ -25,6 +25,11 @@ en:
       signout: "Sign out"
     no_inboxes:
       no_inboxes: "No inboxes yet"
+    new_idea_modal:
+      close: "Close"
+      title: "Add new idea"
+      cancel: "Cancel"
+      submit: "Submit idea"
   authentication:
     access_denied: "Access denied."
     please_sign_in: "You need to sign in for access to this page."

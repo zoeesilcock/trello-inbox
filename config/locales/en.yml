@@ -11,9 +11,9 @@ en:
       create: "Create inbox"
       update: "Save inbox"
   ideas:
-    new:
-      title: "Submit idea"
-      submit: "Submit"
+    edit:
+      title: "Edit idea"
+      submit: "Save idea"
     show:
       activity: "Activity"
   layouts:

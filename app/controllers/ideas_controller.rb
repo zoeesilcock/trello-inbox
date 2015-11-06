@@ -7,11 +7,6 @@ class IdeasController < ApplicationController
     authorize @idea
   end
 
-  def new
-    @idea = Idea.new inbox: @inbox
-    authorize @idea
-  end
-
   def create
     @idea = Idea.new idea_parameters.merge(inbox: @inbox, user: current_user)
     authorize @idea
@@ -20,6 +15,22 @@ class IdeasController < ApplicationController
       redirect_to inbox_path(@inbox)
     else
       render :new
+    end
+  end
+
+  def edit
+    @idea = Idea.find params[:id]
+    authorize @idea
+  end
+
+  def update
+    @idea = Idea.find params[:id]
+    authorize @idea
+
+    if @idea.update_attributes idea_parameters
+      redirect_to inbox_path(@inbox)
+    else
+      render :edit
     end
   end
 

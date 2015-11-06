@@ -5,6 +5,11 @@
       <div>
         <p class="name"><%= idea.user.name %></p>
         <p class="date"><%= idea.created_at.to_formatted_s(:short) %></p>
+        <% if current_user.owns(idea) %>
+          <%= link_to edit_idea_path(idea.inbox, idea), class: 'btn btn-default pull-right' do %>
+            <i class="glyphicon glyphicon-pencil"></i>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <h2><%= link_to idea.title, idea_path(@inbox, idea) %></h2>

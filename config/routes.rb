@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/trello-callbacks/:type/:id' => 'trello_callbacks#webhook',
+    as: :trello_callback
+
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
   get '/signout' => 'sessions#destroy', :as => :signout

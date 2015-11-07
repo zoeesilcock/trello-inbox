@@ -36,6 +36,7 @@ class Idea < ActiveRecord::Base
   end
 
   def callback_url
-    "#{ENV['WEBHOOK_DOMAIN']}#{Rails.application.routes.url_helpers.trello_callback_path('card', id)}"
+    path = Rails.application.routes.url_helpers.trello_callback_path('card', id)
+    "#{ENV['WEBHOOK_DOMAIN']}#{path}"
   end
 end

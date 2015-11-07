@@ -9,6 +9,10 @@ class Idea < ActiveRecord::Base
   after_create :create_in_trello
   after_update :update_in_trello
 
+  def create_webhook
+    Trello::Webhook.create id_model: card_id, callback_url: callback_url
+  end
+
   private
 
   def create_in_trello
@@ -23,11 +27,15 @@ class Idea < ActiveRecord::Base
   end
 
   def update_in_trello
-    if (changes.keys & [:title, :description])
-      card = Trello::Card.find self.card_id
-      card.name = title
-      card.desc = description
-      card.save
-    end
+    return unless changes.keys & [:title, :description]
+
+    card = Trello::Card.find card_id
+    card.name = title
+    card.desc = description
+    card.save
+  end
+
+  def callback_url
+    "#{ENV['WEBHOOK_DOMAIN']}#{Rails.application.routes.url_helpers.trello_callback_path('card', id)}"
   end
 end

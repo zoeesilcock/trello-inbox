@@ -68,4 +68,17 @@ RSpec.describe Idea, type: :model do
       end
     end
   end
+
+  describe '#create_webhook' do
+    it 'creates a webhook in trello' do
+      expect(Trello::Webhook).to receive(:create).with(
+        hash_including(
+          id_model: idea.card_id
+        )
+      )
+
+      idea.id = 1
+      idea.create_webhook
+    end
+  end
 end

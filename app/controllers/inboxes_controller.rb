@@ -8,6 +8,7 @@ class InboxesController < ApplicationController
   def show
     @inbox = Inbox.find params[:inbox_id]
     authorize @inbox
+    @ideas = @inbox.ideas
   end
 
   def new

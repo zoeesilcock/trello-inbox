@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
-gem 'bootstrap_flash_messages', '~> 1.0.1'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootstrap_flash_messages', '~> 1.0.1'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'mina'
@@ -15,10 +16,10 @@ gem 'pundit'
 gem 'rails', '4.2.4'
 gem 'react-bootstrap-rails'
 gem 'react-rails', '~> 1.4.0'
+gem 'ruby-trello'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'sqlite3'
-gem 'ruby-trello'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do

@@ -14,6 +14,18 @@ en:
     edit:
       title: "Edit idea"
       submit: "Save idea"
+    index:
+      filter:
+        label: "Show"
+        all: "All ideas"
+        mine: "My ideas"
+      sort:
+        label: "Sort by"
+        date: "Date"
+        title: "Title"
+        votes: "Votes"
+      search:
+        label: "Search..."
     show:
       activity: "Activity"
   layouts:

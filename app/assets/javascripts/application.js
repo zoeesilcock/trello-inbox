@@ -16,5 +16,6 @@
 //= require react
 //= require react_ujs
 //= require react_bootstrap
+//= require i18n/translations
 //= require components
 //= require_tree .

@@ -7,11 +7,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
-gem 'mina'
-gem 'mina-puma', require: false
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'puma'
 gem 'pundit'
 gem 'rails', '4.2.4'
 gem 'react_on_rails'
@@ -52,5 +49,7 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
-# For Heroku deployment
-gem 'rails_12factor', group: :production
+
+group :production do
+  gem 'rails_12factor'
+end

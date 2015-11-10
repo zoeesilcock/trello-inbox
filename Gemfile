@@ -14,12 +14,12 @@ gem 'omniauth-google-oauth2'
 gem 'puma'
 gem 'pundit'
 gem 'rails', '4.2.4'
-gem 'react-bootstrap-rails'
-gem 'react-rails', '~> 1.4.0'
+gem 'react_on_rails'
 gem 'ruby-trello'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'sqlite3'
+gem 'therubyracer'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
@@ -52,3 +52,5 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+# For Heroku deployment
+gem 'rails_12factor', group: :production

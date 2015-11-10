@@ -10,6 +10,7 @@ AllCops:
    - 'vendor/bundle/**/*'
    - 'config/initializers/simple_form.rb'
    - 'config/initializers/simple_form_bootstrap.rb'
+   - 'client/node_modules/**/*'
 Documentation:
   Enabled: false
 Style/AlignParameters:

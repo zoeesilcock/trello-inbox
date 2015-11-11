@@ -1,12 +1,16 @@
 import React from 'react';
+import connectToStores from 'alt/utils/connectToStores';
 import IdeasFilterComponent from '../components/IdeasFilterComponent';
 import IdeasFilterActions from '../actions/IdeasFilterActions';
 import IdeasFilterStore from '../stores/IdeasFilterStore';
 
-export default class IdeasFilterContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = IdeasFilterStore.getState();
+class IdeasFilterContainer extends React.Component {
+  static getStores() {
+    return [IdeasFilterStore];
+  }
+
+  static getPropsFromStores() {
+    return IdeasFilterStore.getState();
   }
 
   onChange(event) {
@@ -15,7 +19,9 @@ export default class IdeasFilterContainer extends React.Component {
 
   render() {
     return (
-      <IdeasFilterComponent filter={this.state.filter} onChange={this.onChange} />
+      <IdeasFilterComponent filter={this.props.filter} onChange={this.onChange} />
     );
   }
 }
+
+export default connectToStores(IdeasFilterContainer);

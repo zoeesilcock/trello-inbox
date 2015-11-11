@@ -26,7 +26,7 @@ export default class IdeaComponent extends React.Component {
             <div>
               {this.editIdeaButton()}
               <p className="name">{this.props.idea.user_name}</p>
-              <p className="date">{this.props.idea.created_at}</p>
+              <p className="date">{I18n.l("time.formats.short", this.props.idea.created_at * 1000)}</p>
             </div>
           </div>
           <h2>{this.props.idea.title}</h2>

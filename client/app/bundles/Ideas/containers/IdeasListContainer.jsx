@@ -20,7 +20,7 @@ class IdeasListContainer extends React.Component {
   sortIdeas() {
     if (this.props.sort == 'date') {
       return this.props.ideas.sort((a, b) => {
-        return Date.parse(b.created_at) - Date.parse(a.created_at);
+        return b.created_at - a.created_at;
       });
     } else if (this.props.sort == 'title') {
       return this.props.ideas.sort((a, b) => {
@@ -42,8 +42,6 @@ class IdeasListContainer extends React.Component {
   }
 
   render() {
-    var ideas = this.filterIdeas();
-
     return (
       <IdeasListComponent ideas={this.filterIdeas()} />
     );

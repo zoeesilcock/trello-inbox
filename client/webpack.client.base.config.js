@@ -22,6 +22,10 @@ module.exports = {
     ideas: [
       './app/bundles/Ideas/startup/clientGlobals',
     ],
+
+    users: [
+      './app/bundles/Users/startup/clientGlobals',
+    ],
   },
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.scss', '.css', 'config.js'],

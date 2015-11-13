@@ -1,5 +1,1 @@
-<h1><%= t('.users') %></h1>
-
-<ul>
-  <%= render partial: 'user', collection: @users %>
-</ul>
+<%= react_component 'UsersContainer', render(template: 'users/index.json.jbuilder'), prerender: false %>

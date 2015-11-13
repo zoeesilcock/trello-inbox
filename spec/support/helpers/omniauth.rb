@@ -14,21 +14,9 @@ module Omniauth
   end
 
   module SessionHelpers
-    def when_signed_in(&block)
+    def when_signed_in_as(user_type, &block)
       context 'signed in' do
-        let(:current_user) { create :user }
-
-        before do
-          request.session[:user_id] = current_user.id
-        end
-
-        class_exec(&block)
-      end
-    end
-
-    def when_signed_in_as_creator(&block)
-      context 'signed in as creator' do
-        let(:current_user) { create :creator }
+        let(:current_user) { create user_type }
 
         before do
           request.session[:user_id] = current_user.id

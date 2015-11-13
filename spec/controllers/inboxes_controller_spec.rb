@@ -9,7 +9,7 @@ RSpec.describe InboxesController, type: :controller do
       end
     end
 
-    when_signed_in do
+    when_signed_in_as(:user) do
       it 'responds successfully with an HTTP 200 status code' do
         get :index
         expect(response).to be_success
@@ -33,7 +33,7 @@ RSpec.describe InboxesController, type: :controller do
       end
     end
 
-    when_signed_in do
+    when_signed_in_as(:user) do
       it 'responds successfully with an HTTP 200 status code' do
         get :show, inbox_id: inbox.id
         expect(response).to be_success
@@ -55,7 +55,7 @@ RSpec.describe InboxesController, type: :controller do
       end
     end
 
-    when_signed_in_as_creator do
+    when_signed_in_as(:creator) do
       it 'responds successfully with an HTTP 200 status code' do
         get :new
         expect(response).to be_success
@@ -79,7 +79,7 @@ RSpec.describe InboxesController, type: :controller do
       end
     end
 
-    when_signed_in_as_creator do
+    when_signed_in_as(:creator) do
       it 'redirects to the newly created inbox' do
         post :create, inbox: inbox_attributes
         inbox = Inbox.last
@@ -103,7 +103,7 @@ RSpec.describe InboxesController, type: :controller do
       end
     end
 
-    when_signed_in_as_creator do
+    when_signed_in_as(:creator) do
       before do
         inbox.update_attribute :user, current_user
       end
@@ -133,7 +133,7 @@ RSpec.describe InboxesController, type: :controller do
       end
     end
 
-    when_signed_in_as_creator do
+    when_signed_in_as(:creator) do
       before do
         inbox.update_attribute :user, current_user
       end

@@ -16,7 +16,7 @@ RSpec.describe IdeasController, type: :controller do
       end
     end
 
-    when_signed_in do
+    when_signed_in_as(:user) do
       it 'responds successfully with an HTTP 200 status code' do
         get :show, inbox_id: inbox.id, id: idea.id
         expect(response).to be_success
@@ -40,7 +40,7 @@ RSpec.describe IdeasController, type: :controller do
       end
     end
 
-    when_signed_in do
+    when_signed_in_as(:user) do
       it 'redirects to the inbox' do
         expect_any_instance_of(Idea).to receive(:create_in_trello)
         post :create, inbox_id: inbox.id, idea: idea_attributes
@@ -63,7 +63,7 @@ RSpec.describe IdeasController, type: :controller do
       end
     end
 
-    when_signed_in do
+    when_signed_in_as(:user) do
       before do
         allow(idea).to receive(:update_in_trello)
         idea.update_attribute :user, current_user
@@ -93,7 +93,7 @@ RSpec.describe IdeasController, type: :controller do
       end
     end
 
-    when_signed_in do
+    when_signed_in_as(:user) do
       before do
         allow(idea).to receive(:update_in_trello)
         idea.update_attribute :user, current_user

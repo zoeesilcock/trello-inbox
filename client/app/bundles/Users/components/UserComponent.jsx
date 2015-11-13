@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Input } from 'react-bootstrap';
 
 export default class UserComponent extends React.Component {
   static propTypes = {
@@ -12,10 +13,10 @@ export default class UserComponent extends React.Component {
           {this.props.user.name}
         </td>
         <td>
-          {this.props.user.creator}
+          <Input type="checkbox" name="creator" defaultValue={this.props.user.creator} />
         </td>
         <td>
-          {this.props.user.admin}
+          <Input type="checkbox" name="admin" defaultValue={this.props.user.admin} />
         </td>
       </tr>
     );

@@ -28,10 +28,14 @@ en:
         label: "Search..."
     show:
       activity: "Activity"
+  users:
+    index:
+      users: "Users"
   layouts:
     navigation:
       inboxes: "Inboxes"
       new_inbox: "New inbox"
+      users: "Users"
       new_idea: "Add new idea"
       signin: "Sign in"
       signout: "Sign out"

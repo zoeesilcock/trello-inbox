@@ -26,6 +26,11 @@
             <%= link_to t('.new_inbox'), new_inbox_path %>
           </li>
         <% end %>
+        <% if user_is_admin? %>
+          <li>
+            <%= link_to t('.users'), users_path %>
+          </li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

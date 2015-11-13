@@ -7,9 +7,17 @@ export default class UserComponent extends React.Component {
 
   render() {
     return (
-      <li>
-        {this.props.user.name}
-      </li>
+      <tr>
+        <td>
+          {this.props.user.name}
+        </td>
+        <td>
+          {this.props.user.creator}
+        </td>
+        <td>
+          {this.props.user.admin}
+        </td>
+      </tr>
     );
   }
 }

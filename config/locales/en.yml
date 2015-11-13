@@ -31,6 +31,9 @@ en:
   users:
     index:
       users: "Users"
+      name: "Name"
+      creator: "Creator"
+      admin: "Admin"
   layouts:
     navigation:
       inboxes: "Inboxes"

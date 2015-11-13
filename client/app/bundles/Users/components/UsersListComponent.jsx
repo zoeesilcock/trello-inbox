@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Table } from 'react-bootstrap';
 import UserContainer from '../containers/UserContainer';
 
 export default class UsersListContainer extends React.Component {
@@ -14,9 +15,18 @@ export default class UsersListContainer extends React.Component {
     });
 
     return (
-      <ul id="users">
-        {users}
-      </ul>
+      <Table id="users" striped>
+        <thead>
+          <tr>
+            <th>{I18n.t('users.index.name')}</th>
+            <th>{I18n.t('users.index.creator')}</th>
+            <th>{I18n.t('users.index.admin')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users}
+        </tbody>
+      </Table>
     );
   }
 }

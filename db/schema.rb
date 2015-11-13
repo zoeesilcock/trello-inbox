@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105190918) do
+ActiveRecord::Schema.define(version: 20151113100659) do
 
   create_table "ideas", force: :cascade do |t|
     t.string   "title"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20151105190918) do
     t.datetime "updated_at",                 null: false
     t.string   "avatar"
     t.boolean  "creator",    default: false
+    t.boolean  "admin",      default: false
   end
 
 end

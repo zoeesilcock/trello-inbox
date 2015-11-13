@@ -16,6 +16,8 @@ module.exports = {
       'jquery-ujs',
       'react',
       'react-dom',
+      'react-bootstrap',
+      'alt'
     ],
 
     // This will contain the app entry points defined by webpack.hot.config and webpack.rails.config

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import IdeaComponent from './IdeaComponent';
+import IdeaContainer from '../containers/IdeaContainer';
 
 export default class IdeasListComponent extends React.Component {
   static propTypes = {
@@ -8,8 +8,9 @@ export default class IdeasListComponent extends React.Component {
 
   render() {
     var ideas = [];
+
     this.props.ideas.map(function(idea, index) {
-      ideas.push(<IdeaComponent key={index} idea={idea} />);
+      ideas.push(<IdeaContainer key={index} idea={idea} />);
     });
 
     return (

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :update]
 
   post '/trello-callbacks/:type/:id' => 'trello_callbacks#webhook',
     as: :trello_callback

@@ -5,4 +5,17 @@ class UsersController < ApplicationController
     authorize User
     @users = User.all
   end
+
+  def update
+    user = User.find params[:id]
+    authorize user
+
+    render nothing: true, status: :ok if user.update_attributes user_parameters
+  end
+
+  private
+
+  def user_parameters
+    params.require(:user).permit(:creator, :admin)
+  end
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UserPolicy do
-
   let(:user) { build :user }
   let(:admin) { build :admin }
 
@@ -30,7 +29,13 @@ describe UserPolicy do
   end
 
   permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it 'does not allow users to update users' do
+      expect(subject).not_to permit(user)
+    end
+
+    it 'allows admins to update users' do
+      expect(subject).to permit(admin)
+    end
   end
 
   permissions :destroy? do

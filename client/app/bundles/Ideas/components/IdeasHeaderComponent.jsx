@@ -7,11 +7,9 @@ export default class IdeasHeaderComponent  extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-xs-12">
-          <IdeasFilterContainer />
-          <IdeasSortContainer />
-          <IdeasSearchContainer />
-        </div>
+        <IdeasFilterContainer />
+        <IdeasSortContainer />
+        <IdeasSearchContainer />
       </div>
     );
   }

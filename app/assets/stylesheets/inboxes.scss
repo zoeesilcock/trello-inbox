@@ -17,6 +17,18 @@
   }
 }
 
-.filter-form {
-  margin-right: 15px;
+@media(min-width: 768px) {
+  .header-left {
+    width: auto;
+  }
+
+  .header-right {
+    float: right;
+  }
+
+  .search-form {
+    .form-group {
+      float: right;
+    }
+  }
 }

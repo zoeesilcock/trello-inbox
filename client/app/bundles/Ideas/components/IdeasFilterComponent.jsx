@@ -10,8 +10,8 @@ export default class IdeasFilterComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <form className="form-inline pull-left filter-form">
+      <div className="col-xs-6 col-sm-3 header-left">
+        <form className="form-inline filter-form">
           <Input type="select" label={I18n.t('ideas.index.filter.label')} placeholder="select" defaultValue={this.props.filter} onChange={this.props.onChange}>
             <option value="all">{I18n.t('ideas.index.filter.all')}</option>
             <option value="mine">{I18n.t('ideas.index.filter.mine')}</option>

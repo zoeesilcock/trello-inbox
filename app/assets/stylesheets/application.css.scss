@@ -36,6 +36,7 @@ $rails: true;
 
 @import "ideas";
 @import "inboxes";
+@import "users";
 
 body {
   background: $gray-lighter;

@@ -11,7 +11,7 @@ export default class UsersListContainer extends React.Component {
     var users = [];
 
     this.props.users.map(function(user, index) {
-      users.push(<UserContainer key={index} user={user} />);
+      users.push(<UserContainer key={index} index={index} user={user} />);
     });
 
     return (

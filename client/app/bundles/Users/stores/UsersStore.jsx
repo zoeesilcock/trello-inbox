@@ -17,11 +17,11 @@ class UsersStore {
   }
 
   handleUpdateCreator(creatorChange) {
-    console.log(cratorChange);
+    this.users[creatorChange[0]].creator = creatorChange[1];
   }
 
-  handleUpdateAdmin(creatorAdmin) {
-    console.log(cratorAdmin);
+  handleUpdateAdmin(adminChange) {
+    this.users[adminChange[0]].admin = adminChange[1];
   }
 }
 

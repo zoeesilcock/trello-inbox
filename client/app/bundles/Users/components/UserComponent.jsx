@@ -3,7 +3,9 @@ import { Input } from 'react-bootstrap';
 
 export default class UserComponent extends React.Component {
   static propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    creatorChanged: PropTypes.func.isRequired,
+    adminChanged: PropTypes.func.isRequired
   }
 
   render() {
@@ -13,10 +15,10 @@ export default class UserComponent extends React.Component {
           {this.props.user.name}
         </td>
         <td>
-          <Input type="checkbox" name="creator" defaultValue={this.props.user.creator} />
+          <Input type="checkbox" name="creator" defaultValue={this.props.user.creator} onChange={this.props.creatorChanged} />
         </td>
         <td>
-          <Input type="checkbox" name="admin" defaultValue={this.props.user.admin} />
+          <Input type="checkbox" name="admin" defaultValue={this.props.user.admin} onChange={this.props.adminChanged} />
         </td>
       </tr>
     );

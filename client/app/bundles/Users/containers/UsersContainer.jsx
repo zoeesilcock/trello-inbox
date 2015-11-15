@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import alt from '../alt';
 import UsersListContainer from './UsersListContainer';
 import UsersActions from '../actions/UsersActions';
 import UsersStore from '../stores/UsersStore';
@@ -12,7 +13,11 @@ class UsersContainer extends React.Component {
 
   componentDidMount() {
     UsersStore.listen(this.onChange.bind(this));
-    UsersActions.receiveData(this.props.initial_users);
+    alt.bootstrap(JSON.stringify({
+      UsersStore: {
+        users: this.props.initial_users
+      }
+    }));
   }
 
   componentWillUnmount() {

@@ -2,7 +2,7 @@ import alt from '../alt';
 
 class UsersActions {
   constructor() {
-    this.generateActions('receiveData', 'updateCreator', 'updateAdmin');
+    this.generateActions('updateCreator', 'updateAdmin');
   }
 }
 

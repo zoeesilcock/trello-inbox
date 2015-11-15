@@ -6,14 +6,9 @@ class UsersStore {
     this.users = [];
 
     this.bindListeners({
-      handleReceiveData: UsersActions.RECEIVE_DATA,
       handleUpdateCreator: UsersActions.UPDATE_CREATOR,
       handleUpdateAdmin: UsersActions.UPDATE_ADMIN
     });
-  }
-
-  handleReceiveData(data) {
-    this.users = data;
   }
 
   handleUpdateCreator(creatorChange) {

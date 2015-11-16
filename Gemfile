@@ -48,6 +48,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'rspec-given'
   gem 'selenium-webdriver'
 end
 

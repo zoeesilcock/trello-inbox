@@ -1,20 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Inbox, type: :model do
-  let(:inbox) { build :inbox }
-
-  it 'requires a title' do
-    inbox.title = nil
-    expect(inbox).not_to be_valid
+  context 'without a title' do
+    Given(:invalid_inbox) { build :inbox, title: nil }
+    Then { expect(invalid_inbox).not_to be_valid }
   end
 
-  it 'requires a trello board id' do
-    inbox.board_id = nil
-    expect(inbox).not_to be_valid
+  context 'without a trello board id' do
+    Given(:invalid_inbox) { build :inbox, board_id: nil }
+    Then { expect(invalid_inbox).not_to be_valid }
   end
 
-  it 'requires a user' do
-    inbox.user_id = nil
-    expect(inbox).not_to be_valid
+  context 'without a trello board id' do
+    Given(:invalid_inbox) { build :inbox, user_id: nil }
+    Then { expect(invalid_inbox).not_to be_valid }
   end
 end

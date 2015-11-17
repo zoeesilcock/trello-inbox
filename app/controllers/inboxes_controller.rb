@@ -48,11 +48,6 @@ class InboxesController < ApplicationController
     end
   end
 
-  def destroy
-    @inbox = Inbox.find params[:inbox_id]
-    authorize @inbox
-  end
-
   private
 
   def inbox_parameters

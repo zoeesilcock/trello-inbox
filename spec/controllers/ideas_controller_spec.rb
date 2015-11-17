@@ -94,21 +94,38 @@ RSpec.describe IdeasController, type: :controller do
     end
 
     when_signed_in_as(:user) do
-      before do
-        allow(idea).to receive(:update_in_trello)
-        idea.update_attribute :user, current_user
+      context 'with valid attributes' do
+        before do
+          allow(idea).to receive(:update_in_trello)
+          idea.update_attribute :user, current_user
+        end
+
+        it 'redirects to the inbox' do
+          expect_any_instance_of(Idea).to receive(:update_in_trello)
+          post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
+          expect(response).to redirect_to inbox_url(inbox)
+        end
+
+        it 'changes the title to the new title' do
+          expect_any_instance_of(Idea).to receive(:update_in_trello)
+          post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
+          expect(idea.reload.title).to eq new_title
+        end
       end
 
-      it 'redirects to the inbox' do
-        expect_any_instance_of(Idea).to receive(:update_in_trello)
-        post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
-        expect(response).to redirect_to inbox_url(inbox)
-      end
+      context 'with invalid attributes' do
+        before do
+          allow(idea).to receive(:update_in_trello)
+          idea.update_attribute :user, current_user
+        end
 
-      it 'changes the title to the new title' do
-        expect_any_instance_of(Idea).to receive(:update_in_trello)
-        post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
-        expect(idea.reload.title).to eq new_title
+        let(:invalid_idea_attributes) { idea_attributes.merge(title: nil) }
+
+        it 'renders the edit template' do
+          post :update, inbox_id: inbox.id, id: idea.id,
+            idea: invalid_idea_attributes
+          expect(response).to render_template('edit')
+        end
       end
     end
   end

@@ -56,7 +56,9 @@ RSpec.describe InboxesController, type: :controller do
     end
 
     when_signed_in_as(:creator) do
-      let(:organization) { double(:organization, boards: []) }
+      let(:boards) { [double(:board, id: 'xyz', name: 'Kewl board')] }
+      let(:organization) { double(:organization, boards: boards) }
+
       before do
         expect(Trello::Organization).to receive(:find).and_return(organization)
       end
@@ -85,15 +87,26 @@ RSpec.describe InboxesController, type: :controller do
     end
 
     when_signed_in_as(:creator) do
-      it 'redirects to the newly created inbox' do
-        post :create, inbox: inbox_attributes
-        inbox = Inbox.last
-        expect(response).to redirect_to inbox
+      context 'with valid attributes' do
+        it 'redirects to the newly created inbox' do
+          post :create, inbox: inbox_attributes
+          inbox = Inbox.last
+          expect(response).to redirect_to inbox
+        end
+
+        it 'adds the current user as the creator' do
+          post :create, inbox: inbox_attributes
+          expect(Inbox.last.user).to eq current_user
+        end
       end
 
-      it 'adds the current user as the creator' do
-        post :create, inbox: inbox_attributes
-        expect(Inbox.last.user).to eq current_user
+      context 'with invalid attributes' do
+        let(:invalid_inbox_attributes) { inbox_attributes.merge(title: nil) }
+
+        it 'renders the new template' do
+          post :create, inbox: invalid_inbox_attributes
+          expect(response).to render_template('new')
+        end
       end
     end
   end
@@ -139,18 +152,33 @@ RSpec.describe InboxesController, type: :controller do
     end
 
     when_signed_in_as(:creator) do
-      before do
-        inbox.update_attribute :user, current_user
+      context 'with valid attributes' do
+        before do
+          inbox.update_attribute :user, current_user
+        end
+
+        it 'redirects to the newly updated inbox' do
+          post :update, inbox_id: inbox.id, inbox: inbox_attributes
+          expect(response).to redirect_to inbox
+        end
+
+        it 'changes the title to the new title' do
+          post :update, inbox_id: inbox.id, inbox: inbox_attributes
+          expect(inbox.reload.title).to eq new_title
+        end
       end
 
-      it 'redirects to the newly updated inbox' do
-        post :update, inbox_id: inbox.id, inbox: inbox_attributes
-        expect(response).to redirect_to inbox
-      end
+      context 'with invalid attributes' do
+        let(:invalid_inbox_attributes) { inbox_attributes.merge(title: nil) }
 
-      it 'changes the title to the new title' do
-        post :update, inbox_id: inbox.id, inbox: inbox_attributes
-        expect(inbox.reload.title).to eq new_title
+        before do
+          inbox.update_attribute :user, current_user
+        end
+
+        it 'renders the edit template' do
+          get :update, inbox_id: inbox.id, inbox: invalid_inbox_attributes
+          expect(response).to render_template('edit')
+        end
       end
     end
   end

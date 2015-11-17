@@ -3,6 +3,13 @@ describe SessionsController, :omniauth do
     request.env['omniauth.auth'] = auth_mock
   end
 
+  describe '#new' do
+    it 'redirects to our google oauth 2 callback' do
+      get :new
+      expect(response).to redirect_to '/auth/google_oauth2'
+    end
+  end
+
   describe '#create' do
     it 'creates a user' do
       expect { post :create, provider: :twitter }.to change { User.count }.by(1)
@@ -33,6 +40,13 @@ describe SessionsController, :omniauth do
 
     it 'redirects to the home page' do
       delete :destroy
+      expect(response).to redirect_to root_url
+    end
+  end
+
+  describe '#failure' do
+    it 'redirects to root' do
+      get :failure, message: 'Reason for failure'
       expect(response).to redirect_to root_url
     end
   end

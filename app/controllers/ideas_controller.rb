@@ -27,7 +27,7 @@ class IdeasController < ApplicationController
     @idea = Idea.find params[:id]
     authorize @idea
 
-    if @idea.update_attributes idea_parameters
+    if @idea.update_attributes(idea_parameters)
       redirect_to inbox_path(@inbox)
     else
       render :edit

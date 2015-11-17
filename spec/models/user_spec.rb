@@ -8,8 +8,18 @@ describe User do
   it { should respond_to(:creator?) }
   it { should respond_to(:admin?) }
 
-  it '#name returns a string' do
-    expect(@user.name).to match 'Test User'
+  describe '.create_with_omniauth' do
+    let(:info) { { 'name' => 'Arthur Dent', 'image' => 'site.com/image.png' } }
+    let(:auth) { { 'provider' => 'bla', 'uid' => '23', 'info' => info } }
+
+    it 'saves the auth information provided' do
+      user = User.create_with_omniauth auth
+
+      expect(user.provider).to eq auth['provider']
+      expect(user.uid).to eq auth['uid']
+      expect(user.name).to eq auth['info']['name']
+      expect(user.avatar).to eq auth['info']['image']
+    end
   end
 
   describe '#owns' do

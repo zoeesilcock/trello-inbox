@@ -10,13 +10,6 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :user_is_creator?
   helper_method :user_is_admin?
-  helper_method :correct_user?
-
-  private
-
-  def find_inboxes
-    @inboxes = Inbox.all
-  end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -36,10 +29,10 @@ class ApplicationController < ActionController::Base
     current_user.admin?
   end
 
-  def correct_user?
-    @user = User.find(params[:id])
-    redirect_to root_url,
-      alert: I18n.t('authentication.access_denied') unless current_user == @user
+  private
+
+  def find_inboxes
+    @inboxes = Inbox.all
   end
 
   def authenticate_user!

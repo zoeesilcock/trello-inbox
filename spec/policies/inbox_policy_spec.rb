@@ -8,14 +8,6 @@ describe InboxPolicy do
 
   subject { described_class }
 
-  permissions '.scope' do
-    let(:inboxes) { create_list(:inbox, 2) }
-
-    it 'includes all inboxes' do
-      expect(Pundit.policy_scope(user, Inbox).all).to match_array inboxes
-    end
-  end
-
   permissions :show? do
     it 'allows users to see inboxes' do
       expect(subject).to permit(user)

@@ -30,12 +30,6 @@ class IdeaPolicy < ApplicationPolicy
     owner?
   end
 
-  class Scope < Scope
-    def resolve
-      scope
-    end
-  end
-
   private
 
   def owner?

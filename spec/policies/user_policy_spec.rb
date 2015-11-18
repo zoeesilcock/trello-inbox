@@ -6,14 +6,6 @@ describe UserPolicy do
 
   subject { described_class }
 
-  permissions '.scope' do
-    let(:users) { create_list(:user, 2) }
-
-    it 'includes all users' do
-      expect(Pundit.policy_scope(admin, User).all).to match_array users
-    end
-  end
-
   permissions :index? do
     it 'does not allow users to list users' do
       expect(subject).not_to permit(user)

@@ -7,18 +7,6 @@ describe IdeaPolicy do
 
   subject { described_class }
 
-  permissions '.scope' do
-    let(:ideas) { create_list(:idea, 2) }
-
-    before do
-      allow_any_instance_of(Idea).to receive(:create_in_trello)
-    end
-
-    it 'includes all ideas' do
-      expect(Pundit.policy_scope(user, Idea).all).to match_array ideas
-    end
-  end
-
   permissions :show? do
     it 'allows users to see ideas' do
       expect(subject).to permit(user)

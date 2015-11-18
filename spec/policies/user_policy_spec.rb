@@ -7,7 +7,11 @@ describe UserPolicy do
   subject { described_class }
 
   permissions '.scope' do
-    pending "add some examples to (or delete) #{__FILE__}"
+    let(:users) { create_list(:user, 2) }
+
+    it 'includes all users' do
+      expect(Pundit.policy_scope(admin, User).all).to match_array users
+    end
   end
 
   permissions :index? do
@@ -20,14 +24,6 @@ describe UserPolicy do
     end
   end
 
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
   permissions :update? do
     it 'does not allow users to update users' do
       expect(subject).not_to permit(user)
@@ -36,9 +32,5 @@ describe UserPolicy do
     it 'allows admins to update users' do
       expect(subject).to permit(admin)
     end
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
   end
 end

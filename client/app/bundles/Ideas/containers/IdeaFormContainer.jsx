@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import connectToStores from 'alt/utils/connectToStores';
-import NewIdeaStore from '../stores/NewIdeaStore';
+import IdeaStore from '../stores/IdeaStore';
 import IdeaFormFieldsContainer from '../containers/IdeaFormFieldsContainer';
 import IdeaFormButtonsContainer from '../containers/IdeaFormButtonsContainer';
 
@@ -10,11 +10,11 @@ class IdeaFormContainer extends React.Component {
   }
 
   static getStores() {
-    return [NewIdeaStore];
+    return [IdeaStore];
   }
 
   static getPropsFromStores() {
-    return NewIdeaStore.getState();
+    return IdeaStore.getState();
   }
 
   render() {
@@ -32,7 +32,7 @@ class IdeaFormContainer extends React.Component {
                 <IdeaFormFieldsContainer title={this.props.title} description={this.props.description} />
               </div>
               <div className="modal-footer">
-                <IdeaFormButtonsContainer />
+                <IdeaFormButtonsContainer title={this.props.title} description={this.props.description} />
               </div>
             </div>
           </div>

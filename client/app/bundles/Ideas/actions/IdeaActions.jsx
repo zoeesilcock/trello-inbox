@@ -1,6 +1,6 @@
 import alt from '../alt';
 
-class NewIdeaActions {
+class IdeaActions {
   updateTitle(title) {
     this.dispatch(title);
   }
@@ -10,4 +10,4 @@ class NewIdeaActions {
   }
 }
 
-export default alt.createActions(NewIdeaActions);
+export default alt.createActions(IdeaActions);

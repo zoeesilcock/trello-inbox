@@ -1,14 +1,14 @@
 import alt from '../alt';
-import NewIdeaActions from '../actions/NewIdeaActions';
+import IdeaActions from '../actions/IdeaActions';
 
-class NewIdeaStore {
+class IdeaStore {
   constructor() {
     this.title = '';
     this.description = '';
 
     this.bindListeners({
-      handleTitleUpdate: NewIdeaActions.UPDATE_TITLE,
-      handleDescriptionUpdate: NewIdeaActions.UPDATE_DESCRIPTION
+      handleTitleUpdate: IdeaActions.UPDATE_TITLE,
+      handleDescriptionUpdate: IdeaActions.UPDATE_DESCRIPTION
     });
   }
 
@@ -21,4 +21,4 @@ class NewIdeaStore {
   }
 }
 
-export default alt.createStore(NewIdeaStore, 'NewIdeaStore');
+export default alt.createStore(IdeaStore, 'IdeaStore');

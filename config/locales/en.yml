@@ -28,6 +28,15 @@ en:
         label: "Search..."
     show:
       activity: "Activity"
+    form:
+      close: "Close"
+      title_new: "Add new idea"
+      title_update: "Update idea"
+      idea_title: "Title"
+      idea_description: "Description"
+      cancel: "Cancel"
+      create: "Submit idea"
+      update: "Submit idea"
   users:
     index:
       users: "Users"
@@ -44,11 +53,6 @@ en:
       signout: "Sign out"
     no_inboxes:
       no_inboxes: "No inboxes yet"
-    new_idea_modal:
-      close: "Close"
-      title: "Add new idea"
-      cancel: "Cancel"
-      submit: "Submit idea"
   authentication:
     access_denied: "Access denied."
     please_sign_in: "You need to sign in for access to this page."

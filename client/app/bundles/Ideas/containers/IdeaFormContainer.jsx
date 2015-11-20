@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Modal } from 'react-bootstrap';
 import connectToStores from 'alt/utils/connectToStores';
 import IdeaStore from '../stores/IdeaStore';
 import IdeaActions from '../actions/IdeaActions';
@@ -50,28 +51,26 @@ class IdeaFormContainer extends React.Component {
 
   render() {
     return (
-      <div id="idea-form-modal" className="modal fade" onClick={this.onClose}>
+      <div id="idea-form-modal" className="modal fade">
         <form action={this.formAction()} method="POST">
           <input type="hidden" name="authenticity_token" value={this.props.csrfToken} />
           {this.patch()}
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button type="button" onClick={this.onClose} className="close" data-dismiss="modal" aria-label={I18n.t('ideas.form.close')}><span aria-hidden="true">&times;</span></button>
-                <h4 className="modal-title">{this.headerText()}</h4>
-              </div>
-              <div className="modal-body">
-                <IdeaFormFieldsContainer title={this.props.title} description={this.props.description} />
-              </div>
-              <div className="modal-footer">
-                <IdeaFormButtonsContainer
-                  id={this.props.id}
-                  title={this.props.title}
-                  description={this.props.description}
-                  onClose={this.onClose} />
-              </div>
-            </div>
-          </div>
+          <Modal.Dialog onHide={this.onClose}>
+            <Modal.Header>
+              <button type="button" onClick={this.onClose} className="close" data-dismiss="modal" aria-label={I18n.t('ideas.form.close')}><span aria-hidden="true">&times;</span></button>
+              <h4 className="modal-title">{this.headerText()}</h4>
+            </Modal.Header>
+            <Modal.Body>
+              <IdeaFormFieldsContainer title={this.props.title} description={this.props.description} />
+            </Modal.Body>
+            <Modal.Footer>
+              <IdeaFormButtonsContainer
+                id={this.props.id}
+                title={this.props.title}
+                description={this.props.description}
+                onClose={this.onClose} />
+            </Modal.Footer>
+          </Modal.Dialog>
         </form>
       </div>
     );

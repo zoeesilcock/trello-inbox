@@ -31,12 +31,12 @@ en:
     form:
       close: "Close"
       title_new: "Add new idea"
-      title_update: "Update idea"
+      title_edit: "Edit idea"
       idea_title: "Title"
       idea_description: "Description"
       cancel: "Cancel"
       create: "Submit idea"
-      update: "Submit idea"
+      update: "Update idea"
   users:
     index:
       users: "Users"

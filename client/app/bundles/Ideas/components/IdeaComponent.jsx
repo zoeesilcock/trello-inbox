@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 
 export default class IdeaComponent extends React.Component {
   static propTypes = {
-    idea: PropTypes.object.isRequired
+    idea: PropTypes.object.isRequired,
+    onEdit: PropTypes.func.isRequired
   }
 
   editIdeaButton() {
@@ -11,7 +12,11 @@ export default class IdeaComponent extends React.Component {
     }
 
     return (
-      <a href={this.props.idea.edit_path} className="btn btn-default pull-right">
+      <a href="#"
+        onClick={this.props.onEdit}
+        data-target="#idea-form-modal"
+        data-toggle="modal"
+        className="btn btn-default pull-right">
         <i className="glyphicon glyphicon-pencil"></i>
       </a>
     );

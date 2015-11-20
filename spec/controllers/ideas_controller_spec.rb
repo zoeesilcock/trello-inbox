@@ -112,21 +112,6 @@ RSpec.describe IdeasController, type: :controller do
           expect(idea.reload.title).to eq new_title
         end
       end
-
-      context 'with invalid attributes' do
-        before do
-          allow(idea).to receive(:update_in_trello)
-          idea.update_attribute :user, current_user
-        end
-
-        let(:invalid_idea_attributes) { idea_attributes.merge(title: nil) }
-
-        it 'renders the edit template' do
-          post :update, inbox_id: inbox.id, id: idea.id,
-            idea: invalid_idea_attributes
-          expect(response).to render_template('edit')
-        end
-      end
     end
   end
 end

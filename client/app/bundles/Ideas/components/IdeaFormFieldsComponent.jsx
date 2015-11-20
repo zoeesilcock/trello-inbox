@@ -16,13 +16,13 @@ export default class IdeaFormFieldsComponent extends React.Component {
           name="idea[title]"
           label={ I18n.t('ideas.form.idea_title') }
           onChange={this.props.onTitleChange}
-          defaultValue={this.props.title} />
+          value={this.props.title} />
 
         <Input type="textarea"
           name="idea[description]"
           label={ I18n.t('ideas.form.idea_description') }
           onChange={this.props.onDescriptionChange}
-          defaultValue={this.props.description} />
+          value={this.props.description} />
       </div>
     );
   }

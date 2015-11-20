@@ -12,7 +12,9 @@
   <div class="container">
     <div id="flash_messages"><%= flash_messages(:close) %></div>
     <%= yield %>
-    <%= react_component 'IdeaFormContainer', actionPath: ideas_path(current_inbox.id), csrfToken: form_authenticity_token if current_inbox %>
+    <%= react_component 'IdeaFormContainer',
+      actionPath: ideas_path(current_inbox.id),
+      csrfToken: form_authenticity_token if current_inbox %>
   </div>
 </body>
 </html>

@@ -1,12 +1,17 @@
 import React, { PropTypes } from 'react';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 
-export default class NewIdeaButtonsComponent extends React.Component {
+export default class IdeaFormButtonsComponent extends React.Component {
   static propTypes = {
-    ideaIsValid: PropTypes.bool.isRequired,
+    ideaIsInvalid: PropTypes.bool.isRequired,
+    ideaIsNew: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired
   }
 
   render() {
+    var createButton = this.props.ideaIsNew ?
+      I18n.t('ideas.form.create') : I18n.t('ideas.form.update')
+
     return (
       <div>
         <ButtonToolbar>
@@ -15,13 +20,14 @@ export default class NewIdeaButtonsComponent extends React.Component {
             className="pull-right"
             disabled={this.props.ideaIsInvalid}
             bsStyle="success">
-            {I18n.t('ideas.form.create')}
+            {createButton}
           </Button>
 
           <Button
             className="pull-right"
             bsStyle="default"
-            data-dismiss="modal">
+            data-dismiss="modal"
+            onClick={this.props.onClose}>
             {I18n.t('ideas.form.cancel')}
           </Button>
         </ButtonToolbar>

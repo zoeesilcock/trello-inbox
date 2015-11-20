@@ -1,19 +1,28 @@
 import React, { PropTypes } from 'react';
-import NewIdeaButtonsComponent from '../components/NewIdeaButtonsComponent';
+import IdeaFormButtonsComponent from '../components/IdeaFormButtonsComponent';
 
-export default class NewIdeaButtonsContainer extends React.Component {
+export default class IdeaFormButtonsContainer extends React.Component {
   static propTypes = {
+    id: PropTypes.number,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired
   }
 
   ideaIsInvalid() {
     return this.props.title.length == 0 || this.props.description.length == 0
   }
 
+  ideaIsNew() {
+    return this.props.id == null;
+  }
+
   render() {
     return (
-      <NewIdeaButtonsComponent ideaIsInvalid={this.ideaIsInvalid()} />
+      <IdeaFormButtonsComponent
+        ideaIsInvalid={this.ideaIsInvalid()}
+        ideaIsNew={this.ideaIsNew()}
+        onClose={this.props.onClose} />
     );
   }
 }

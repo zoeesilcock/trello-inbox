@@ -1,0 +1,79 @@
+{
+    "action": {
+        "data": {
+            "board": {
+                "id": "5631f20b2c744af345dcad77",
+                "name": "Trello Inbox",
+                "shortLink": "lNfNfpKl"
+            },
+            "card": {
+                "id": "563f368c40386d3e9052391f",
+                "idShort": 59,
+                "name": "Filter ideas",
+                "shortLink": "7ti2XWBZ"
+            },
+            "checkItem": {
+                "id": "565047496e07ed4280e68323",
+                "name": "test",
+                "state": "complete"
+            },
+            "checklist": {
+                "id": "56504747f4c97b97a057b577",
+                "name": "Checklist"
+            }
+        },
+        "date": "2015-11-21T10:28:34.611Z",
+        "id": "5650475272dffde82e1fb759",
+        "idMemberCreator": "506022c6fc0b8590011810bc",
+        "memberCreator": {
+            "avatarHash": "12a4f0297fe2ecb7275048e89c47ec8f",
+            "fullName": "Zoee Silcock",
+            "id": "506022c6fc0b8590011810bc",
+            "initials": "ZS",
+            "username": "zoeesilcock"
+        },
+        "type": "updateCheckItemStateOnCard"
+    },
+    "model": {
+        "badges": {
+            "attachments": 0,
+            "checkItems": 1,
+            "checkItemsChecked": 1,
+            "comments": 0,
+            "description": true,
+            "due": null,
+            "fogbugz": "",
+            "subscribed": false,
+            "viewingMemberVoted": false,
+            "votes": 0
+        },
+        "checkItemStates": [
+            {
+                "idCheckItem": "565047496e07ed4280e68323",
+                "state": "complete"
+            }
+        ],
+        "closed": false,
+        "dateLastActivity": "2015-11-21T10:28:34.631Z",
+        "desc": "Show all, show mine, show active etc.",
+        "descData": null,
+        "due": null,
+        "email": "zoeesilcock+506022c6fc0b8590011810bc+563f368c40386d3e9052391f+b4f28ec197cafef7b5007f1e11d1c1e8cf72d5af@boards.trello.com",
+        "id": "563f368c40386d3e9052391f",
+        "idAttachmentCover": null,
+        "idBoard": "5631f20b2c744af345dcad77",
+        "idChecklists": [
+            "56504747f4c97b97a057b577"
+        ],
+        "idLabels": [],
+        "idList": "563762ff3e4525536f151c94",
+        "idMembers": [],
+        "idShort": 59,
+        "labels": [],
+        "manualCoverAttachment": false,
+        "name": "Filter ideas",
+        "pos": 221184,
+        "shortUrl": "https://trello.com/c/7ti2XWBZ",
+        "url": "https://trello.com/c/7ti2XWBZ/59-filter-ideas"
+    }
+}

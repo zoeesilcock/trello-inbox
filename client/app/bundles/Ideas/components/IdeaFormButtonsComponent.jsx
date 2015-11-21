@@ -5,7 +5,7 @@ export default class IdeaFormButtonsComponent extends React.Component {
   static propTypes = {
     ideaIsInvalid: PropTypes.bool.isRequired,
     ideaIsNew: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired
+    onHide: PropTypes.func.isRequired
   }
 
   render() {
@@ -27,7 +27,7 @@ export default class IdeaFormButtonsComponent extends React.Component {
             className="pull-right"
             bsStyle="default"
             data-dismiss="modal"
-            onClick={this.props.onClose}>
+            onClick={this.props.onHide}>
             {I18n.t('ideas.form.cancel')}
           </Button>
         </ButtonToolbar>

@@ -11,6 +11,7 @@ export default class IdeaContainer extends React.Component {
     IdeaActions.updateId(this.props.idea.id);
     IdeaActions.updateTitle(this.props.idea.title);
     IdeaActions.updateDescription(this.props.idea.description);
+    IdeaActions.updateShowModal(true);
   }
 
   render() {

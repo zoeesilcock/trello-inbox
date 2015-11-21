@@ -12,6 +12,10 @@ class IdeaActions {
   updateDescription(description) {
     this.dispatch(description);
   }
+
+  updateShowModal(showModal) {
+    this.dispatch(showModal);
+  }
 }
 
 export default alt.createActions(IdeaActions);

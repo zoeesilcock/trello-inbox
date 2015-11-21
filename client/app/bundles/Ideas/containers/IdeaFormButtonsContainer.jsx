@@ -6,7 +6,7 @@ export default class IdeaFormButtonsContainer extends React.Component {
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    onClose: PropTypes.func.isRequired
+    onHide: PropTypes.func.isRequired
   }
 
   ideaIsInvalid() {
@@ -22,7 +22,7 @@ export default class IdeaFormButtonsContainer extends React.Component {
       <IdeaFormButtonsComponent
         ideaIsInvalid={this.ideaIsInvalid()}
         ideaIsNew={this.ideaIsNew()}
-        onClose={this.props.onClose} />
+        onHide={this.props.onHide} />
     );
   }
 }

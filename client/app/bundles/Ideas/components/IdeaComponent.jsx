@@ -14,8 +14,6 @@ export default class IdeaComponent extends React.Component {
     return (
       <a href="#"
         onClick={this.props.onEdit}
-        data-target="#idea-form-modal"
-        data-toggle="modal"
         className="btn btn-default pull-right">
         <i className="glyphicon glyphicon-pencil"></i>
       </a>

@@ -21,6 +21,7 @@ export default class IdeaFormFieldsComponent extends React.Component {
         <Input type="textarea"
           name="idea[description]"
           label={ I18n.t('ideas.form.idea_description') }
+          rows="8"
           onChange={this.props.onDescriptionChange}
           value={this.props.description} />
       </div>

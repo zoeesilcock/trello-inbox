@@ -6,11 +6,13 @@ class IdeaStore {
     this.id = null;
     this.title = '';
     this.description = '';
+    this.showModal = false;
 
     this.bindListeners({
       handleIdUpdate: IdeaActions.UPDATE_ID,
       handleTitleUpdate: IdeaActions.UPDATE_TITLE,
-      handleDescriptionUpdate: IdeaActions.UPDATE_DESCRIPTION
+      handleDescriptionUpdate: IdeaActions.UPDATE_DESCRIPTION,
+      handleModalUpdate: IdeaActions.UPDATE_SHOW_MODAL
     });
   }
 
@@ -24,6 +26,10 @@ class IdeaStore {
 
   handleDescriptionUpdate(description) {
     this.description = description;
+  }
+
+  handleModalUpdate(showModal) {
+    this.showModal = showModal;
   }
 }
 

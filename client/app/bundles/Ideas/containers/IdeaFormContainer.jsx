@@ -19,10 +19,8 @@ class IdeaFormContainer extends React.Component {
     return IdeaStore.getState();
   }
 
-  onClose(event) {
-    IdeaActions.updateId(null);
-    IdeaActions.updateTitle('');
-    IdeaActions.updateDescription('');
+  onHide(event) {
+    IdeaActions.updateShowModal(false);
   }
 
   headerText() {
@@ -51,13 +49,12 @@ class IdeaFormContainer extends React.Component {
 
   render() {
     return (
-      <div id="idea-form-modal" className="modal fade">
+      <div>
         <form action={this.formAction()} method="POST">
           <input type="hidden" name="authenticity_token" value={this.props.csrfToken} />
           {this.patch()}
-          <Modal.Dialog onHide={this.onClose}>
+          <Modal show={this.props.showModal} onHide={this.onHide} backdrop>
             <Modal.Header>
-              <button type="button" onClick={this.onClose} className="close" data-dismiss="modal" aria-label={I18n.t('ideas.form.close')}><span aria-hidden="true">&times;</span></button>
               <h4 className="modal-title">{this.headerText()}</h4>
             </Modal.Header>
             <Modal.Body>
@@ -68,9 +65,9 @@ class IdeaFormContainer extends React.Component {
                 id={this.props.id}
                 title={this.props.title}
                 description={this.props.description}
-                onClose={this.onClose} />
+                onHide={this.onHide} />
             </Modal.Footer>
-          </Modal.Dialog>
+          </Modal>
         </form>
       </div>
     );

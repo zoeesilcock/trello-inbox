@@ -3,7 +3,8 @@ import React, { PropTypes } from 'react';
 export default class IdeaComponent extends React.Component {
   static propTypes = {
     idea: PropTypes.object.isRequired,
-    onEdit: PropTypes.func.isRequired
+    onEdit: PropTypes.func.isRequired,
+    onShow: PropTypes.func.isRequired
   }
 
   editIdeaButton() {
@@ -23,7 +24,7 @@ export default class IdeaComponent extends React.Component {
   render() {
     return (
       <li className="col-xs-12 col-sm-4" key={this.props.index}>
-        <div className="idea-container">
+        <div className="idea-container" onClick={this.props.onShow}>
           <div className="idea-header">
             <img src={this.props.idea.user_avatar} alt={this.props.idea.user_name} className="avatar" />
             <div>

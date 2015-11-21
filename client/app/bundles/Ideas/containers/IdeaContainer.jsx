@@ -12,11 +12,20 @@ export default class IdeaContainer extends React.Component {
     IdeaActions.updateTitle(this.props.idea.title);
     IdeaActions.updateDescription(this.props.idea.description);
     IdeaActions.updateShowModal(true);
+
+    event.stopPropagation();
+  }
+
+  onShow(event) {
+    window.location = this.props.idea.show_path;
   }
 
   render() {
     return (
-      <IdeaComponent idea={this.props.idea} onEdit={this.onEdit.bind(this)} />
+      <IdeaComponent
+        idea={this.props.idea}
+        onEdit={this.onEdit.bind(this)}
+        onShow={this.onShow.bind(this)} />
     );
   }
 }

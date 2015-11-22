@@ -8,47 +8,16 @@ class TrelloCallbacksController < ApplicationController
     Activity.create(
       user_name: @data['action']['memberCreator']['fullName'],
       user_avatar: @data['action']['memberCreator']['avatarHash'],
-      action: find_action,
-      target: find_target,
+      action: WebhookConstants::ACTIONS[@data['action']['type']],
+      target: WebhookConstants::TARGETS[@data['action']['type']],
       data: extract_data.to_json
     )
 
     render nothing: true, status: 200
   end
 
-  def find_action
-    case @data['action']['type']
-    when 'addAttachmentToCard', 'addChecklistToCard', 'createCheckItem',
-      'commentCard', 'addLabelToCard', 'addMemberToCard'
-      Activity.actions[:added]
-    when 'deleteAttachmentFromCard', 'removeChecklistFromCard',
-      'deleteCheckItem', 'deleteComment', 'removeLabelFromCard',
-      'removeMemberFromCard'
-      Activity.actions[:removed]
-    when 'updateCheckItemStateOnCard'
-      Activity.actions[:updated]
-    end
-  end
-
-  def find_target
-    case @data['action']['type']
-    when 'addAttachmentToCard', 'deleteAttachmentFromCard'
-      Activity.targets[:attachment]
-    when 'addChecklistToCard', 'removeChecklistFromCard'
-      Activity.targets[:checklist]
-    when 'createCheckItem', 'deleteCheckItem', 'updateCheckItemStateOnCard'
-      Activity.targets[:checklist_item]
-    when 'commentCard', 'deleteComment'
-      Activity.targets[:comment]
-    when 'addLabelToCard', 'removeLabelFromCard'
-      Activity.targets[:label]
-    when 'addMemberToCard', 'removeMemberFromCard'
-      Activity.targets[:member]
-    end
-  end
-
   def extract_data
-    case find_target
+    case WebhookConstants::TARGETS[@data['action']['type']]
     when Activity.targets[:attachment]
       {
         name: @data['action']['data']['attachment']['name'],

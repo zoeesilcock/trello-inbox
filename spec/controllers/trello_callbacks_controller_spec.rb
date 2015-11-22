@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TrelloCallbacksController, type: :controller do
   describe 'POST #webhook' do
-    let(:data) { File.read('webhook_data/webhook_add_comment.json') }
+    let(:data) { webhook_fixture 'add_comment' }
 
     it 'responds successfully with an HTTP 200 status code' do
       post :webhook, data, format: :json, type: 'card', id: 1
@@ -11,7 +11,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'add attachment' do
-      let(:data) { File.read('webhook_data/webhook_add_attachment.json') }
+      let(:data) { webhook_fixture 'add_attachment' }
 
       it 'creates an activity' do
         expect do
@@ -39,7 +39,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'remove attachment' do
-      let(:data) { File.read('webhook_data/webhook_remove_attachment.json') }
+      let(:data) { webhook_fixture 'remove_attachment' }
 
       it 'creates an activity' do
         expect do
@@ -66,7 +66,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'add checklist' do
-      let(:data) { File.read('webhook_data/webhook_add_checklist.json') }
+      let(:data) { webhook_fixture 'add_checklist' }
 
       it 'creates an activity' do
         expect do
@@ -93,7 +93,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'remove checklist' do
-      let(:data) { File.read('webhook_data/webhook_remove_checklist.json') }
+      let(:data) { webhook_fixture 'remove_checklist' }
 
       it 'creates an activity' do
         expect do
@@ -120,7 +120,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'add checklist item' do
-      let(:data) { File.read('webhook_data/webhook_add_checklist_item.json') }
+      let(:data) { webhook_fixture 'add_checklist_item' }
 
       it 'creates an activity' do
         expect do
@@ -148,7 +148,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'remove checklist item' do
-      let(:data) { File.read('webhook_data/webhook_remove_checklist_item.json') }
+      let(:data) { webhook_fixture 'remove_checklist_item' }
 
       it 'creates an activity' do
         expect do
@@ -176,7 +176,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'update checklist item' do
-      let(:data) { File.read('webhook_data/webhook_update_checklist_item.json') }
+      let(:data) { webhook_fixture 'update_checklist_item' }
 
       it 'creates an activity' do
         expect do
@@ -204,7 +204,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'add comment' do
-      let(:data) { File.read('webhook_data/webhook_add_comment.json') }
+      let(:data) { webhook_fixture 'add_comment' }
 
       it 'creates an activity' do
         expect do
@@ -231,7 +231,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'remove comment' do
-      let(:data) { File.read('webhook_data/webhook_remove_comment.json') }
+      let(:data) { webhook_fixture 'remove_comment' }
 
       it 'creates an activity' do
         expect do
@@ -251,7 +251,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'add label' do
-      let(:data) { File.read('webhook_data/webhook_add_label.json') }
+      let(:data) { webhook_fixture 'add_label' }
 
       it 'creates an activity' do
         expect do
@@ -279,7 +279,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'remove label' do
-      let(:data) { File.read('webhook_data/webhook_remove_label.json') }
+      let(:data) { webhook_fixture 'remove_label' }
 
       it 'creates an activity' do
         expect do
@@ -307,7 +307,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'add member' do
-      let(:data) { File.read('webhook_data/webhook_add_member.json') }
+      let(:data) { webhook_fixture 'add_member' }
 
       it 'creates an activity' do
         expect do
@@ -334,7 +334,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
     end
 
     context 'remove member' do
-      let(:data) { File.read('webhook_data/webhook_remove_member.json') }
+      let(:data) { webhook_fixture 'remove_member' }
 
       it 'creates an activity' do
         expect do

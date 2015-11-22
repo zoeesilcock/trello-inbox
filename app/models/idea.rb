@@ -26,6 +26,7 @@ class Idea < ActiveRecord::Base
     )
 
     update_attribute :card_id, card.id
+    create_webhook
   end
 
   def update_in_trello

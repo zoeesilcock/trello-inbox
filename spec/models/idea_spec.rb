@@ -31,6 +31,7 @@ RSpec.describe Idea, type: :model do
 
     context 'create' do
       before do
+        allow(idea).to receive(:create_webhook)
         allow(idea).to receive(:update_in_trello)
       end
 

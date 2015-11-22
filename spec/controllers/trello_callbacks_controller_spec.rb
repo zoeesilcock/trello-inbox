@@ -10,6 +10,20 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       expect(response).to have_http_status(200)
     end
 
+    describe 'association to idea' do
+      let(:idea) { build :idea, card_id: 'some_card_id' }
+
+      before do
+        allow(idea).to receive(:create_in_trello)
+        idea.save
+      end
+
+      it 'hooks the activity up to the idea' do
+        post :webhook, data, format: :json, type: 'card', id: idea.card_id
+        expect(Activity.last.idea_id).to eq idea.id
+      end
+    end
+
     context 'add attachment' do
       let(:data) { webhook_fixture 'add_attachment' }
 

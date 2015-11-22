@@ -15,6 +15,8 @@ class Activity < ActiveRecord::Base
     :moved
   ]
 
+  belongs_to :idea
+
   validates :user_name, presence: true
   validates :target, presence: true
   validates :action, presence: true

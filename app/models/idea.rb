@@ -1,6 +1,7 @@
 class Idea < ActiveRecord::Base
   belongs_to :inbox
   belongs_to :user
+  has_many :activities
 
   validates :title, presence: true
   validates :description, presence: true

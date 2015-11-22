@@ -10,7 +10,8 @@ class TrelloCallbacksController < ApplicationController
       user_avatar: @data['action']['memberCreator']['avatarHash'],
       action: WebhookConstants::ACTIONS[@data['action']['type']],
       target: WebhookConstants::TARGETS[@data['action']['type']],
-      data: extract_data.to_json
+      data: extract_data.to_json,
+      idea: Idea.where(card_id: params[:id]).first
     )
 
     render nothing: true, status: 200

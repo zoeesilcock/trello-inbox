@@ -29,7 +29,8 @@ class TrelloCallbacksController < ApplicationController
     when Activity.targets[:checklist_item]
       {
         text: @data['action']['data']['checkItem']['name'],
-        completed: @data['action']['data']['checkItem']['state'] == 'complete'
+        completed: @data['action']['data']['checkItem']['state'] == 'complete',
+        checklist: @data['action']['data']['checklist']['name']
       }
     when Activity.targets[:comment]
       { text: @data['action']['data']['text'] }

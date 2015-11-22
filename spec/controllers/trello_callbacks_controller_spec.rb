@@ -156,7 +156,8 @@ RSpec.describe TrelloCallbacksController, type: :controller do
         post :webhook, data, format: :json, type: 'card', id: 1
         expect(Activity.last.data).to include(
           text: 'test',
-          completed: false
+          completed: false,
+          checklist: 'Some checklist'
         )
       end
     end

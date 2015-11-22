@@ -18,12 +18,15 @@ class TrelloCallbacksController < ApplicationController
 
   def find_action
     case @data['action']['type']
-    when 'addAttachmentToCard', 'addChecklistToCard', 'commentCard',
-      'addLabelToCard', 'addMemberToCard'
+    when 'addAttachmentToCard', 'addChecklistToCard', 'createCheckItem',
+      'commentCard', 'addLabelToCard', 'addMemberToCard'
       Activity.actions[:added]
     when 'deleteAttachmentFromCard', 'removeChecklistFromCard',
-      'deleteComment', 'removeLabelFromCard', 'removeMemberFromCard'
+      'deleteCheckItem', 'deleteComment', 'removeLabelFromCard',
+      'removeMemberFromCard'
       Activity.actions[:removed]
+    when 'updateCheckItemStateOnCard'
+      Activity.actions[:updated]
     end
   end
 
@@ -33,6 +36,8 @@ class TrelloCallbacksController < ApplicationController
       Activity.targets[:attachment]
     when 'addChecklistToCard', 'removeChecklistFromCard'
       Activity.targets[:checklist]
+    when 'createCheckItem', 'deleteCheckItem', 'updateCheckItemStateOnCard'
+      Activity.targets[:checklist_item]
     when 'commentCard', 'deleteComment'
       Activity.targets[:comment]
     when 'addLabelToCard', 'removeLabelFromCard'
@@ -51,6 +56,11 @@ class TrelloCallbacksController < ApplicationController
       }
     when Activity.targets[:checklist]
       { name: @data['action']['data']['checklist']['name'] }
+    when Activity.targets[:checklist_item]
+      {
+        text: @data['action']['data']['checkItem']['name'],
+        completed: @data['action']['data']['checkItem']['state'] == 'complete'
+      }
     when Activity.targets[:comment]
       { text: @data['action']['data']['text'] }
     when Activity.targets[:label]

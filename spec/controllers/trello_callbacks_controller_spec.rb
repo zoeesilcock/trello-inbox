@@ -118,6 +118,91 @@ RSpec.describe TrelloCallbacksController, type: :controller do
         )
       end
     end
+
+    context 'add checklist item' do
+      let(:data) { File.read('webhook_data/webhook_add_checklist_item.json') }
+
+      it 'creates an activity' do
+        expect do
+          post :webhook, data, format: :json, type: 'card', id: 1
+        end.to change(Activity, :count).from(0).to(1)
+      end
+
+      it 'has the correct action' do
+        post :webhook, data, format: :json, type: 'card', id: 1
+        expect(Activity.last.action).to eq 'added'
+      end
+
+      it 'has the correct target' do
+        post :webhook, data, format: :json, type: 'card', id: 1
+        expect(Activity.last.target).to eq 'checklist_item'
+      end
+
+      it 'has the correct data' do
+        post :webhook, data, format: :json, type: 'card', id: 1
+        expect(Activity.last.data).to include(
+          text: 'test',
+          completed: false
+        )
+      end
+    end
+
+    context 'remove checklist item' do
+      let(:data) { File.read('webhook_data/webhook_remove_checklist_item.json') }
+
+      it 'creates an activity' do
+        expect do
+          post :webhook, data, format: :json, type: 'card', id: 1
+        end.to change(Activity, :count).from(0).to(1)
+      end
+
+      it 'has the correct action' do
+        post :webhook, data, format: :json, type: 'card', id: 1
+        expect(Activity.last.action).to eq 'removed'
+      end
+
+      it 'has the correct target' do
+        post :webhook, data, format: :json, type: 'card', id: 1
+        expect(Activity.last.target).to eq 'checklist_item'
+      end
+
+      it 'has the correct data' do
+        post :webhook, data, format: :json, type: 'card', id: 1
+        expect(Activity.last.data).to include(
+          text: 'test',
+          completed: false
+        )
+      end
+    end
+
+    context 'update checklist item' do
+      let(:data) { File.read('webhook_data/webhook_update_checklist_item.json') }
+
+      it 'creates an activity' do
+        expect do
+          post :webhook, data, format: :json, type: 'card', id: 1
+        end.to change(Activity, :count).from(0).to(1)
+      end
+
+      it 'has the correct action' do
+        post :webhook, data, format: :json, type: 'card', id: 1
+        expect(Activity.last.action).to eq 'updated'
+      end
+
+      it 'has the correct target' do
+        post :webhook, data, format: :json, type: 'card', id: 1
+        expect(Activity.last.target).to eq 'checklist_item'
+      end
+
+      it 'has the correct data' do
+        post :webhook, data, format: :json, type: 'card', id: 1
+        expect(Activity.last.data).to include(
+          text: 'test',
+          completed: true
+        )
+      end
+    end
+
     context 'add comment' do
       let(:data) { File.read('webhook_data/webhook_add_comment.json') }
 

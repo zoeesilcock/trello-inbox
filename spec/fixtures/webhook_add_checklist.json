@@ -1,0 +1,69 @@
+{
+    "action": {
+        "data": {
+            "board": {
+                "id": "5631f20b2c744af345dcad77",
+                "name": "Trello Inbox",
+                "shortLink": "lNfNfpKl"
+            },
+            "card": {
+                "id": "563f368c40386d3e9052391f",
+                "idShort": 59,
+                "name": "Filter ideas",
+                "shortLink": "7ti2XWBZ"
+            },
+            "checklist": {
+                "id": "56503cf4161f95d4cac2ceb7",
+                "name": "Some checklist"
+            }
+        },
+        "date": "2015-11-21T09:44:20.557Z",
+        "id": "56503cf4161f95d4cac2ceb8",
+        "idMemberCreator": "506022c6fc0b8590011810bc",
+        "memberCreator": {
+            "avatarHash": "12a4f0297fe2ecb7275048e89c47ec8f",
+            "fullName": "Zoee Silcock",
+            "id": "506022c6fc0b8590011810bc",
+            "initials": "ZS",
+            "username": "zoeesilcock"
+        },
+        "type": "addChecklistToCard"
+    },
+    "model": {
+        "badges": {
+            "attachments": 0,
+            "checkItems": 0,
+            "checkItemsChecked": 0,
+            "comments": 0,
+            "description": true,
+            "due": null,
+            "fogbugz": "",
+            "subscribed": false,
+            "viewingMemberVoted": false,
+            "votes": 0
+        },
+        "checkItemStates": [],
+        "closed": false,
+        "dateLastActivity": "2015-11-21T09:43:05.046Z",
+        "desc": "Show all, show mine, show active etc.",
+        "descData": null,
+        "due": null,
+        "email": "zoeesilcock+506022c6fc0b8590011810bc+563f368c40386d3e9052391f+b4f28ec197cafef7b5007f1e11d1c1e8cf72d5af@boards.trello.com",
+        "id": "563f368c40386d3e9052391f",
+        "idAttachmentCover": null,
+        "idBoard": "5631f20b2c744af345dcad77",
+        "idChecklists": [
+            "56503cf4161f95d4cac2ceb7"
+        ],
+        "idLabels": [],
+        "idList": "563762ff3e4525536f151c94",
+        "idMembers": [],
+        "idShort": 59,
+        "labels": [],
+        "manualCoverAttachment": false,
+        "name": "Filter ideas",
+        "pos": 221184,
+        "shortUrl": "https://trello.com/c/7ti2XWBZ",
+        "url": "https://trello.com/c/7ti2XWBZ/59-filter-ideas"
+    }
+}

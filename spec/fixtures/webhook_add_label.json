@@ -1,0 +1,80 @@
+{
+    "action": {
+        "data": {
+            "board": {
+                "id": "5631f20b2c744af345dcad77",
+                "name": "Trello Inbox",
+                "shortLink": "lNfNfpKl"
+            },
+            "card": {
+                "id": "5638d2124b05fa4bc6fd4bf7",
+                "idShort": 47,
+                "name": "We should have an app for submitting ideas to Trello!",
+                "shortLink": "2fKDB88H"
+            },
+            "label": {
+                "color": "green",
+                "id": "5631f20b19ad3a5dc2f444df",
+                "name": ""
+            },
+            "text": "Green!",
+            "value": "green"
+        },
+        "date": "2015-11-19T00:30:39.193Z",
+        "id": "564d182f8201c14a1464d8cf",
+        "idMemberCreator": "506022c6fc0b8590011810bc",
+        "memberCreator": {
+            "avatarHash": "12a4f0297fe2ecb7275048e89c47ec8f",
+            "fullName": "Zoee Silcock",
+            "id": "506022c6fc0b8590011810bc",
+            "initials": "ZS",
+            "username": "zoeesilcock"
+        },
+        "type": "addLabelToCard"
+    },
+    "model": {
+        "badges": {
+            "attachments": 0,
+            "checkItems": 0,
+            "checkItemsChecked": 0,
+            "comments": 0,
+            "description": false,
+            "due": null,
+            "fogbugz": "",
+            "subscribed": false,
+            "viewingMemberVoted": false,
+            "votes": 0
+        },
+        "checkItemStates": [],
+        "closed": false,
+        "dateLastActivity": "2015-11-19T00:30:39.049Z",
+        "desc": "",
+        "descData": null,
+        "due": null,
+        "email": "zoeesilcock+506022c6fc0b8590011810bc+5638d2124b05fa4bc6fd4bf7+c0404a2193ba40ceb1476a1a7afed02dc5f9afaa@boards.trello.com",
+        "id": "5638d2124b05fa4bc6fd4bf7",
+        "idAttachmentCover": null,
+        "idBoard": "5631f20b2c744af345dcad77",
+        "idChecklists": [],
+        "idLabels": [
+            "5631f20b19ad3a5dc2f444df"
+        ],
+        "idList": "563762ff3e4525536f151c94",
+        "idMembers": [],
+        "idShort": 47,
+        "labels": [
+            {
+                "color": "green",
+                "id": "5631f20b19ad3a5dc2f444df",
+                "idBoard": "5631f20b2c744af345dcad77",
+                "name": "",
+                "uses": 1
+            }
+        ],
+        "manualCoverAttachment": false,
+        "name": "We should have an app for submitting ideas to Trello!",
+        "pos": 12288,
+        "shortUrl": "https://trello.com/c/2fKDB88H",
+        "url": "https://trello.com/c/2fKDB88H/47-we-should-have-an-app-for-submitting-ideas-to-trello"
+    }
+}

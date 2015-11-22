@@ -9,4 +9,12 @@
       background-color: #333;
     }
   }
+
+  #activities {
+    .date {
+      font-size: 11px;
+      color: $gray-light;
+      margin-bottom: 20px;
+    }
+  }
 }

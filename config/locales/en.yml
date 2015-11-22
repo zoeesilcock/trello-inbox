@@ -37,6 +37,18 @@ en:
       cancel: "Cancel"
       create: "Submit idea"
       update: "Update idea"
+  activities:
+    added_attachment: 'added the attachment'
+    added_checklist: 'added the checklist'
+    added_checklist_item: 'added the checklist item'
+    added_comment: 'commented'
+    added_label: 'added the label'
+    added_member: 'added'
+    checked: 'checked the checklist item'
+    unchecked: 'unchecked the checklist item'
+    on_the_checklist: 'on the checklist'
+    to_this_idea: 'to this idea.'
+    on_this_idea: 'on this idea.'
   users:
     index:
       users: "Users"

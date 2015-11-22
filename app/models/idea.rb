@@ -1,7 +1,7 @@
 class Idea < ActiveRecord::Base
   belongs_to :inbox
   belongs_to :user
-  has_many :activities
+  has_many :activities, -> { order 'created_at DESC' }
 
   validates :title, presence: true
   validates :description, presence: true

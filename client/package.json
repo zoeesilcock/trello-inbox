@@ -44,6 +44,7 @@
     "jquery": "^2.1.4",
     "jquery-ujs": "^1.1.0-1",
     "loader-utils": "^0.2.11",
+    "lunr": "^0.6.0",
     "react": "^0.14.0",
     "react-bootstrap": "^0.27.3",
     "react-dom": "^0.14.0",

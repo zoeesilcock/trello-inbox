@@ -33,7 +33,7 @@ export default class IdeasContainer extends React.Component {
       <div>
         <IdeasHeaderContainer />
         <hr />
-        <IdeasListContainer ideas={this.state.ideas} />
+        <IdeasListContainer ideas={this.state.ideas} index={this.state.index} />
       </div>
     );
   }

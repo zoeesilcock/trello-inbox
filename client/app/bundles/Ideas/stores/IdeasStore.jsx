@@ -4,6 +4,7 @@ var lunr = require('lunr');
 class IdeasStore {
   constructor() {
     this.ideas = [];
+    this.index = null;
 
     this.on('bootstrap', () => {
       this.index = lunr(function() {

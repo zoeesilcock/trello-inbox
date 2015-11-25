@@ -14,7 +14,7 @@ export default class IdeasListComponent extends React.Component {
     });
 
     return (
-      <ul id="ideas" className="row">
+      <ul id="ideas" className="flex-grid">
         {ideas}
       </ul>
     );

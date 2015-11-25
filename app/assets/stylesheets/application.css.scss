@@ -34,6 +34,7 @@ $rails: true;
 // This must come after all the boostrap styles are loaded so that these styles can override those.
 @import "post-bootstrap";
 
+@import "flex_grid";
 @import "ideas";
 @import "inboxes";
 @import "activity";

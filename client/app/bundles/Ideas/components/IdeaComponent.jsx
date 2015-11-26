@@ -23,7 +23,7 @@ export default class IdeaComponent extends React.Component {
 
   render() {
     return (
-      <li className="flex-child" key={this.props.index}>
+      <li className="flex-child fill-height" key={this.props.index}>
         <div className="idea-container" onClick={this.props.onShow}>
           <div className="idea-header">
             <img src={this.props.idea.user_avatar} alt={this.props.idea.user_name} className="avatar" />

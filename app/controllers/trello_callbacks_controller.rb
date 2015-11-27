@@ -21,11 +21,11 @@ class TrelloCallbacksController < ApplicationController
     case WebhookConstants::TARGETS[@data['action']['type']]
     when Activity.targets[:attachment]
       {
-        name: @data['action']['data']['attachment']['name'],
+        text: @data['action']['data']['attachment']['name'],
         preview: @data['action']['data']['attachment']['previewUrl2x']
       }
     when Activity.targets[:checklist]
-      { name: @data['action']['data']['checklist']['name'] }
+      { text: @data['action']['data']['checklist']['name'] }
     when Activity.targets[:checklist_item]
       {
         text: @data['action']['data']['checkItem']['name'],
@@ -40,7 +40,7 @@ class TrelloCallbacksController < ApplicationController
         color: @data['action']['data']['value']
       }
     when Activity.targets[:member]
-      { name: @data['action']['member']['fullName'] }
+      { text: @data['action']['member']['fullName'] }
     end
   end
 end

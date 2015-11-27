@@ -46,7 +46,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       it 'has the correct data' do
         post :webhook, data, format: :json, type: 'card', id: 1
         expect(Activity.last.data).to include(
-          name: 'favicon.ico',
+          text: 'favicon.ico',
           preview: 'https://example.com/image.png'
         )
       end
@@ -74,7 +74,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       it 'has the correct data' do
         post :webhook, data, format: :json, type: 'card', id: 1
         expect(Activity.last.data).to include(
-          name: 'favicon.ico'
+          text: 'favicon.ico'
         )
       end
     end
@@ -101,7 +101,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       it 'has the correct data' do
         post :webhook, data, format: :json, type: 'card', id: 1
         expect(Activity.last.data).to include(
-          name: 'Some checklist'
+          text: 'Some checklist'
         )
       end
     end
@@ -128,7 +128,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       it 'has the correct data' do
         post :webhook, data, format: :json, type: 'card', id: 1
         expect(Activity.last.data).to include(
-          name: 'Some checklist'
+          text: 'Some checklist'
         )
       end
     end
@@ -343,7 +343,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       it 'has the correct data' do
         post :webhook, data, format: :json, type: 'card', id: 1
         expect(Activity.last.data).to include(
-          name: 'Zoee Silcock'
+          text: 'Zoee Silcock'
         )
       end
     end
@@ -370,7 +370,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       it 'has the correct data' do
         post :webhook, data, format: :json, type: 'card', id: 1
         expect(Activity.last.data).to include(
-          name: 'Zoee Silcock'
+          text: 'Zoee Silcock'
         )
       end
     end

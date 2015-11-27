@@ -30,4 +30,29 @@ module WebhookConstants
     'addMemberToCard' => Activity.targets[:member],
     'removeMemberFromCard' => Activity.targets[:member]
   }
+
+  DATA = {
+    Activity.targets[:attachment] => {
+      text: 'action.data.attachment.name',
+      preview: 'action.data.attachment.previewUrl2x'
+    },
+    Activity.targets[:checklist] => {
+      text: 'action.data.checklist.name'
+    },
+    Activity.targets[:checklist_item] => {
+      text: 'action.data.checkItem.name',
+      state: 'action.data.checkItem.state',
+      checklist: 'action.data.checklist.name'
+    },
+    Activity.targets[:comment] => {
+      text: 'action.data.text'
+    },
+    Activity.targets[:label] => {
+      text: 'action.data.text',
+      color: 'action.data.value'
+    },
+    Activity.targets[:member] => {
+      text: 'action.member.fullName'
+    }
+  }
 end

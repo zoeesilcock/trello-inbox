@@ -1,3 +1,5 @@
+require 'jsonpath'
+
 class TrelloCallbacksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
@@ -17,30 +19,17 @@ class TrelloCallbacksController < ApplicationController
     render nothing: true, status: 200
   end
 
+  private
+
   def extract_data
-    case WebhookConstants::TARGETS[@data['action']['type']]
-    when Activity.targets[:attachment]
-      {
-        text: @data['action']['data']['attachment']['name'],
-        preview: @data['action']['data']['attachment']['previewUrl2x']
-      }
-    when Activity.targets[:checklist]
-      { text: @data['action']['data']['checklist']['name'] }
-    when Activity.targets[:checklist_item]
-      {
-        text: @data['action']['data']['checkItem']['name'],
-        completed: @data['action']['data']['checkItem']['state'] == 'complete',
-        checklist: @data['action']['data']['checklist']['name']
-      }
-    when Activity.targets[:comment]
-      { text: @data['action']['data']['text'] }
-    when Activity.targets[:label]
-      {
-        text: @data['action']['data']['text'],
-        color: @data['action']['data']['value']
-      }
-    when Activity.targets[:member]
-      { text: @data['action']['member']['fullName'] }
+    data = {}
+    target = WebhookConstants::TARGETS[@data['action']['type']]
+
+    WebhookConstants::DATA[target].each do |key, path|
+      json_path = JsonPath.new(path)
+      data[key] = json_path.on(@data).first
     end
+
+    data
   end
 end

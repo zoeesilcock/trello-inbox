@@ -130,6 +130,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    jsonpath (0.5.8)
+      multi_json
     jwt (1.5.2)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -345,6 +347,7 @@ DEPENDENCIES
   i18n-js (>= 3.0.0.rc11)
   jbuilder (~> 2.0)
   jquery-rails
+  jsonpath
   launchy
   omniauth
   omniauth-google-oauth2

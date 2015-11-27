@@ -1,4 +1,4 @@
 <strong><%= activity.user_name %></strong>
-<%= activity.data['completed'] ? t('activities.checked') : t('activities.unchecked') %>
+<%= activity.data['state'] == 'complete' ? t('activities.checked') : t('activities.unchecked') %>
 <strong><%= activity.data['text'] %></strong> <%= t('activities.on_the_checklist') %>
 <strong><%= activity.data['checklist'] %></strong>.

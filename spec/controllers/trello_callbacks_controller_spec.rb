@@ -24,6 +24,29 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       end
     end
 
+    describe 'updating labels' do
+      let(:data) { webhook_fixture 'add_label' }
+
+      context 'with no label saved' do
+        it 'creates a new label' do
+          expect do
+            post :webhook, data, format: :json, type: 'card', id: 1
+          end.to change(Label, :count).from(0).to(1)
+        end
+      end
+
+      context 'with a label saved' do
+        let!(:label) { create :label, trello_id: '5631f20b19ad3a5dc2f444df' }
+
+        it 'updates the label' do
+          post :webhook, data, format: :json, type: 'card', id: 1
+          label.reload
+          expect(label.text).to eq 'A real label'
+          expect(label.color).to eq 'green'
+        end
+      end
+    end
+
     context 'add attachment' do
       let(:data) { webhook_fixture 'add_attachment' }
 

@@ -44,11 +44,13 @@ en:
     added_comment: 'commented'
     added_label: 'added the label'
     added_member: 'added'
+    removed_label: 'removed the label'
     checked: 'checked the checklist item'
     unchecked: 'unchecked the checklist item'
     on_the_checklist: 'on the checklist'
     to_this_idea: 'to this idea.'
     on_this_idea: 'on this idea.'
+    from_this_idea: 'from this idea.'
   users:
     index:
       users: "Users"

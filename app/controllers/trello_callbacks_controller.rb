@@ -2,8 +2,9 @@ require 'jsonpath'
 
 class TrelloCallbacksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :find_idea
   before_action :parse_data
-  before_action :update_labels
+  after_action :update_labels
 
   def webhook
     skip_authorization
@@ -14,13 +15,17 @@ class TrelloCallbacksController < ApplicationController
       action: WebhookConstants::ACTIONS[@data['action']['type']],
       target: WebhookConstants::TARGETS[@data['action']['type']],
       data: extract_data,
-      idea: Idea.find_by_card_id(params[:id])
+      idea: @idea
     )
 
     render nothing: true, status: 200
   end
 
   private
+
+  def find_idea
+    @idea = Idea.find(params[:id])
+  end
 
   def parse_data
     @data = JSON.parse(request.body.read.html_safe)
@@ -39,11 +44,14 @@ class TrelloCallbacksController < ApplicationController
   end
 
   def update_labels
+    IdeasLabel.where(idea_id: @idea.id).destroy_all
+
     labels = @data['model']['labels'] || []
     labels.each do |label_data|
       label = Label.where(trello_id: label_data['id']).first_or_initialize
       label.text = label_data['name']
       label.color = label_data['color']
+      label.ideas << @idea
       label.save
     end
   end

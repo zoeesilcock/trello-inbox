@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129094833) do
+ActiveRecord::Schema.define(version: 20151129104325) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "user_name"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 20151129094833) do
     t.datetime "updated_at",  null: false
     t.string   "card_id"
     t.integer  "user_id"
+  end
+
+  create_table "ideas_labels", force: :cascade do |t|
+    t.integer  "idea_id"
+    t.integer  "label_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "inboxes", force: :cascade do |t|

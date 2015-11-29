@@ -1,25 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe TrelloCallbacksController, type: :controller do
+  let(:idea) { create :idea }
+
+  before do
+    allow_any_instance_of(Idea).to receive(:create_in_trello)
+  end
+
   describe 'POST #webhook' do
     let(:data) { webhook_fixture 'add_comment' }
 
     it 'responds successfully with an HTTP 200 status code' do
-      post :webhook, data, format: :json, type: 'card', id: 1
+      post :webhook, data, format: :json, type: 'card', id: idea.id
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
 
     describe 'association to idea' do
-      let(:idea) { build :idea, card_id: 'some_card_id' }
-
-      before do
-        allow(idea).to receive(:create_in_trello)
-        idea.save
-      end
-
       it 'hooks the activity up to the idea' do
-        post :webhook, data, format: :json, type: 'card', id: idea.card_id
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.idea_id).to eq idea.id
       end
     end
@@ -30,8 +29,14 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       context 'with no label saved' do
         it 'creates a new label' do
           expect do
-            post :webhook, data, format: :json, type: 'card', id: 1
+            post :webhook, data, format: :json, type: 'card', id: idea.id
           end.to change(Label, :count).from(0).to(1)
+        end
+
+        it 'hooks the new label up to the idea' do
+          expect do
+            post :webhook, data, format: :json, type: 'card', id: idea.id
+          end.to change(idea.labels, :count).from(0).to(1)
         end
       end
 
@@ -39,7 +44,7 @@ RSpec.describe TrelloCallbacksController, type: :controller do
         let!(:label) { create :label, trello_id: '5631f20b19ad3a5dc2f444df' }
 
         it 'updates the label' do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
           label.reload
           expect(label.text).to eq 'A real label'
           expect(label.color).to eq 'green'
@@ -52,22 +57,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'added'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'attachment'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'favicon.ico',
           preview: 'https://example.com/image.png'
@@ -80,22 +85,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'removed'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'attachment'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'favicon.ico'
         )
@@ -107,22 +112,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'added'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'checklist'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'Some checklist'
         )
@@ -134,22 +139,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'removed'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'checklist'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'Some checklist'
         )
@@ -161,22 +166,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'added'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'checklist_item'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'test',
           state: 'incomplete',
@@ -190,22 +195,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'removed'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'checklist_item'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'test',
           state: 'incomplete'
@@ -218,22 +223,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'updated'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'checklist_item'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'test',
           state: 'complete'
@@ -246,22 +251,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'added'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'comment'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'This is a test comment for testing purposes.'
         )
@@ -273,17 +278,17 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'removed'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'comment'
       end
     end
@@ -293,22 +298,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'added'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'label'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'Green!',
           color: 'green'
@@ -321,22 +326,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'removed'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'label'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'Green!',
           color: 'green'
@@ -349,22 +354,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'added'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'member'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'Zoee Silcock'
         )
@@ -376,22 +381,22 @@ RSpec.describe TrelloCallbacksController, type: :controller do
 
       it 'creates an activity' do
         expect do
-          post :webhook, data, format: :json, type: 'card', id: 1
+          post :webhook, data, format: :json, type: 'card', id: idea.id
         end.to change(Activity, :count).from(0).to(1)
       end
 
       it 'has the correct action' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.action).to eq 'removed'
       end
 
       it 'has the correct target' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'member'
       end
 
       it 'has the correct data' do
-        post :webhook, data, format: :json, type: 'card', id: 1
+        post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.data).to include(
           text: 'Zoee Silcock'
         )

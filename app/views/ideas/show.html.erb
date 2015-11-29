@@ -9,6 +9,10 @@
     </div>
     <h1><%= @idea.title %></h1>
     <p><%= @idea.description %></p>
+
+    <ul id="labels">
+      <%= render partial: 'label', collection: @idea.labels %>
+    </ul>
   </div>
 </div>
 

@@ -1,0 +1,38 @@
+#labels {
+  li {
+    font-size: 18px;
+    margin: 10px 10px 0 0;
+    background-color: #b6bbbf;
+
+    &.green {
+      background-color: #61bd4f;
+    }
+    &.yellow {
+      background-color: #f2d600;
+    }
+    &.orange {
+      background-color: #ffab4a;
+    }
+    &.red {
+      background-color: #eb5a46;
+    }
+    &.purple {
+      background-color: #c377e0;
+    }
+    &.blue {
+      background-color: #0079bf;
+    }
+    &.sky {
+      background-color: #00c2e0;
+    }
+    &.lime {
+      background-color: #51e898;
+    }
+    &.pink {
+      background-color: #ff80ce;
+    }
+    &.black {
+      background-color: #4d4d4d;
+    }
+  }
+}

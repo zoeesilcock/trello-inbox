@@ -271,6 +271,12 @@ RSpec.describe TrelloCallbacksController, type: :controller do
           text: 'This is a test comment for testing purposes.'
         )
       end
+
+      it 'creates a comment' do
+        expect do
+          post :webhook, data, format: :json, type: 'card', id: idea.id
+        end.to change(Comment, :count).from(0).to(1)
+      end
     end
 
     context 'remove comment' do
@@ -290,6 +296,14 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       it 'has the correct target' do
         post :webhook, data, format: :json, type: 'card', id: idea.id
         expect(Activity.last.target).to eq 'comment'
+      end
+
+      it 'removes the comment' do
+        create :comment, idea: idea, action_id: '564d188310e524a228bda08d'
+
+        expect do
+          post :webhook, data, format: :json, type: 'card', id: idea.id
+        end.to change(Comment, :count).from(1).to(0)
       end
     end
 

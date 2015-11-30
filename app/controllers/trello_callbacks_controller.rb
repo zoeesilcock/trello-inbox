@@ -10,6 +10,7 @@ class TrelloCallbacksController < ApplicationController
     skip_authorization
 
     Activity.create(
+      action_id: @data['action']['id'],
       user_name: @data['action']['memberCreator']['fullName'],
       user_avatar: @data['action']['memberCreator']['avatarHash'],
       action: WebhookConstants::ACTIONS[@data['action']['type']],

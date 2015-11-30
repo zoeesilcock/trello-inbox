@@ -45,7 +45,8 @@ module WebhookConstants
       checklist: 'action.data.checklist.name'
     },
     Activity.targets[:comment] => {
-      text: 'action.data.text'
+      text: 'action.data.text',
+      remove_id: 'action.data.action.id'
     },
     Activity.targets[:label] => {
       text: 'action.data.text',

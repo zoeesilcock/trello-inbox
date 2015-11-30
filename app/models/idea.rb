@@ -2,6 +2,7 @@ class Idea < ActiveRecord::Base
   belongs_to :inbox
   belongs_to :user
   has_many :activities, -> { order 'created_at DESC' }
+  has_many :comments, -> { order 'created_at DESC' }
   has_many :labels, -> { uniq }, through: :ideas_labels
   has_many :ideas_labels
 

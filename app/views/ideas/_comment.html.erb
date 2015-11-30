@@ -1,0 +1,10 @@
+<li>
+  <div class="comment-header">
+    <%= image_tag "https://trello-avatars.s3.amazonaws.com/#{comment.user_avatar}/170.png", class: 'avatar' %>
+    <div>
+      <p class="name"><%= comment.user_name %></p>
+      <p class="date"><%= l(comment.created_at, format: :short) %></p>
+    </div>
+  </div>
+  <p><%= comment.text %></p>
+</li>

@@ -14,6 +14,11 @@
       <%= render partial: 'label', collection: @idea.labels %>
     </ul>
   </div>
+
+  <h2><%= t('.comments') %></h2>
+  <ul id="comments">
+    <%= render partial: 'comment', collection: @idea.comments %>
+  </ul>
 </div>
 
 <div id="activity" class="col-xs-12 col-md-4">

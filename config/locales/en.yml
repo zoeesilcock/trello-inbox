@@ -27,6 +27,7 @@ en:
       search:
         label: "Search..."
     show:
+      comments: "Comments"
       activity: "Activity"
     form:
       close: "Close"

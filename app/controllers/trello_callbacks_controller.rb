@@ -1,14 +1,14 @@
 require 'jsonpath'
 
 class TrelloCallbacksController < ApplicationController
+  before_action :skip_authorization
   skip_before_action :verify_authenticity_token
+
   before_action :find_idea
   before_action :parse_data
   after_action :update_labels
 
   def webhook
-    skip_authorization
-
     Activity.create(
       action_id: @data['action']['id'],
       user_name: @data['action']['memberCreator']['fullName'],

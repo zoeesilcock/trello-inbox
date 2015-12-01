@@ -22,11 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def user_is_creator?
-    current_user.creator?
+    current_user.try(:creator?)
   end
 
   def user_is_admin?
-    current_user.admin?
+    current_user.try(:admin?)
   end
 
   private

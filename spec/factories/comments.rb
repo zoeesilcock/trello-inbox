@@ -4,6 +4,6 @@ FactoryGirl.define do
     user_name 'A super helpful person'
     user_avatar 'avatar_hash'
     text 'I have awesome things to say so I shall put them in a comment!'
-    idea_id 1
+    idea
   end
 end

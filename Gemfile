@@ -17,7 +17,7 @@ gem 'ruby-trello'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'sqlite3'
-gem 'therubyracer'
+gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '>= 1.3.0'
 
 group :development do

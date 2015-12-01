@@ -21,3 +21,5 @@ Rails.application.config.assets.paths <<
   Rails.root.join('client', 'assets', 'fonts')
 
 Rails.application.config.assets.precompile += %w( generated/server-bundle.js )
+Rails.application.config.assets.precompile += %w( generated/ideas-bundle.js )
+Rails.application.config.assets.precompile += %w( generated/users-bundle.js )

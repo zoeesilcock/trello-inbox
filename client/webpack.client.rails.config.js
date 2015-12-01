@@ -6,7 +6,6 @@
 
 const webpack = require('webpack');
 const config = require('./webpack.client.base.config');
-
 const devBuild = process.env.NODE_ENV !== 'production';
 
 config.output = {

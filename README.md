@@ -43,6 +43,23 @@ If the database has changed you need to migrate your local database.
 bundle exec rake db:migrate
 ```
 
+Development
+-----------
+Along side the regular rails server (powder or rails s) you need to start some
+other things in development for everything to work. Webpack is used to build
+our frontend assets and is required.
+```
+foreman start -f Procfile.dev
+```
+
+Ultrahook is used for allowing Trello to send webhooks to your local machine.
+It is only needed if you want get changes from Trello back to your development
+environment. Sign up for [ultrahook](http://ultrahook.com) and set the
+`WEBHOOK_DOMAIN` environment variable to include your subdomain.
+```
+bundle exec rake ultrahook
+```
+
 Contributing
 ============
 

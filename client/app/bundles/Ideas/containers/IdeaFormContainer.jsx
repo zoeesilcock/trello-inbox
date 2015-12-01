@@ -50,25 +50,26 @@ class IdeaFormContainer extends React.Component {
   render() {
     return (
       <div>
-        <form action={this.formAction()} method="POST">
-          <input type="hidden" name="authenticity_token" value={this.props.csrfToken} />
-          {this.patch()}
           <Modal show={this.props.showModal} onHide={this.onHide} backdrop>
-            <Modal.Header>
-              <h4 className="modal-title">{this.headerText()}</h4>
-            </Modal.Header>
-            <Modal.Body>
-              <IdeaFormFieldsContainer title={this.props.title} description={this.props.description} />
-            </Modal.Body>
-            <Modal.Footer>
-              <IdeaFormButtonsContainer
-                id={this.props.id}
-                title={this.props.title}
-                description={this.props.description}
-                onHide={this.onHide} />
-            </Modal.Footer>
+            <form action={this.formAction()} method="POST">
+              <input type="hidden" name="authenticity_token" value={this.props.csrfToken} />
+              {this.patch()}
+
+              <Modal.Header>
+                <h4 className="modal-title">{this.headerText()}</h4>
+              </Modal.Header>
+              <Modal.Body>
+                <IdeaFormFieldsContainer title={this.props.title} description={this.props.description} />
+              </Modal.Body>
+              <Modal.Footer>
+                <IdeaFormButtonsContainer
+                  id={this.props.id}
+                  title={this.props.title}
+                  description={this.props.description}
+                  onHide={this.onHide} />
+              </Modal.Footer>
+            </form>
           </Modal>
-        </form>
       </div>
     );
   }

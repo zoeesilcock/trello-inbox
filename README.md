@@ -49,7 +49,7 @@ Along side the regular rails server (powder or rails s) you need to start some
 other things in development for everything to work. Webpack is used to build
 our frontend assets and is required.
 ```
-foreman start -f Procfile.dev
+bundle exec rake webpack
 ```
 
 Ultrahook is used for allowing Trello to send webhooks to your local machine.

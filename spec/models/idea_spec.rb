@@ -3,6 +3,53 @@ require 'rails_helper'
 RSpec.describe Idea, type: :model do
   let(:idea) { build :idea }
 
+  describe 'associations' do
+    context 'activities' do
+      let(:activity1) { build :activity }
+      let(:activity2) { build :activity }
+
+      before do
+        idea.activities << activity1
+        idea.activities << activity2
+      end
+
+      it 'can have multiple activites' do
+        expect(idea.activities.first).to eq activity1
+        expect(idea.activities.last).to eq activity2
+      end
+    end
+
+    context 'comments' do
+      let(:comment1) { build :comment, idea: nil }
+      let(:comment2) { build :comment, idea: nil }
+
+      before do
+        idea.comments << comment1
+        idea.comments << comment2
+      end
+
+      it 'can have multiple comments' do
+        expect(idea.comments.first).to eq comment1
+        expect(idea.comments.last).to eq comment2
+      end
+    end
+
+    context 'labels' do
+      let(:label1) { build :label }
+      let(:label2) { build :label }
+
+      before do
+        idea.labels << label1
+        idea.labels << label2
+      end
+
+      it 'can have multiple labels' do
+        expect(idea.labels.first).to eq label1
+        expect(idea.labels.last).to eq label2
+      end
+    end
+  end
+
   describe 'validations' do
     it 'requires a title' do
       idea.title = nil

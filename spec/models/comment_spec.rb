@@ -7,7 +7,9 @@ RSpec.describe Comment, type: :model do
     allow_any_instance_of(Idea).to receive(:create_in_trello)
   end
 
-  it 'belongs to an idea' do
-    expect(comment.idea).to be_a Idea
+  describe 'associations' do
+    it 'belongs to an idea' do
+      expect(comment.idea).to be_an Idea
+    end
   end
 end

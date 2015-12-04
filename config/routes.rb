@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   resources :inboxes, param: :inbox_id do
     member do
-      resources :ideas
+      resources :ideas do
+        member do
+          resources :comments, only: [:create]
+        end
+      end
     end
   end
 

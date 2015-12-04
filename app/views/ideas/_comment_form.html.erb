@@ -1,0 +1,6 @@
+<div id="comment-form" class="text-right">
+  <%= simple_form_for Comment.new do |f| %>
+    <%= f.input :text, label: false, input_html: { rows: 5 } %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -16,6 +16,7 @@
   </div>
 
   <h2><%= t('.comments') %></h2>
+  <%= render partial: 'comment_form' %>
   <ul id="comments">
     <%= render partial: 'comment', collection: @idea.comments %>
   </ul>

@@ -25,11 +25,11 @@ module.exports = {
 
     // This will contain the app entry points defined by webpack.hot.config and webpack.rails.config
     ideas: [
-      './app/bundles/Ideas/startup/clientGlobals',
+      './app/bundles/Ideas/startup/serverGlobals',
     ],
 
     users: [
-      './app/bundles/Users/startup/clientGlobals',
+      './app/bundles/Users/startup/serverGlobals',
     ],
   },
   resolve: {

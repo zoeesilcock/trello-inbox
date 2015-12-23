@@ -49,7 +49,7 @@
       </ul>
 
       <div class="nav navbar-nav navbar-right">
-        <%= react_component 'NewIdeaButtonContainer' if current_inbox %>
+        <%= react_component 'NewIdeaButtonContainer', prerender: true if current_inbox %>
       </div>
     </div>
   </div>

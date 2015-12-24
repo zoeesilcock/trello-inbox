@@ -16,6 +16,7 @@ gem 'react_on_rails'
 gem 'ruby-trello'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
+gem 'sprockets-rails', '2.3.3'
 gem 'sqlite3'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '>= 1.3.0'

@@ -13,7 +13,9 @@ module.exports = {
   entry: [
     './app/bundles/Ideas/startup/serverGlobals',
     './app/bundles/Users/startup/serverGlobals',
-    './translations'
+    './translations',
+    'react',
+    'react-dom/server'
   ],
   output: {
     filename: 'server-bundle.js',

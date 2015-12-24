@@ -10,14 +10,11 @@ module.exports = {
 
   // the project dir
   context: __dirname,
-  entry: {
-    ideas: [
-      './app/bundles/Ideas/startup/serverGlobals',
-    ],
-    users: [
-      './app/bundles/Users/startup/serverGlobals',
-    ],
-  },
+  entry: [
+    './app/bundles/Ideas/startup/serverGlobals',
+    './app/bundles/Users/startup/serverGlobals',
+    './translations'
+  ],
   output: {
     filename: 'server-bundle.js',
     path: '../app/assets/javascripts/generated',
@@ -37,11 +34,12 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/},
+      {test: /\.jsx?$/, loader: 'babel-loader?optional=runtime', exclude: /node_modules/},
 
       // React is necessary for the client rendering:
       {test: require.resolve('react'), loader: 'expose?React'},
       {test: require.resolve('react-dom/server'), loader: 'expose?ReactDOMServer'},
+      {test: require.resolve('i18n-js'), loader: 'expose?I18n'},
     ],
   },
 };

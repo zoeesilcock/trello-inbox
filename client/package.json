@@ -64,6 +64,7 @@
     "esprima-fb": "^15001.1001.0-dev-harmony-fb",
     "express": "^4.13.3",
     "file-loader": "^0.8.4",
+    "i18n-js": "http://github.com/fnando/i18n-js/archive/v3.0.0.rc8.tar.gz",
     "jade": "^1.11.0",
     "jscs": "^2.3.0",
     "node-sass": "^3.3.3",

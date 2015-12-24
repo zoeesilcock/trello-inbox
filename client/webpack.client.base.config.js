@@ -20,7 +20,9 @@ module.exports = {
       'react',
       'react-dom',
       'react-bootstrap',
-      'alt'
+      'alt',
+      'i18n-js',
+      './translations'
     ],
 
     // This will contain the app entry points defined by webpack.hot.config and webpack.rails.config
@@ -68,9 +70,10 @@ module.exports = {
       {test: require.resolve('react-dom'), loader: 'expose?ReactDOM'},
       {test: require.resolve('jquery'), loader: 'expose?jQuery'},
       {test: require.resolve('jquery'), loader: 'expose?$'},
+      {test: require.resolve('i18n-js'), loader: 'expose?I18n'},
     ],
   },
-  externals: {
-    "i18n-js": "I18n"
-  }
+  // externals: {
+  //   "i18n-js": "I18n"
+  // }
 };

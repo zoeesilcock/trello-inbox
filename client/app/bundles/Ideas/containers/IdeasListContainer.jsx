@@ -15,7 +15,7 @@ class IdeasListContainer extends React.Component {
   }
 
   static getPropsFromStores() {
-    return Object.assign(
+    return Object.assign({},
       IdeasFilterStore.getState(),
       IdeasSortStore.getState(),
       IdeasSearchStore.getState()

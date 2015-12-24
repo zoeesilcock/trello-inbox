@@ -1,14 +1,15 @@
 namespace :webpack do
-  task :hot do
-    sh 'cd client && npm start'
+  task :development do
+    sh 'rm app/assets/javascripts/generated/* || true && cd client && npm run build:dev:client'
+    sh 'cd client && npm run build:dev:server'
   end
 
-  task :server do
+  task :production do
+    sh 'rm app/assets/javascripts/generated/* || true && cd client && npm run build:client'
     sh 'cd client && npm run build:server'
   end
 end
 
 task :webpack do
-  sh 'rm app/assets/javascripts/generated/* || true && cd client && npm run build:dev:client'
-  sh 'cd client && npm run build:server'
+  sh 'foreman start -f Procfile.dev'
 end

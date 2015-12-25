@@ -38,6 +38,8 @@ en:
       cancel: "Cancel"
       create: "Submit idea"
       update: "Update idea"
+  comments:
+    used_trello_inbox_to_say: "used Trello Inbox to say"
   activities:
     added_attachment: 'added the attachment'
     added_checklist: 'added the checklist'

@@ -31,7 +31,7 @@ class Activity < ActiveRecord::Base
 
   def create_or_destroy_comment
     if added? && comment?
-      create_comment
+      create_comment unless Comment.exists?(comment_id: data['id'])
     elsif removed? && comment?
       destroy_comment
     end
@@ -43,7 +43,8 @@ class Activity < ActiveRecord::Base
       user_name: user_name,
       user_avatar: user_avatar,
       text: data['text'],
-      idea_id: idea_id
+      idea_id: idea_id,
+      comment_id: data['id']
     )
   end
 

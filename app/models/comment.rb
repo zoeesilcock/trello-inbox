@@ -5,6 +5,8 @@ class Comment < ActiveRecord::Base
   def create_in_trello(user)
     card = Trello::Card.find idea.card_id
     header = I18n.t('comments.used_trello_inbox_to_say')
-    card.add_comment "#{user.name} #{header}:\n\n#{text}"
+    comment = card.add_comment "#{user.name} #{header}:\n\n#{text}"
+    self.comment_id = JSON.parse(comment)['id']
+    save
   end
 end

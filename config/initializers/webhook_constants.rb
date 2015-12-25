@@ -46,6 +46,7 @@ module WebhookConstants
     },
     Activity.targets[:comment] => {
       text: 'action.data.text',
+      id: 'action.data.action.id',
       remove_id: 'action.data.action.id'
     },
     Activity.targets[:label] => {

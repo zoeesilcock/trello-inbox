@@ -3,8 +3,11 @@ class CommentsController < ApplicationController
     authorize Idea
 
     idea = Idea.find(params[:id])
-    comment = Comment.new comment_parameters.merge(idea: idea)
-    comment.create_in_trello current_user if comment.valid?
+    comment = Comment.new comment_parameters
+    comment.idea = idea
+    comment.user_name = current_user.name
+    comment.user_avatar = current_user.avatar
+    comment.create_in_trello current_user if comment.save
 
     redirect_to idea_path(idea.inbox, idea)
   end

@@ -23,6 +23,7 @@ RSpec.describe Comment, type: :model do
   describe '#create_in_trello' do
     let(:user) { build :user }
     let(:card) { double :card }
+    let(:trello_comment) { '{ "id": "trello_id" }' }
 
     it 'creates a comment using the Trello API' do
       expect(Trello::Card).to receive(:find).and_return(card)
@@ -30,7 +31,7 @@ RSpec.describe Comment, type: :model do
       expect(card).to receive(:add_comment).with(anything) do |text|
         expect(text).to include user.name
         expect(text).to include comment.text
-      end
+      end.and_return(trello_comment)
 
       comment.create_in_trello(user)
     end

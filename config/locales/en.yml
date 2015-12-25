@@ -41,19 +41,19 @@ en:
   comments:
     used_trello_inbox_to_say: "used Trello Inbox to say"
   activities:
-    added_attachment: 'added the attachment'
-    added_checklist: 'added the checklist'
-    added_checklist_item: 'added the checklist item'
-    added_comment: 'commented'
-    added_label: 'added the label'
-    added_member: 'added'
-    removed_label: 'removed the label'
-    checked: 'checked the checklist item'
-    unchecked: 'unchecked the checklist item'
-    on_the_checklist: 'on the checklist'
-    to_this_idea: 'to this idea.'
-    on_this_idea: 'on this idea.'
-    from_this_idea: 'from this idea.'
+    added_attachment: "added the attachment"
+    added_checklist: "added the checklist"
+    added_checklist_item: "added the checklist item"
+    added_comment: "commented"
+    added_label: "added the label"
+    added_member: "added"
+    removed_label: "removed the label"
+    checked: "checked the checklist item"
+    unchecked: "unchecked the checklist item"
+    on_the_checklist: "on the checklist"
+    to_this_idea: "to this idea."
+    on_this_idea: "on this idea."
+    from_this_idea: "from this idea."
   users:
     index:
       users: "Users"
@@ -74,10 +74,10 @@ en:
     access_denied: "Access denied."
     please_sign_in: "You need to sign in for access to this page."
   pundit:
-    default: 'You cannot perform this action.'
+    default: "You cannot perform this action."
     inbox_policy:
-      update?: 'You cannot edit this inbox!'
-      create?: 'You cannot create inboxes!'
+      update?: "You cannot edit this inbox!"
+      create?: "You cannot create inboxes!"
     idea_policy:
-      update?: 'You cannot edit this idea!'
-      create?: 'You cannot create idea!'
+      update?: "You cannot edit this idea!"
+      create?: "You cannot create idea!"

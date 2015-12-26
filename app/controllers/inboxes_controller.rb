@@ -14,11 +14,7 @@ class InboxesController < ApplicationController
   def new
     @inbox = Inbox.new
     authorize @inbox
-    @boards = Trello::Organization.find(
-      ENV['TRELLO_ORGANIZATION_ID']
-    ).boards.map do |board|
-      [board.name, board.id]
-    end
+    load_boards
   end
 
   def create
@@ -35,6 +31,7 @@ class InboxesController < ApplicationController
   def edit
     @inbox = Inbox.find params[:inbox_id]
     authorize @inbox
+    load_boards
   end
 
   def update
@@ -52,5 +49,13 @@ class InboxesController < ApplicationController
 
   def inbox_parameters
     params.require(:inbox).permit(:title, :board_id)
+  end
+
+  def load_boards
+    @boards = Trello::Organization.find(
+      ENV['TRELLO_ORGANIZATION_ID']
+    ).boards.map do |board|
+      [board.name, board.id]
+    end
   end
 end

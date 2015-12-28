@@ -4,7 +4,8 @@ import { Input } from 'react-bootstrap';
 export default class FieldComponent extends React.Component {
   static propTypes = {
     field: PropTypes.object.isRequired,
-    editField: PropTypes.func.isRequired
+    editField: PropTypes.func.isRequired,
+    removeField: PropTypes.func.isRequired
   }
 
   render() {
@@ -16,6 +17,11 @@ export default class FieldComponent extends React.Component {
         <td>
           <a href="#" onClick={this.props.editField}>
             <i className="glyphicon glyphicon-pencil"></i>
+          </a>
+        </td>
+        <td>
+          <a href="#" onClick={this.props.removeField}>
+            <i className="glyphicon glyphicon-trash"></i>
           </a>
         </td>
         <td>

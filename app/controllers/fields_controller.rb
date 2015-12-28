@@ -20,7 +20,7 @@ class FieldsController < ApplicationController
   def destroy
     authorize @inbox
     Field.find(params[:id]).destroy
-    redirect_to edit_inbox_path(@inbox)
+    render nothing: true, status: 200
   end
 
   private

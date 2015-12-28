@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import FieldComponent from '../components/FieldComponent';
 import FieldActions from '../actions/FieldActions';
+import FieldsActions from '../actions/FieldsActions';
 
 export default class FieldContainer extends React.Component {
   static propTypes = {
@@ -16,11 +17,16 @@ export default class FieldContainer extends React.Component {
     FieldActions.updateShowModal(true);
   }
 
+  onRemove(event) {
+    FieldsActions.removeField(this.props.index);
+  }
+
   render() {
     return (
       <FieldComponent
         field={this.props.field}
-        editField={this.onEdit.bind(this)} />
+        editField={this.onEdit.bind(this)}
+        removeField={this.onRemove.bind(this)} />
     );
   }
 }

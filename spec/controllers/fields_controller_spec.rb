@@ -74,9 +74,10 @@ RSpec.describe FieldsController, type: :controller do
         inbox.update_attribute :user, current_user
       end
 
-      it 'redirects to the edit inbox page' do
+    it 'responds successfully with an HTTP 200 status code' do
         delete :destroy, inbox_id: inbox.id, id: field.id
-        expect(response).to redirect_to edit_inbox_path(inbox)
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
       end
 
       it 'removes the field' do

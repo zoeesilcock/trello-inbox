@@ -23,6 +23,21 @@ RSpec.describe Inbox, type: :model do
         expect(inbox.ideas.last).to eq idea2
       end
     end
+
+    context 'fields' do
+      let(:field1) { build :field }
+      let(:field2) { build :field }
+
+      before do
+        inbox.fields << field1
+        inbox.fields << field2
+      end
+
+      it 'can have multiple fields' do
+        expect(inbox.fields.first).to eq field1
+        expect(inbox.fields.last).to eq field2
+      end
+    end
   end
 
   describe 'validations' do

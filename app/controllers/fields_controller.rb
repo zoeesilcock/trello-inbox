@@ -17,6 +17,12 @@ class FieldsController < ApplicationController
     redirect_to edit_inbox_path(@inbox)
   end
 
+  def destroy
+    authorize @inbox
+    Field.find(params[:id]).destroy
+    redirect_to edit_inbox_path(@inbox)
+  end
+
   private
 
   def field_params

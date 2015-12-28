@@ -58,4 +58,31 @@ RSpec.describe FieldsController, type: :controller do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    let(:field) { create :field, inbox: inbox }
+
+    context 'not signed in' do
+      it 'responds with a redirect to root' do
+        delete :destroy, inbox_id: inbox.id, id: field.id
+        expect(response).to redirect_to root_url
+      end
+    end
+
+    when_signed_in_as(:creator) do
+      before do
+        inbox.update_attribute :user, current_user
+      end
+
+      it 'redirects to the edit inbox page' do
+        delete :destroy, inbox_id: inbox.id, id: field.id
+        expect(response).to redirect_to edit_inbox_path(inbox)
+      end
+
+      it 'removes the field' do
+        delete :destroy, inbox_id: inbox.id, id: field.id
+        expect { Field.find(field.id) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end

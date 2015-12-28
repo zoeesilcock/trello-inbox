@@ -8,7 +8,7 @@ Rails.application.routes.draw do
           resources :comments, only: [:create]
         end
       end
-      resources :fields, only: [:create, :update]
+      resources :fields, only: [:create, :update, :destroy]
     end
   end
 

@@ -25,7 +25,7 @@ export default class FieldComponent extends React.Component {
           {this.props.field.description}
         </td>
         <td>
-          {this.props.field.required ? 'yes' : 'no'}
+          {this.props.field.required ? I18n.t('fields.index.required_yes') : I18n.t('fields.index.required_no')}
         </td>
       </tr>
     );

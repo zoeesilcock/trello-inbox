@@ -60,6 +60,9 @@ en:
       title: 'Title'
       description: 'Description'
       required: 'Required'
+      new_field: 'Add new field'
+      required_yes: 'Yes'
+      required_no: 'No'
     form:
       title_new: 'New field'
       title_edit: 'Edit field'

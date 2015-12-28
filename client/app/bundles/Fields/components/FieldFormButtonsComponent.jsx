@@ -18,7 +18,7 @@ export default class IdeaFormButtonsComponent extends React.Component {
           <Button
             type="submit"
             className="pull-right"
-            disabled={this.props.ideaIsInvalid}
+            disabled={this.props.fieldIsInvalid}
             bsStyle="success">
             {createButton}
           </Button>

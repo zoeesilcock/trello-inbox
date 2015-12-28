@@ -21,9 +21,12 @@ export default class FieldFormFieldsComponent extends React.Component {
           value={this.props.title} />
 
         <Input type="checkbox"
-          name="field[required]"
           label={ I18n.t('fields.form.field_required') }
           onChange={this.props.onRequiredChange}
+          checked={this.props.required} />
+
+        <Input type="hidden"
+          name="field[required]"
           value={this.props.required} />
 
         <Input type="textarea"

@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import alt from '../alt';
-import FieldsListContainer from './FieldsListContainer';
 import FieldsStore from '../stores/FieldsStore';
+import FieldsListContainer from './FieldsListContainer';
+import NewFieldButtonContainer from './NewFieldButtonContainer';
 
 class FieldsContainer extends React.Component {
   static propTypes = {
@@ -32,6 +33,7 @@ class FieldsContainer extends React.Component {
       <div>
         <h1>{I18n.t('fields.index.fields')}</h1>
         <FieldsListContainer fields={this.state.fields} />
+        <NewFieldButtonContainer />
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import FieldComponent from '../components/FieldComponent';
-import FieldsActions from '../actions/FieldsActions';
+import FieldActions from '../actions/FieldActions';
 
 export default class FieldContainer extends React.Component {
   static propTypes = {
@@ -8,13 +8,12 @@ export default class FieldContainer extends React.Component {
     index: PropTypes.number.isRequired
   }
 
-  onTitleChanged(event) {
-    FieldsActions.updateTitle(this.props.index, event.target.value);
-  }
-
   onEdit(event) {
-    FieldsActions.pickField(this.props.index);
-    FieldsActions.updateShowModal(true);
+    FieldActions.updateId(this.props.field.id);
+    FieldActions.updateTitle(this.props.field.title);
+    FieldActions.updateDescription(this.props.field.description);
+    FieldActions.updateRequired(this.props.field.required);
+    FieldActions.updateShowModal(true);
   }
 
   render() {

@@ -1,2 +1,6 @@
 <%= render partial: 'form' %>
 <%= react_component 'FieldsContainer', render(template: 'inboxes/fields.json.jbuilder'), prerender: true %>
+<%= react_component 'FieldFormContainer', {
+  actionPath: '',
+  csrfToken: form_authenticity_token
+}, prerender: true %>

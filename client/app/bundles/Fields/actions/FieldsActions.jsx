@@ -2,7 +2,6 @@ import alt from '../alt';
 
 class FieldsActions {
   constructor() {
-    this.generateActions('pickField', 'updateShowModal');
   }
 }
 

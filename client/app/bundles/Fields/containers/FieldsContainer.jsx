@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import alt from '../alt';
 import FieldsListContainer from './FieldsListContainer';
-import FieldsActions from '../actions/FieldsActions';
 import FieldsStore from '../stores/FieldsStore';
 
 class FieldsContainer extends React.Component {
@@ -31,7 +30,7 @@ class FieldsContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1>{I18n.t('fields.edit.fields')}</h1>
+        <h1>{I18n.t('fields.index.fields')}</h1>
         <FieldsListContainer fields={this.state.fields} />
       </div>
     );

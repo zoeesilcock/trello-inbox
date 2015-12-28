@@ -39,6 +39,7 @@ class InboxesController < ApplicationController
   def edit
     @inbox = Inbox.find params[:inbox_id]
     authorize @inbox
+    @fields = @inbox.fields
     load_boards
   end
 

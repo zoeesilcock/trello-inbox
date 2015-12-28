@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Table } from 'react-bootstrap';
 import UserContainer from '../containers/UserContainer';
 
-export default class UsersListContainer extends React.Component {
+export default class UsersListComponent extends React.Component {
   static propTypes = {
     users: PropTypes.array.isRequired
   }

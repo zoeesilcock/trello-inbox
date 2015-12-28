@@ -55,6 +55,11 @@ en:
     on_this_idea: "on this idea."
     from_this_idea: "from this idea."
   fields:
+    edit:
+      fields: 'Fields'
+      title: 'Title'
+      description: 'Description'
+      required: 'Required'
     default:
       title: 'Description'
       description: 'Please describe your idea.'

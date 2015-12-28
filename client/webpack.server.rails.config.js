@@ -13,6 +13,7 @@ module.exports = {
   entry: [
     './app/bundles/Ideas/startup/serverGlobals',
     './app/bundles/Users/startup/serverGlobals',
+    './app/bundles/Fields/startup/serverGlobals',
     './translations',
     'react',
     'react-dom/server'

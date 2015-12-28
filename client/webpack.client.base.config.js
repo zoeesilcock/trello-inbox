@@ -33,6 +33,10 @@ module.exports = {
     users: [
       './app/bundles/Users/startup/serverGlobals',
     ],
+
+    fields: [
+      './app/bundles/Fields/startup/serverGlobals',
+    ],
   },
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.scss', '.css', 'config.js'],

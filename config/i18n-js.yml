@@ -27,4 +27,4 @@
 #
 translations:
   - file: 'client/translations.js'
-    only: ['en.ideas.*', 'en.layouts.*', 'en.time.*', 'en.users.*']
+    only: ['en.fields.*', 'en.ideas.*', 'en.layouts.*', 'en.time.*', 'en.users.*']

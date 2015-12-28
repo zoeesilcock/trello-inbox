@@ -22,6 +22,14 @@ class InboxesController < ApplicationController
     authorize @inbox
 
     if @inbox.save
+      Field.create(
+        title: t('fields.default.title'),
+        description: t('fields.default.description'),
+        required: true,
+        order: 1,
+        inbox: @inbox
+      )
+
       redirect_to inbox_path(@inbox)
     else
       render :new

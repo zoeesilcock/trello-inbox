@@ -98,6 +98,11 @@ RSpec.describe InboxesController, type: :controller do
           post :create, inbox: inbox_attributes
           expect(Inbox.last.user).to eq current_user
         end
+
+        it 'creates a default field for the new inbox' do
+          post :create, inbox: inbox_attributes
+          expect(Inbox.last.fields.count).to eq 1
+        end
       end
 
       context 'with invalid attributes' do

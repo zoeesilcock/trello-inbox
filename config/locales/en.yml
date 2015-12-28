@@ -54,6 +54,10 @@ en:
     to_this_idea: "to this idea."
     on_this_idea: "on this idea."
     from_this_idea: "from this idea."
+  fields:
+    default:
+      title: 'Description'
+      description: 'Please describe your idea.'
   users:
     index:
       users: "Users"

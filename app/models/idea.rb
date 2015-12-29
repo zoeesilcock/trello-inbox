@@ -5,6 +5,7 @@ class Idea < ActiveRecord::Base
   has_many :comments, -> { order 'created_at DESC' }
   has_many :labels, -> { uniq }, through: :ideas_labels
   has_many :ideas_labels
+  has_many :field_values
 
   validates :title, presence: true
   validates :description, presence: true

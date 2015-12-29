@@ -55,6 +55,7 @@ class InboxesController < ApplicationController
   end
 
   def load_boards
+    return @boards = []
     @boards = Trello::Organization.find(
       ENV['TRELLO_ORGANIZATION_ID']
     ).boards.map do |board|

@@ -1,15 +1,22 @@
 import React, { PropTypes } from 'react';
 import { Input } from 'react-bootstrap';
+import IdeaFormFieldContainer from '../containers/IdeaFormFieldContainer';
 
 export default class IdeaFormFieldsComponent extends React.Component {
   static propTypes = {
-    onTitleChange: PropTypes.func.isRequired,
-    onDescriptionChange: PropTypes.func.isRequired,
     title: PropTypes.string,
-    description: PropTypes.string
+    fields: PropTypes.array.isRequired,
+    onTitleChange: PropTypes.func.isRequired
   }
 
   render() {
+    let fields = [];
+    this.props.fields.map((field, index) => {
+      fields.push(
+        <IdeaFormFieldContainer key={index} index={index} field={field} />
+      );
+    });
+
     return (
       <div>
         <Input type="text"
@@ -18,12 +25,7 @@ export default class IdeaFormFieldsComponent extends React.Component {
           onChange={this.props.onTitleChange}
           value={this.props.title} />
 
-        <Input type="textarea"
-          name="idea[description]"
-          label={ I18n.t('ideas.form.idea_description') }
-          rows="8"
-          onChange={this.props.onDescriptionChange}
-          value={this.props.description} />
+          {fields}
       </div>
     );
   }

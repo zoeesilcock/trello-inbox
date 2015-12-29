@@ -9,10 +9,6 @@ class IdeaActions {
     this.dispatch(title);
   }
 
-  updateDescription(description) {
-    this.dispatch(description);
-  }
-
   updateShowModal(showModal) {
     this.dispatch(showModal);
   }

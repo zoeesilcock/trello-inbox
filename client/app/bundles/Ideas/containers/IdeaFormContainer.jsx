@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Modal } from 'react-bootstrap';
+import alt from '../alt';
 import connectToStores from 'alt/utils/connectToStores';
+
 import IdeaStore from '../stores/IdeaStore';
+import FieldValuesStore from '../stores/FieldValuesStore';
 import IdeaActions from '../actions/IdeaActions';
 import IdeaFormFieldsContainer from '../containers/IdeaFormFieldsContainer';
 import IdeaFormButtonsContainer from '../containers/IdeaFormButtonsContainer';
@@ -12,11 +15,23 @@ class IdeaFormContainer extends React.Component {
   }
 
   static getStores() {
-    return [IdeaStore];
+    return [IdeaStore, FieldValuesStore];
   }
 
   static getPropsFromStores() {
-    return IdeaStore.getState();
+    return {
+      ...IdeaStore.getState(),
+      ...FieldValuesStore.getState()
+    };
+  }
+
+  componentDidMount() {
+    let data = JSON.parse(this.props.initial_fields);
+    alt.bootstrap(JSON.stringify({
+      FieldValuesStore: {
+        fields: Object.values(data.initial_fields)
+      }
+    }));
   }
 
   onHide(event) {
@@ -59,7 +74,10 @@ class IdeaFormContainer extends React.Component {
                 <h4 className="modal-title">{this.headerText()}</h4>
               </Modal.Header>
               <Modal.Body>
-                <IdeaFormFieldsContainer title={this.props.title} description={this.props.description} />
+                <IdeaFormFieldsContainer
+                  title={this.props.title}
+                  description={this.props.description}
+                  fields={this.props.fields} />
               </Modal.Body>
               <Modal.Footer>
                 <IdeaFormButtonsContainer

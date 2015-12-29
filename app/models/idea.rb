@@ -11,14 +11,9 @@ class Idea < ActiveRecord::Base
   validates :inbox, presence: true
   validates :user, presence: true
 
-  after_create :create_in_trello
-  after_update :update_in_trello
-
   def create_webhook
     Trello::Webhook.create id_model: card_id, callback_url: callback_url
   end
-
-  private
 
   def create_in_trello
     card = Trello::Card.create(
@@ -40,6 +35,8 @@ class Idea < ActiveRecord::Base
     card.desc = description
     card.save
   end
+
+  private
 
   def callback_url
     path = Rails.application.routes.url_helpers.trello_callback_path('card', id)

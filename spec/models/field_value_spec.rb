@@ -3,10 +3,6 @@ require 'rails_helper'
 RSpec.describe FieldValue, type: :model do
   let(:field_value) { build :field_value }
 
-  before do
-    allow_any_instance_of(Idea).to receive(:create_in_trello)
-  end
-
   describe 'validations' do
     it 'requires a field' do
       field_value.field = nil

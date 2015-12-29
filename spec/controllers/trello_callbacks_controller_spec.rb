@@ -3,10 +3,6 @@ require 'rails_helper'
 RSpec.describe TrelloCallbacksController, type: :controller do
   let(:idea) { create :idea }
 
-  before do
-    allow_any_instance_of(Idea).to receive(:create_in_trello)
-  end
-
   describe 'POST #webhook' do
     let(:data) { webhook_fixture 'add_comment' }
 

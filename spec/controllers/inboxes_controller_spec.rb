@@ -59,10 +59,6 @@ RSpec.describe InboxesController, type: :controller do
       let(:boards) { [double(:board, id: 'xyz', name: 'Kewl board')] }
       let(:organization) { double(:organization, boards: boards) }
 
-      before do
-        expect(Trello::Organization).to receive(:find).and_return(organization)
-      end
-
       it 'responds successfully with an HTTP 200 status code' do
         get :new
         expect(response).to be_success

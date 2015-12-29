@@ -42,7 +42,7 @@ RSpec.describe IdeasController, type: :controller do
 
     when_signed_in_as(:user) do
       let(:field) { create :field, inbox: inbox }
-      let!(:field_attributes) { { 'ids' => {} } }
+      let(:field_attributes) { { 'ids' => {} } }
       let(:field_value) { 'Test field' }
 
       before do
@@ -98,6 +98,14 @@ RSpec.describe IdeasController, type: :controller do
   describe 'POST #update' do
     let(:new_title) { 'A far superior title' }
     let(:idea_attributes) { attributes_for(:idea).merge(title: new_title) }
+    let(:field) { create :field, inbox: inbox }
+    let!(:field_value) { create :field_value, field: field, idea: idea }
+    let!(:field_attributes) { { 'ids' => {} } }
+    let(:new_field_value) { 'Another field value' }
+
+    before do
+      field_attributes['ids'][field.id.to_s] = new_field_value
+    end
 
     context 'not signed in' do
       it 'responds with a redirect to root' do
@@ -107,23 +115,25 @@ RSpec.describe IdeasController, type: :controller do
     end
 
     when_signed_in_as(:user) do
-      context 'with valid attributes' do
-        before do
-          allow(idea).to receive(:update_in_trello)
-          idea.update_attribute :user, current_user
-        end
+      before do
+        allow(idea).to receive(:update_in_trello)
+        idea.update_attribute :user, current_user
+        expect_any_instance_of(Idea).to receive(:update_in_trello)
+      end
 
-        it 'redirects to the inbox' do
-          expect_any_instance_of(Idea).to receive(:update_in_trello)
-          post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
-          expect(response).to redirect_to inbox_url(inbox)
-        end
+      it 'redirects to the inbox' do
+        post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
+        expect(response).to redirect_to inbox_url(inbox)
+      end
 
-        it 'changes the title to the new title' do
-          expect_any_instance_of(Idea).to receive(:update_in_trello)
-          post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
-          expect(idea.reload.title).to eq new_title
-        end
+      it 'changes the title to the new title' do
+        post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes
+        expect(idea.reload.title).to eq new_title
+      end
+
+      it 'creates field values' do
+        post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes, fields: field_attributes
+        expect(idea.reload.field_values.first.value).to eq new_field_value
       end
     end
   end

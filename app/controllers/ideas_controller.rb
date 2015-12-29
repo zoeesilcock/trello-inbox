@@ -11,7 +11,11 @@ class IdeasController < ApplicationController
     @idea = Idea.new idea_parameters.merge(inbox: @inbox, user: current_user)
     authorize @idea
 
-    create_field_values if @idea.save
+    if @idea.save
+      create_field_values
+      @idea.create_in_trello
+    end
+
     redirect_to inbox_path(@inbox)
   end
 
@@ -24,7 +28,11 @@ class IdeasController < ApplicationController
     @idea = Idea.find params[:id]
     authorize @idea
 
-    @idea.update_attributes(idea_parameters)
+    if @idea.update_attributes(idea_parameters)
+      update_field_values
+      @idea.update_in_trello
+    end
+
     redirect_to inbox_path(@inbox)
   end
 
@@ -51,6 +59,15 @@ class IdeasController < ApplicationController
         field_id: id,
         value: value
       )
+    end
+  end
+
+  def update_field_values
+    return if field_parameters['ids'].nil?
+
+    field_parameters['ids'].each do |id, value|
+      field_value = @idea.field_values.where(field_id: id).first
+      field_value.update_attributes(value: value)
     end
   end
 end

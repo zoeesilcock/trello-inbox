@@ -3,10 +3,6 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   let(:comment) { build :comment }
 
-  before do
-    allow_any_instance_of(Idea).to receive(:create_in_trello)
-  end
-
   describe 'validations' do
     it 'requires text' do
       comment.text = nil

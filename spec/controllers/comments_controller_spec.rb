@@ -14,10 +14,6 @@ RSpec.describe CommentsController, type: :controller do
     when_signed_in_as(:user) do
       let(:idea) { create :idea }
 
-      before do
-        allow_any_instance_of(Idea).to receive(:create_in_trello)
-      end
-
       context 'with valid attributes' do
         it 'creates the comment in trello' do
           expect_any_instance_of(Comment).to receive(:create_in_trello).with(

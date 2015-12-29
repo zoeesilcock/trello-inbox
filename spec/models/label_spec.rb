@@ -8,8 +8,6 @@ RSpec.describe Label, type: :model do
     let(:idea2) { create :idea }
 
     before do
-      allow_any_instance_of(Idea).to receive(:create_in_trello)
-
       label.ideas << idea1
       label.ideas << idea2
     end

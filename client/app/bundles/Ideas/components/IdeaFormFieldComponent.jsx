@@ -11,7 +11,7 @@ export default class IdeaFormFieldComponent extends React.Component {
   }
 
   render() {
-    let fieldName = 'field[' + this.props.id + ']';
+    let fieldName = 'fields[ids][' + this.props.id + ']';
 
     return(
       <Input type="textarea"

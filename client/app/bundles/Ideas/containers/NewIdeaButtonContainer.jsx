@@ -6,7 +6,6 @@ export default class NewIdeaButtonContainer extends React.Component {
   openModal() {
     IdeaActions.updateId(null);
     IdeaActions.updateTitle('');
-    IdeaActions.updateDescription('');
     IdeaActions.updateShowModal(true);
   }
 

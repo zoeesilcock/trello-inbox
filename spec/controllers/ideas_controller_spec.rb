@@ -41,6 +41,14 @@ RSpec.describe IdeasController, type: :controller do
     end
 
     when_signed_in_as(:user) do
+      let(:field) { create :field, inbox: inbox }
+      let!(:field_attributes) { { 'ids' => {} } }
+      let(:field_value) { 'Test field' }
+
+      before do
+        field_attributes['ids'][field.id.to_s] = field_value
+      end
+
       it 'redirects to the inbox' do
         expect_any_instance_of(Idea).to receive(:create_in_trello)
         post :create, inbox_id: inbox.id, idea: idea_attributes
@@ -51,6 +59,11 @@ RSpec.describe IdeasController, type: :controller do
         expect_any_instance_of(Idea).to receive(:create_in_trello)
         post :create, inbox_id: inbox.id, idea: idea_attributes
         expect(Idea.last.user).to eq current_user
+      end
+
+      it 'creates field values' do
+        post :create, inbox_id: inbox.id, idea: idea_attributes, fields: field_attributes
+        expect(Idea.last.field_values.first.value).to eq field_value
       end
     end
   end

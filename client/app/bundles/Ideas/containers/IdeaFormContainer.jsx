@@ -76,14 +76,12 @@ class IdeaFormContainer extends React.Component {
               <Modal.Body>
                 <IdeaFormFieldsContainer
                   title={this.props.title}
-                  description={this.props.description}
                   fields={this.props.fields} />
               </Modal.Body>
               <Modal.Footer>
                 <IdeaFormButtonsContainer
                   id={this.props.id}
                   title={this.props.title}
-                  description={this.props.description}
                   onHide={this.onHide} />
               </Modal.Footer>
             </form>

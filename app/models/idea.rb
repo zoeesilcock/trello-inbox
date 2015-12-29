@@ -8,7 +8,6 @@ class Idea < ActiveRecord::Base
   has_many :field_values
 
   validates :title, presence: true
-  validates :description, presence: true
   validates :inbox, presence: true
   validates :user, presence: true
 

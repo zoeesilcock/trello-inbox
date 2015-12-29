@@ -8,6 +8,7 @@
       </div>
     </div>
     <h1><%= @idea.title %></h1>
+    <%= render partial: 'field_value', collection: @idea.field_values %>
     <p><%= @idea.description %></p>
 
     <ul id="labels">

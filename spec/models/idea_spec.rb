@@ -56,11 +56,6 @@ RSpec.describe Idea, type: :model do
       expect(idea).not_to be_valid
     end
 
-    it 'requires a description' do
-      idea.description = nil
-      expect(idea).not_to be_valid
-    end
-
     it 'requires an inbox' do
       idea.inbox_id = nil
       expect(idea).not_to be_valid

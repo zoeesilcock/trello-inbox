@@ -10,7 +10,6 @@ class IdeasStore {
       this.index = lunr(function() {
         this.ref('id');
         this.field('title', { boost: 10 });
-        this.field('description');
       });
 
       for (var i = 0; i < this.ideas.length; i++) {

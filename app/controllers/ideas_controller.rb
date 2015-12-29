@@ -11,7 +11,7 @@ class IdeasController < ApplicationController
     @idea = Idea.new idea_parameters.merge(inbox: @inbox, user: current_user)
     authorize @idea
 
-    @idea.save
+    create_field_values if @idea.save
     redirect_to inbox_path(@inbox)
   end
 
@@ -34,7 +34,23 @@ class IdeasController < ApplicationController
     params.require(:idea).permit(:title, :description)
   end
 
+  def field_parameters
+    params.fetch(:fields, {}).permit(ids: @inbox.fields.map { |f| f.id.to_s })
+  end
+
   def find_inbox
     @inbox = Inbox.find params[:inbox_id]
+  end
+
+  def create_field_values
+    return if field_parameters['ids'].nil?
+
+    field_parameters['ids'].each do |id, value|
+      FieldValue.create(
+        idea_id: @idea.id,
+        field_id: id,
+        value: value
+      )
+    end
   end
 end

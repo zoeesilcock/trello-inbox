@@ -6,7 +6,6 @@ import FieldValuesActions from '../actions/FieldValuesActions';
 export default class IdeaFormFieldsContainer extends React.Component {
   static propTypes = {
     title: PropTypes.string,
-    description: PropTypes.string,
     fields: PropTypes.array.isRequired
   }
 

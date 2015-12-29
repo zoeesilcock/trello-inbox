@@ -5,12 +5,11 @@ export default class IdeaFormButtonsContainer extends React.Component {
   static propTypes = {
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
     onHide: PropTypes.func.isRequired
   }
 
   ideaIsInvalid() {
-    return this.props.title.length == 0 || this.props.description.length == 0
+    return this.props.title.length == 0
   }
 
   ideaIsNew() {

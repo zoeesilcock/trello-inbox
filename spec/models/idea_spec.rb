@@ -71,6 +71,11 @@ RSpec.describe Idea, type: :model do
     let(:board) { double(:board, lists: [double(:list, id: '1')]) }
     let(:card) { double(:card, id: 'trello_card_id', name: '', desc: '') }
     let(:idea) { create :idea }
+    let(:description) { 'Description of the idea.' }
+    let!(:field) { create :field, title: 'Description', inbox: idea.inbox }
+    let!(:field_value) do
+      create :field_value, field: field, idea: idea, value: description
+    end
 
     context 'create_in_trello' do
       before do
@@ -79,12 +84,10 @@ RSpec.describe Idea, type: :model do
 
       it 'creates the card in trello' do
         expect(Trello::Board).to receive(:find).and_return(board)
-        expect(Trello::Card).to receive(:create).with(
-          hash_including(
-            name: idea.title,
-            desc: idea.description
-          )
-        ).and_return(card)
+        expect(Trello::Card).to receive(:create) do |data|
+          expect(data[:name]).to eq(idea.title)
+          expect(data[:desc]).to include(description)
+        end.and_return(card)
 
         idea.create_in_trello
       end
@@ -106,10 +109,13 @@ RSpec.describe Idea, type: :model do
       it 'updates the card in trello' do
         expect(Trello::Card).to receive(:find).and_return(card)
         expect(card).to receive(:name=).with(new_title)
-        expect(card).to receive(:desc=).with(new_description)
+        expect(card).to receive(:desc=) do |description|
+          expect(description).to include(new_description)
+        end
         expect(card).to receive(:save)
 
-        idea.update_attributes title: new_title, description: new_description
+        idea.update_attributes title: new_title
+        field_value.update_attributes value: new_description
         idea.update_in_trello
       end
     end

@@ -18,7 +18,7 @@ class Idea < ActiveRecord::Base
   def create_in_trello
     card = Trello::Card.create(
       name: title,
-      desc: description,
+      desc: trello_description,
       list_id: inbox.board.lists.first.id,
       pos: 'bottom'
     )
@@ -28,11 +28,9 @@ class Idea < ActiveRecord::Base
   end
 
   def update_in_trello
-    return unless changes.keys & [:title, :description]
-
     card = Trello::Card.find card_id
     card.name = title
-    card.desc = description
+    card.desc = trello_description
     card.save
   end
 
@@ -41,5 +39,16 @@ class Idea < ActiveRecord::Base
   def callback_url
     path = Rails.application.routes.url_helpers.trello_callback_path('card', id)
     "#{ENV['WEBHOOK_DOMAIN']}#{path}"
+  end
+
+  def trello_description
+    desc = ''
+
+    field_values.each do |field_value|
+      desc += "**#{field_value.field.title}**\n"
+      desc += "#{field_value.value}\n\n"
+    end
+
+    desc
   end
 end

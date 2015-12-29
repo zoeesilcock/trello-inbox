@@ -5,6 +5,7 @@ import connectToStores from 'alt/utils/connectToStores';
 
 import IdeaStore from '../stores/IdeaStore';
 import FieldValuesStore from '../stores/FieldValuesStore';
+import FieldValuesActions from '../actions/FieldValuesActions';
 import IdeaActions from '../actions/IdeaActions';
 import IdeaFormFieldsContainer from '../containers/IdeaFormFieldsContainer';
 import IdeaFormButtonsContainer from '../containers/IdeaFormButtonsContainer';
@@ -35,6 +36,7 @@ class IdeaFormContainer extends React.Component {
   }
 
   onHide(event) {
+    FieldValuesActions.emptyFieldValues();
     IdeaActions.updateShowModal(false);
   }
 

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import IdeaComponent from '../components/IdeaComponent';
 import IdeaActions from '../actions/IdeaActions';
+import FieldValuesActions from '../actions/FieldValuesActions';
 
 export default class IdeaContainer extends React.Component {
   static propTypes = {
@@ -10,6 +11,7 @@ export default class IdeaContainer extends React.Component {
   onEdit(event) {
     IdeaActions.updateId(this.props.idea.id);
     IdeaActions.updateTitle(this.props.idea.title);
+    FieldValuesActions.setFieldValues(this.props.idea.fields);
     IdeaActions.updateShowModal(true);
 
     event.stopPropagation();

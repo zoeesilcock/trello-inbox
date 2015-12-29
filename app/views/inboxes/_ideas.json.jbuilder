@@ -1,5 +1,5 @@
 json.initial_ideas(@ideas) do |idea|
-  json.extract! idea, :id, :title, :description
+  json.extract! idea, :id, :title
   json.owned current_user.owns(idea)
   json.edit_path edit_idea_path(idea.inbox, idea)
   json.show_path idea_path(idea.inbox, idea)

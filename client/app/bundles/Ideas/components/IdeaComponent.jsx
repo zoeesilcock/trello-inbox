@@ -22,6 +22,17 @@ export default class IdeaComponent extends React.Component {
   }
 
   render() {
+    let fields = [];
+
+    this.props.idea.fields.map((field, index) => {
+      fields.push(
+        <div key={index}>
+          <b>{field.title}</b>
+          <p>{field.value}</p>
+        </div>
+      );
+    });
+
     return (
       <li className="flex-child fill-height" key={this.props.index}>
         <div className="idea-container" onClick={this.props.onShow}>
@@ -34,7 +45,7 @@ export default class IdeaComponent extends React.Component {
             </div>
           </div>
           <h2>{this.props.idea.title}</h2>
-          <p>{this.props.idea.description}</p>
+          {fields}
         </div>
       </li>
     );

@@ -22,13 +22,7 @@ class InboxesController < ApplicationController
     authorize @inbox
 
     if @inbox.save
-      Field.create(
-        title: t('fields.default.title'),
-        description: t('fields.default.description'),
-        required: true,
-        order: 1,
-        inbox: @inbox
-      )
+      create_default_field
 
       redirect_to inbox_path(@inbox)
     else
@@ -61,11 +55,20 @@ class InboxesController < ApplicationController
   end
 
   def load_boards
-    return @boards = []
     @boards = Trello::Organization.find(
       ENV['TRELLO_ORGANIZATION_ID']
     ).boards.map do |board|
       [board.name, board.id]
     end
+  end
+
+  def create_default_field
+    Field.create(
+      title: t('fields.default.title'),
+      description: t('fields.default.description'),
+      required: true,
+      order: 1,
+      inbox: @inbox
+    )
   end
 end

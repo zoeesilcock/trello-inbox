@@ -74,7 +74,7 @@ RSpec.describe FieldsController, type: :controller do
         inbox.update_attribute :user, current_user
       end
 
-    it 'responds successfully with an HTTP 200 status code' do
+      it 'responds successfully with an HTTP 200 status code' do
         delete :destroy, inbox_id: inbox.id, id: field.id
         expect(response).to be_success
         expect(response).to have_http_status(200)
@@ -82,7 +82,9 @@ RSpec.describe FieldsController, type: :controller do
 
       it 'removes the field' do
         delete :destroy, inbox_id: inbox.id, id: field.id
-        expect { Field.find(field.id) }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { Field.find(field.id) }.to(
+          raise_error(ActiveRecord::RecordNotFound)
+        )
       end
     end
   end

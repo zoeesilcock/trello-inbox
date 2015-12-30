@@ -1,5 +1,5 @@
 import React from 'react';
-import connectToStores from 'alt/utils/connectToStores';
+import connectToStores from 'alt-utils/lib/connectToStores';
 import IdeasSortComponent from '../components/IdeasSortComponent';
 import IdeasSortActions from '../actions/IdeasSortActions';
 import IdeasSortStore from '../stores/IdeasSortStore';

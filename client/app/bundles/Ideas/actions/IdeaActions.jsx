@@ -2,15 +2,15 @@ import alt from '../alt';
 
 class IdeaActions {
   updateId(id) {
-    this.dispatch(id);
+    return id;
   }
 
   updateTitle(title) {
-    this.dispatch(title);
+    return title;
   }
 
   updateShowModal(showModal) {
-    this.dispatch(showModal);
+    return showModal;
   }
 }
 

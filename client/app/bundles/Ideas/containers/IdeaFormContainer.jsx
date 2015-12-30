@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Modal } from 'react-bootstrap';
 import alt from '../alt';
-import connectToStores from 'alt/utils/connectToStores';
+import connectToStores from 'alt-utils/lib/connectToStores';
 
 import IdeaStore from '../stores/IdeaStore';
 import FieldValuesStore from '../stores/FieldValuesStore';
@@ -30,7 +30,7 @@ class IdeaFormContainer extends React.Component {
     let data = JSON.parse(this.props.initial_fields);
     alt.bootstrap(JSON.stringify({
       FieldValuesStore: {
-        fields: Object.values(data.initial_fields)
+        fields: data.initial_fields
       }
     }));
   }

@@ -2,15 +2,15 @@ import alt from '../alt';
 
 class FieldValuesActions {
   emptyFieldValues() {
-    this.dispatch();
+    return null;
   }
 
   setFieldValues(fieldValues) {
-    this.dispatch(fieldValues);
+    return fieldValues;
   }
 
   changeFieldValue(index, value) {
-    this.dispatch({ index: index, value: value });
+    return { index: index, value: value };
   }
 }
 

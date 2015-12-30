@@ -1,5 +1,5 @@
 import React from 'react';
-import connectToStores from 'alt/utils/connectToStores';
+import connectToStores from 'alt-utils/lib/connectToStores';
 import IdeasFilterComponent from '../components/IdeasFilterComponent';
 import IdeasFilterActions from '../actions/IdeasFilterActions';
 import IdeasFilterStore from '../stores/IdeasFilterStore';

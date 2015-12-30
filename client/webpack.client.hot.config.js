@@ -32,20 +32,18 @@ config.module.loaders.push(
     test: /\.jsx?$/,
     loader: 'babel',
     exclude: /node_modules/,
-    query: {
-      plugins: ['react-transform'],
-      extra: {
-        'react-transform': {
-          transforms: [
-            {
-              transform: 'react-transform-hmr',
-              imports: ['react'],
-              locals: ['module'],
-            },
-          ],
-        },
-      },
-    },
+    // query: {
+    //   plugins: ['react-transform', {
+    //     transforms: [
+    //     {
+    //       transform: 'react-transform-hmr',
+    //       imports: ['react'],
+    //       locals: ['module'],
+    //     },
+    //     ],
+    //   },
+    //   ]
+    // },
   },
   {test: /\.css$/, loader: 'style-loader!css-loader'},
   {

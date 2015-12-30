@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Modal } from 'react-bootstrap';
-import connectToStores from 'alt/utils/connectToStores';
+import connectToStores from 'alt-utils/lib/connectToStores';
 
 import FieldStore from '../stores/FieldStore';
 import FieldActions from '../actions/FieldActions';

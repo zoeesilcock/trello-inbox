@@ -2,7 +2,7 @@ import alt from '../alt';
 
 class IdeasSearchActions {
   updateSearch(search) {
-    this.dispatch(search);
+    return search;
   }
 }
 

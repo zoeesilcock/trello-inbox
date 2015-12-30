@@ -14,7 +14,6 @@ module.exports = {
 
     // See use of 'vendor' in the CommonsChunkPlugin inclusion below.
     vendor: [
-      'babel-core/polyfill',
       'jquery',
       'jquery-ujs',
       'react',

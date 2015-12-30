@@ -2,7 +2,7 @@ import alt from '../alt';
 
 class IdeasFilterActions {
   updateFilter(filter) {
-    this.dispatch(filter);
+    return filter;
   }
 }
 

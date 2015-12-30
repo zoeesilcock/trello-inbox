@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import connectToStores from 'alt/utils/connectToStores';
+import connectToStores from 'alt-utils/lib/connectToStores';
 import IdeasListComponent from '../components/IdeasListComponent';
 import IdeasFilterStore from '../stores/IdeasFilterStore';
 import IdeasSortStore from '../stores/IdeasSortStore';

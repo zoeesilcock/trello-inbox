@@ -37,7 +37,7 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {test: /\.jsx?$/, loader: 'babel-loader?optional=runtime', exclude: /node_modules/},
+      {test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/},
 
       // React is necessary for the client rendering:
       {test: require.resolve('react'), loader: 'expose?React'},

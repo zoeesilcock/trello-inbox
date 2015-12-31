@@ -4,7 +4,7 @@
   align-items: stretch;
 
   .flex-child {
-    flex: 1 1 100%;
+    flex: 0 1 100%;
 
     @media(min-width: $screen-sm-min) {
       flex-basis: 50%;

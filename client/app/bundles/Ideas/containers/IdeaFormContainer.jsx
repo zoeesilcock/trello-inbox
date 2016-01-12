@@ -13,18 +13,18 @@ import IdeaFormButtonsContainer from '../containers/IdeaFormButtonsContainer';
 class IdeaFormContainer extends React.Component {
   static propTypes = {
     actionPath: PropTypes.string.isRequired,
-  }
+  };
 
   static getStores() {
     return [IdeaStore, FieldValuesStore];
-  }
+  };
 
   static getPropsFromStores() {
     return {
       ...IdeaStore.getState(),
       ...FieldValuesStore.getState()
     };
-  }
+  };
 
   componentDidMount() {
     let data = JSON.parse(this.props.initial_fields);

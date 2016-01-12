@@ -6,7 +6,7 @@ export default class UserComponent extends React.Component {
     user: PropTypes.object.isRequired,
     creatorChanged: PropTypes.func.isRequired,
     adminChanged: PropTypes.func.isRequired
-  }
+  };
 
   render() {
     return (

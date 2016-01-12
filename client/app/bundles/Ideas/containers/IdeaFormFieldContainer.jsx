@@ -6,7 +6,7 @@ export default class IdeaFormFieldContainer extends React.Component {
   static propTypes = {
     field: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired
-  }
+  };
 
   fieldChanged(event) {
     FieldValuesActions.changeFieldValue(this.props.index, event.target.value);

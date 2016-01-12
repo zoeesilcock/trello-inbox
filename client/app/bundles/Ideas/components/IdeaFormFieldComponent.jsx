@@ -8,7 +8,7 @@ export default class IdeaFormFieldComponent extends React.Component {
     description: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func.isRequired
-  }
+  };
 
   render() {
     let fieldName = 'fields[ids][' + this.props.id + ']';

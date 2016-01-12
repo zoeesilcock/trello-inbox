@@ -6,7 +6,7 @@ export default class IdeaFormButtonsComponent extends React.Component {
     ideaIsInvalid: PropTypes.bool.isRequired,
     ideaIsNew: PropTypes.bool.isRequired,
     onHide: PropTypes.func.isRequired
-  }
+  };
 
   render() {
     var createButton = this.props.ideaIsNew ?

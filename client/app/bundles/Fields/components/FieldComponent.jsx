@@ -6,7 +6,7 @@ export default class FieldComponent extends React.Component {
     field: PropTypes.object.isRequired,
     editField: PropTypes.func.isRequired,
     removeField: PropTypes.func.isRequired
-  }
+  };
 
   render() {
     return (

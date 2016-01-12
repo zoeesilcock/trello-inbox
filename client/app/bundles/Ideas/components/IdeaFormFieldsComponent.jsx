@@ -7,7 +7,7 @@ export default class IdeaFormFieldsComponent extends React.Component {
     title: PropTypes.string,
     fields: PropTypes.array.isRequired,
     onTitleChange: PropTypes.func.isRequired
-  }
+  };
 
   render() {
     let fields = [];

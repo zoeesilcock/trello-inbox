@@ -7,9 +7,9 @@ import UsersStore from '../stores/UsersStore';
 class UsersContainer extends React.Component {
   static propTypes = {
     initial_users: PropTypes.array.isRequired
-  }
+  };
 
-  state = UsersStore.getState()
+  state = UsersStore.getState();
 
   componentDidMount() {
     UsersStore.listen(this.onChange.bind(this));

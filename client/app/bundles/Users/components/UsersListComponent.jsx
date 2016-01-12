@@ -5,7 +5,7 @@ import UserContainer from '../containers/UserContainer';
 export default class UsersListComponent extends React.Component {
   static propTypes = {
     users: PropTypes.array.isRequired
-  }
+  };
 
   render() {
     var users = [];

@@ -7,9 +7,9 @@ import NewFieldButtonContainer from './NewFieldButtonContainer';
 class FieldsContainer extends React.Component {
   static propTypes = {
     initial_fields: PropTypes.array.isRequired
-  }
+  };
 
-  state = FieldsStore.getState()
+  state = FieldsStore.getState();
 
   componentDidMount() {
     FieldsStore.listen(this.onChange.bind(this));

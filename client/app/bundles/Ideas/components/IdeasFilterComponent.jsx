@@ -6,7 +6,7 @@ export default class IdeasFilterComponent extends React.Component {
   static propTypes = {
     filter: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired
-  }
+  };
 
   render() {
     return (

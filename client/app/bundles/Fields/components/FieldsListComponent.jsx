@@ -5,7 +5,7 @@ import FieldContainer from '../containers/FieldContainer';
 export default class FieldsListComponent extends React.Component {
   static propTypes = {
     fields: PropTypes.array.isRequired
-  }
+  };
 
   render() {
     var fields = [];

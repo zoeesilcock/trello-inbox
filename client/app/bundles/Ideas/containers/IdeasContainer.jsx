@@ -7,9 +7,9 @@ import IdeasStore from '../stores/IdeasStore';
 export default class IdeasContainer extends React.Component {
   static propTypes = {
     initial_ideas: PropTypes.array.isRequired
-  }
+  };
 
-  state = IdeasStore.getState()
+  state = IdeasStore.getState();
 
   componentDidMount() {
     IdeasStore.listen(this.onChange.bind(this));

@@ -4,7 +4,7 @@ import FieldsListComponent from '../components/FieldsListComponent';
 export default class FieldsListContainer extends React.Component {
   static propTypes = {
     fields: PropTypes.array.isRequired
-  }
+  };
 
   render() {
     return (

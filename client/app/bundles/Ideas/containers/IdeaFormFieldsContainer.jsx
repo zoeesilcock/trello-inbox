@@ -7,7 +7,7 @@ export default class IdeaFormFieldsContainer extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     fields: PropTypes.array.isRequired
-  }
+  };
 
   titleChanged(event) {
     IdeaActions.updateTitle(event.target.value);

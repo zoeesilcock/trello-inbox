@@ -9,7 +9,7 @@ export default class FieldFormFieldsComponent extends React.Component {
     title: PropTypes.string,
     description: PropTypes.string,
     required: PropTypes.bool
-  }
+  };
 
   render() {
     return (

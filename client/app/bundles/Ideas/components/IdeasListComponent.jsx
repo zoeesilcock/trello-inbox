@@ -4,7 +4,7 @@ import IdeaContainer from '../containers/IdeaContainer';
 export default class IdeasListComponent extends React.Component {
   static propTypes = {
     ideas: PropTypes.array.isRequired
-  }
+  };
 
   render() {
     var ideas = [];

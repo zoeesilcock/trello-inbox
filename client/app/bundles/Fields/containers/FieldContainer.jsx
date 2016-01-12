@@ -7,7 +7,7 @@ export default class FieldContainer extends React.Component {
   static propTypes = {
     field: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired
-  }
+  };
 
   onEdit(event) {
     FieldActions.updateId(this.props.field.id);

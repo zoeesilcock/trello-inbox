@@ -11,15 +11,15 @@ import FieldFormButtonsContainer from './FieldFormButtonsContainer';
 class FieldFormContainer extends React.Component {
   static propTypes = {
     actionPath: PropTypes.string.isRequired,
-  }
+  };
 
   static getStores() {
     return [FieldStore];
-  }
+  };
 
   static getPropsFromStores() {
     return FieldStore.getState();
-  }
+  };
 
   onHide(event) {
     FieldActions.updateShowModal(false);

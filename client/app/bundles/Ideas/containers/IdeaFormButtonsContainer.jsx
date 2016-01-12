@@ -6,7 +6,7 @@ export default class IdeaFormButtonsContainer extends React.Component {
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
     onHide: PropTypes.func.isRequired
-  }
+  };
 
   ideaIsInvalid() {
     return this.props.title.length == 0

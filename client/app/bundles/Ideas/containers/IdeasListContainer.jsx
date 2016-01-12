@@ -8,11 +8,11 @@ import IdeasSearchStore from '../stores/IdeasSearchStore';
 class IdeasListContainer extends React.Component {
   static propTypes = {
     ideas: PropTypes.array.isRequired
-  }
+  };
 
   static getStores() {
     return [IdeasFilterStore, IdeasSortStore, IdeasSearchStore];
-  }
+  };
 
   static getPropsFromStores() {
     return Object.assign({},
@@ -20,7 +20,7 @@ class IdeasListContainer extends React.Component {
       IdeasSortStore.getState(),
       IdeasSearchStore.getState()
     );
-  }
+  };
 
   searchIdeas() {
     if (this.props.search.length >= 3) {

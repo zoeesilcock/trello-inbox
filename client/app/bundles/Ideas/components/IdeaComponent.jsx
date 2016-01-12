@@ -5,7 +5,7 @@ export default class IdeaComponent extends React.Component {
     idea: PropTypes.object.isRequired,
     onEdit: PropTypes.func.isRequired,
     onShow: PropTypes.func.isRequired
-  }
+  };
 
   editIdeaButton() {
     if (!this.props.idea.owned) {

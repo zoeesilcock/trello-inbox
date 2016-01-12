@@ -6,7 +6,7 @@ export default class UserContainer extends React.Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired
-  }
+  };
 
   onCreatorChanged(event) {
     UsersActions.updateCreator(this.props.index, event.target.checked);

@@ -6,7 +6,7 @@ export default class IdeasSortComponent extends React.Component {
   static propTypes = {
     sort: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired
-  }
+  };
 
   render() {
     return (

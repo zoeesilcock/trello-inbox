@@ -6,7 +6,7 @@ import FieldValuesActions from '../actions/FieldValuesActions';
 export default class IdeaContainer extends React.Component {
   static propTypes = {
     idea: PropTypes.object.isRequired
-  }
+  };
 
   onEdit(event) {
     IdeaActions.updateId(this.props.idea.id);

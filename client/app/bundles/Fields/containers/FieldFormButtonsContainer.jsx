@@ -6,7 +6,7 @@ export default class FieldFormButtonsContainer extends React.Component {
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
     onHide: PropTypes.func.isRequired
-  }
+  };
 
   fieldIsInvalid() {
     return this.props.title.length == 0;

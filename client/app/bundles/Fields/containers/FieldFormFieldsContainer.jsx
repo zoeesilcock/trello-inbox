@@ -7,7 +7,7 @@ export default class FieldFormFieldsContainer extends React.Component {
     title: PropTypes.string,
     description: PropTypes.string,
     required: PropTypes.bool
-  }
+  };
 
   titleChanged(event) {
     FieldActions.updateTitle(event.target.value);

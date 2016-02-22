@@ -38,6 +38,21 @@ RSpec.describe Inbox, type: :model do
         expect(inbox.fields.last).to eq field2
       end
     end
+
+    context 'lists' do
+      let(:list1) { build :list }
+      let(:list2) { build :list }
+
+      before do
+        inbox.lists << list1
+        inbox.lists << list2
+      end
+
+      it 'can have multiple lists' do
+        expect(inbox.lists.first).to eq list1
+        expect(inbox.lists.last).to eq list2
+      end
+    end
   end
 
   describe 'validations' do
@@ -54,6 +69,26 @@ RSpec.describe Inbox, type: :model do
     it 'requires a user' do
       inbox.user_id = nil
       expect(inbox).not_to be_valid
+    end
+  end
+
+  describe '#create_lists' do
+    let(:list1) { double(:list, id: '1', name: 'List 1') }
+    let(:list2) { double(:list, id: '2', name: 'List 2') }
+    let(:lists) { [list1, list2] }
+    let(:board) { double(:board, lists: lists) }
+
+    before do
+      inbox.save
+    end
+
+    it 'creates lists based on the board' do
+      expect(Trello::Board).to receive(:find).and_return(board)
+
+      inbox.create_lists
+
+      expect(inbox.lists.first.list_id).to eq(list1.id)
+      expect(inbox.lists.last.title).to eq(list2.name)
     end
   end
 end

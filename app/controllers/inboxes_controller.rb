@@ -22,6 +22,7 @@ class InboxesController < ApplicationController
     authorize @inbox
 
     if @inbox.save
+      @inbox.create_lists
       create_default_field
 
       redirect_to inbox_path(@inbox)

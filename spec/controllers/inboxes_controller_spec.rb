@@ -84,6 +84,10 @@ RSpec.describe InboxesController, type: :controller do
 
     when_signed_in_as(:creator) do
       context 'with valid attributes' do
+        before do
+          expect_any_instance_of(Inbox).to receive(:create_lists)
+        end
+
         it 'redirects to the newly created inbox' do
           post :create, inbox: inbox_attributes
           inbox = Inbox.last

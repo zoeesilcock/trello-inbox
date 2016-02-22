@@ -26,6 +26,7 @@ en:
         votes: "Votes"
       search:
         label: "Search..."
+      no_ideas: "No ideas here, yet."
     show:
       comments: "Comments"
       activity: "Activity"

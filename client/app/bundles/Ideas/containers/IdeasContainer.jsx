@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 import alt from '../alt';
 import IdeasHeaderContainer from './IdeasHeaderContainer';
-import IdeasListContainer from './IdeasListContainer';
+import ListContainer from './ListContainer';
 import IdeasStore from '../stores/IdeasStore';
 
 export default class IdeasContainer extends React.Component {
   static propTypes = {
-    initial_ideas: PropTypes.array.isRequired
+    initial_ideas: PropTypes.array.isRequired,
+    lists: PropTypes.array.isRequired
   };
 
   state = IdeasStore.getState();
@@ -28,12 +29,20 @@ export default class IdeasContainer extends React.Component {
     this.setState(state);
   }
 
+  renderLists() {
+    return this.props.lists.map((list, index) => {
+      return (
+        <ListContainer list={list} key={index} />
+      );
+    });
+  }
+
   render() {
     return (
       <div>
         <IdeasHeaderContainer />
         <hr />
-        <IdeasListContainer ideas={this.state.ideas} index={this.state.index} />
+        {this.renderLists()}
       </div>
     );
   }

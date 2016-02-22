@@ -11,6 +11,7 @@ module.exports = {
   // the project dir
   context: __dirname,
   entry: [
+    'i18n-js',
     './app/bundles/Ideas/startup/serverGlobals',
     './app/bundles/Users/startup/serverGlobals',
     './app/bundles/Fields/startup/serverGlobals',

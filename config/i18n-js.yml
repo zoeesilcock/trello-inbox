@@ -25,6 +25,14 @@
 #   - file: "app/assets/javascripts/i18n/translations.js"
 #     only: "*"
 #
+
+fallbacks: false
+
 translations:
-  - file: 'client/translations.js'
-    only: ['en.fields.*', 'en.ideas.*', 'en.layouts.*', 'en.time.*', 'en.users.*']
+   - file: "client/translations.js"
+     only:
+        - "en.fields.*"
+        - "en.ideas.*"
+        - "en.layouts.*"
+        - "en.time.*"
+        - "en.users.*"

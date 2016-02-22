@@ -60,7 +60,9 @@ module WebhookConstants
     },
     Activity.targets[:card] => {
       fromList: 'action.data.listBefore.name',
-      toList: 'action.data.listAfter.name'
+      fromListId: 'action.data.listBefore.id',
+      toList: 'action.data.listAfter.name',
+      toListId: 'action.data.listAfter.id'
     }
   }
 end

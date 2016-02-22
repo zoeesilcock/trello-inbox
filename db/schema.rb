@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229142604) do
+ActiveRecord::Schema.define(version: 20160222095359) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "user_name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20151229142604) do
     t.datetime "updated_at", null: false
     t.string   "card_id"
     t.integer  "user_id"
+    t.string   "list_id"
   end
 
   create_table "ideas_labels", force: :cascade do |t|

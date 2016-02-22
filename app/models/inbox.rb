@@ -8,6 +8,6 @@ class Inbox < ActiveRecord::Base
   validates :user, presence: true
 
   def board
-    Trello::Board.find(board_id)
+    @board ||= Trello::Board.find(board_id)
   end
 end

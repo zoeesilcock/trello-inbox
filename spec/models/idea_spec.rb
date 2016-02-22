@@ -68,7 +68,8 @@ RSpec.describe Idea, type: :model do
   end
 
   describe 'trello integration' do
-    let(:board) { double(:board, lists: [double(:list, id: '1')]) }
+    let(:lists) { [double(:list, id: '1', name: 'My Inbox')] }
+    let(:board) { double(:board, lists: lists) }
     let(:card) { double(:card, id: 'trello_card_id', name: '', desc: '') }
     let(:idea) { create :idea }
     let(:description) { 'Description of the idea.' }
@@ -99,6 +100,15 @@ RSpec.describe Idea, type: :model do
         idea.create_in_trello
 
         expect(idea.card_id).to eq(card.id)
+      end
+
+      it 'saves the trello list id' do
+        expect(Trello::Board).to receive(:find).and_return(board)
+        expect(Trello::Card).to receive(:create).and_return(card)
+
+        idea.create_in_trello
+
+        expect(idea.list_id).to eq(lists.first.id)
       end
     end
 

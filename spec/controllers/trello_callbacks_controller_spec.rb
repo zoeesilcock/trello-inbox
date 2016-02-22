@@ -439,6 +439,12 @@ RSpec.describe TrelloCallbacksController, type: :controller do
           toList: 'Requirements'
         )
       end
+
+      it 'updates the list id of the idea' do
+        expect do
+          post :webhook, data, format: :json, type: 'card', id: idea.id
+        end.to change { idea.reload.list_id }.to('5631f211bd6a8ea56c5a7150')
+      end
     end
   end
 end

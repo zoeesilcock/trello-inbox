@@ -23,7 +23,10 @@ class Idea < ActiveRecord::Base
       pos: 'bottom'
     )
 
-    update_attribute :card_id, card.id
+    update_attributes(
+      card_id: card.id,
+      list_id: inbox.board.lists.first.id
+    )
     create_webhook
   end
 

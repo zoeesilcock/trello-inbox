@@ -23,6 +23,7 @@ class Activity < ActiveRecord::Base
   validates :action, presence: true
 
   after_create :create_or_destroy_comment
+  after_create :update_list_id
 
   def data
     JSON.parse(self[:data]).with_indifferent_access
@@ -51,5 +52,9 @@ class Activity < ActiveRecord::Base
 
   def destroy_comment
     Comment.find_by_action_id(data['remove_id']).try(:destroy)
+  end
+
+  def update_list_id
+    idea.update_attribute :list_id, data['toListId'] if moved?
   end
 end

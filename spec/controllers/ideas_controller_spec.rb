@@ -62,7 +62,10 @@ RSpec.describe IdeasController, type: :controller do
       end
 
       it 'creates field values' do
-        post :create, inbox_id: inbox.id, idea: idea_attributes, fields: field_attributes
+        post :create,
+          inbox_id: inbox.id,
+          idea: idea_attributes,
+          fields: field_attributes
         expect(Idea.last.field_values.first.value).to eq field_value
       end
     end
@@ -132,7 +135,11 @@ RSpec.describe IdeasController, type: :controller do
       end
 
       it 'creates field values' do
-        post :update, inbox_id: inbox.id, id: idea.id, idea: idea_attributes, fields: field_attributes
+        post :update,
+          inbox_id: inbox.id,
+          id: idea.id,
+          idea: idea_attributes,
+          fields: field_attributes
         expect(idea.reload.field_values.first.value).to eq new_field_value
       end
     end

@@ -12,7 +12,8 @@ module WebhookConstants
     'deleteComment' => Activity.actions[:removed],
     'removeLabelFromCard' => Activity.actions[:removed],
     'removeMemberFromCard' => Activity.actions[:removed],
-    'updateCheckItemStateOnCard' => Activity.actions[:updated]
+    'updateCheckItemStateOnCard' => Activity.actions[:updated],
+    'updateCard' => Activity.actions['moved']
   }
 
   TARGETS = {
@@ -28,7 +29,8 @@ module WebhookConstants
     'addLabelToCard' => Activity.targets[:label],
     'removeLabelFromCard' => Activity.targets[:label],
     'addMemberToCard' => Activity.targets[:member],
-    'removeMemberFromCard' => Activity.targets[:member]
+    'removeMemberFromCard' => Activity.targets[:member],
+    'updateCard' => Activity.targets['card']
   }
 
   DATA = {
@@ -55,6 +57,10 @@ module WebhookConstants
     },
     Activity.targets[:member] => {
       text: 'action.member.fullName'
+    },
+    Activity.targets[:card] => {
+      fromList: 'action.data.listBefore.name',
+      toList: 'action.data.listAfter.name'
     }
   }
 end

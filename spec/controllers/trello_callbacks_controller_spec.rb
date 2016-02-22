@@ -412,5 +412,33 @@ RSpec.describe TrelloCallbacksController, type: :controller do
         )
       end
     end
+
+    context 'move card' do
+      let(:data) { webhook_fixture 'move_to_list' }
+
+      it 'creates an activity' do
+        expect do
+          post :webhook, data, format: :json, type: 'card', id: idea.id
+        end.to change(Activity, :count).from(0).to(1)
+      end
+
+      it 'has the correct action' do
+        post :webhook, data, format: :json, type: 'card', id: idea.id
+        expect(Activity.last.action).to eq 'moved'
+      end
+
+      it 'has the correct target' do
+        post :webhook, data, format: :json, type: 'card', id: idea.id
+        expect(Activity.last.target).to eq 'card'
+      end
+
+      it 'has the correct data' do
+        post :webhook, data, format: :json, type: 'card', id: idea.id
+        expect(Activity.last.data).to include(
+          fromList: 'Inbox',
+          toList: 'Requirements'
+        )
+      end
+    end
   end
 end

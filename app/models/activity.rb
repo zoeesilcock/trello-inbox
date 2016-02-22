@@ -5,7 +5,8 @@ class Activity < ActiveRecord::Base
     :checklist_item,
     :comment,
     :label,
-    :member
+    :member,
+    :card
   ]
 
   enum action: [

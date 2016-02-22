@@ -54,6 +54,8 @@ en:
     to_this_idea: "to this idea."
     on_this_idea: "on this idea."
     from_this_idea: "from this idea."
+    moved_card_from: "moved the card from"
+    moved_card_to: "to"
   fields:
     index:
       fields: 'Fields'

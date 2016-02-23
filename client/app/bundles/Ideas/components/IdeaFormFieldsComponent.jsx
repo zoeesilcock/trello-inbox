@@ -10,6 +10,7 @@ export default class IdeaFormFieldsComponent extends React.Component {
   };
 
   render() {
+    let title = (<span>{I18n.t('ideas.form.idea_title')} <small>({I18n.t('ideas.form.required')})</small></span>);
     let fields = [];
     this.props.fields.map((field, index) => {
       fields.push(
@@ -21,7 +22,7 @@ export default class IdeaFormFieldsComponent extends React.Component {
       <div>
         <Input type="text"
           name="idea[title]"
-          label={ I18n.t('ideas.form.idea_title') }
+          label={title}
           onChange={this.props.onTitleChange}
           value={this.props.title} />
 

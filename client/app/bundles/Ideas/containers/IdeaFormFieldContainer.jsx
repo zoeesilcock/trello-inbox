@@ -9,7 +9,7 @@ export default class IdeaFormFieldContainer extends React.Component {
   };
 
   fieldChanged(event) {
-    FieldValuesActions.changeFieldValue(this.props.index, event.target.value);
+    FieldValuesActions.changeFieldValue(this.props.index, event.target.value, this.props.field.required);
   }
 
   render() {
@@ -19,6 +19,7 @@ export default class IdeaFormFieldContainer extends React.Component {
         title={this.props.field.title}
         description={this.props.field.description}
         value={this.props.field.value}
+        required={this.props.field.required}
         onChange={this.fieldChanged.bind(this)}
       />
     );

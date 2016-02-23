@@ -12,20 +12,23 @@ class FieldValuesStore {
     });
   }
 
-  handleEmptyFieldValues(fieldValues) {
+  handleEmptyFieldValues() {
     this.fields.forEach((field, index) => {
       this.fields[index].value = '';
+      this.fields[index].valid = !field.required;
     });
   }
 
   handleSetFieldValues(fieldValues) {
     fieldValues.forEach((field, index) => {
       this.fields[index].value = field.value;
+      this.fields[index].valid = !field.required;
     });
   }
 
   handleChangeFieldValue(valueChange) {
     this.fields[valueChange.index].value = valueChange.value;
+    this.fields[valueChange.index].valid = valueChange.value.length > 0 || !valueChange.required;
   }
 }
 

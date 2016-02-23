@@ -33,6 +33,8 @@ class IdeaFormContainer extends React.Component {
         fields: data.initial_fields
       }
     }));
+
+    FieldValuesActions.emptyFieldValues();
   }
 
   onHide(event) {
@@ -84,6 +86,7 @@ class IdeaFormContainer extends React.Component {
                 <IdeaFormButtonsContainer
                   id={this.props.id}
                   title={this.props.title}
+                  fields={this.props.fields}
                   onHide={this.onHide} />
               </Modal.Footer>
             </form>

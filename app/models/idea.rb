@@ -38,6 +38,11 @@ class Idea < ActiveRecord::Base
     card.save
   end
 
+  def update_list
+    card = Trello::Card.find card_id
+    update_attribute :list_id, card.list.id
+  end
+
   private
 
   def callback_url

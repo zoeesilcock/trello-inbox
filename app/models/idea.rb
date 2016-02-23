@@ -43,6 +43,10 @@ class Idea < ActiveRecord::Base
     update_attribute :list_id, card.list.id
   end
 
+  def fields_text
+    field_values.map(&:value).join(' ')
+  end
+
   private
 
   def callback_url

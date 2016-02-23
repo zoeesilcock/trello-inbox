@@ -9,10 +9,11 @@ json.initial_ideas(@ideas) do |idea|
   json.fields do
     json.array! idea.field_values do |field_value|
       json.title field_value.field.title
-      json.value field_value.value
       json.required field_value.field.required
+      json.value field_value.value
     end
   end
+  json.fields_text idea.fields_text
 end
 
 json.lists(@lists) do |list|

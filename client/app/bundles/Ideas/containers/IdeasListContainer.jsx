@@ -24,13 +24,18 @@ class IdeasListContainer extends React.Component {
 
   searchIdeas() {
     if (this.props.search.length >= 3) {
-      return this.props.index.search(this.props.search).map((result) => {
-        for (var i = 0; i < this.props.ideas.length; i++) {
-          if (this.props.ideas[i].id == result.ref) {
-            return this.props.ideas[i];
+      let results = this.props.index.search(this.props.search);
+
+      return this.props.ideas.filter((idea) => {
+        for (var i = 0; i < results.length; i++) {
+          if (results[i].ref == idea.id) {
+            return true;
           }
         }
+        return false;
       });
+
+      return results || [];
     } else {
       return this.props.ideas;
     }
@@ -62,10 +67,10 @@ class IdeasListContainer extends React.Component {
 
   render() {
     let ideas = this.filterIdeas();
-    let ideaList = (<IdeasListComponent ideas={ideas} />);
+    let ideaList = I18n.t('ideas.index.no_matching_ideas');
 
-    if (ideas.length == 0) {
-      ideaList = I18n.t('ideas.index.no_matching_ideas');
+    if (ideas.length > 0) {
+      ideaList = (<IdeasListComponent ideas={ideas} />);
     }
 
     return (

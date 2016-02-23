@@ -7,7 +7,14 @@
         <p class="date"><%= l(@idea.created_at, format: :short) %></p>
       </div>
     </div>
-    <h1><%= @idea.title %></h1>
+    <h1>
+      <%= @idea.title %>
+    </h1>
+    <% if @idea.list %>
+      <h2>
+        <small><%= @idea.list.title %></small>
+      </h2>
+    <% end %>
     <%= render partial: 'field_value', collection: @idea.field_values %>
 
     <ul id="labels">
@@ -16,20 +23,28 @@
   </div>
 
   <h2><%= t('.comments') %></h2>
-  <%= render partial: 'comment_form' %>
   <ul id="comments">
     <%= render partial: 'comment', collection: @idea.comments %>
   </ul>
+  <%= render partial: 'comment_form' %>
 </div>
 
 <div id="activity" class="col-xs-12 col-md-4">
-  <h2><span class="label label-default"><%= t('.activity') %></span></h2>
-  <ul id="activities">
-    <% @idea.activities.each do |activity| %>
-      <li>
-        <%= render partial: "activities/#{activity.action}_#{activity.target}", locals: { activity: activity } %>
-        <p class="date"><%= l(activity.created_at, format: :short) %></p>
-      </li>
-    <% end %>
-  </ul>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= t('.activity') %></h3>
+    </div>
+    <div class="panel-body">
+      <ul id="activities">
+        <% if @idea.activities.each do |activity| %>
+          <li>
+            <%= render partial: "activities/#{activity.action}_#{activity.target}", locals: { activity: activity } %>
+            <p class="date"><%= l(activity.created_at, format: :short) %></p>
+          </li>
+        <% end.empty? %>
+          <%= t('.no_activity') %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

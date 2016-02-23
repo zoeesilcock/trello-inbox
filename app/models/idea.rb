@@ -1,6 +1,7 @@
 class Idea < ActiveRecord::Base
   belongs_to :inbox
   belongs_to :user
+  belongs_to :list, foreign_key: 'list_id'
   has_many :activities, -> { order 'created_at DESC' }
   has_many :comments, -> { order 'created_at DESC' }
   has_many :labels, -> { uniq }, through: :ideas_labels

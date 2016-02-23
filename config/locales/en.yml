@@ -26,10 +26,11 @@ en:
         votes: "Votes"
       search:
         label: "Search..."
-      no_ideas: "No ideas here, yet."
+      no_ideas: "No ideas here."
     show:
       comments: "Comments"
       activity: "Activity"
+      no_activity: "No activity yet."
     form:
       close: "Close"
       title_new: "Add new idea"
@@ -49,6 +50,7 @@ en:
     added_label: "added the label"
     added_member: "added"
     removed_label: "removed the label"
+    removed_checklist: "removed the checklist"
     checked: "checked the checklist item"
     unchecked: "unchecked the checklist item"
     on_the_checklist: "on the checklist"

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Panel } from 'react-bootstrap';
 import IdeasListContainer from '../containers/IdeasListContainer';
 
 export default class ListComponent extends React.Component {
@@ -19,8 +20,12 @@ export default class ListComponent extends React.Component {
     }
 
     return (
-      <div>
-        <h2>{this.props.list.title}</h2>
+      <div className="list-container">
+        <div className="list-header">
+          <h2 className="text-center">{this.props.list.title}</h2>
+          <hr />
+        </div>
+
         {ideas}
       </div>
     );

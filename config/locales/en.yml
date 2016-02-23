@@ -7,6 +7,8 @@ en:
   inboxes:
     index:
       title: "Inboxes"
+    edit:
+      title: "Inbox"
     form:
       create: "Create inbox"
       update: "Save inbox"

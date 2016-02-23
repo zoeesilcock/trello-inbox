@@ -1,6 +1,21 @@
-<%= render partial: 'form' %>
-<%= react_component 'FieldsContainer',
-  render(template: 'inboxes/_fields.json.jbuilder', locals: { fields: @fields }), prerender: true %>
+<div class="col-xs-12 col-sm-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">
+        <%= t('.title') %>
+      </h2>
+    </div>
+    <div class="panel-body">
+      <%= render partial: 'form' %>
+    </div>
+  </div>
+</div>
+
+<div class="col-xs-12 col-sm-8">
+  <%= react_component 'FieldsContainer',
+    render(template: 'inboxes/_fields.json.jbuilder', locals: { fields: @fields }), prerender: true %>
+</div>
+
 <%= react_component 'FieldFormContainer', {
   actionPath: fields_path(@inbox),
   csrfToken: form_authenticity_token

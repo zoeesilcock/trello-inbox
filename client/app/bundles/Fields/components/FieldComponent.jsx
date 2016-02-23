@@ -27,7 +27,7 @@ export default class FieldComponent extends React.Component {
         <td>
           {this.props.field.title}
         </td>
-        <td>
+        <td className="hidden-xs">
           {this.props.field.description}
         </td>
         <td>

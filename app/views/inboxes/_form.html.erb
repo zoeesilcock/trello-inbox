@@ -1,5 +1,5 @@
 <%= simple_form_for @inbox do |f| %>
   <%= f.input :title %>
   <%= f.input :board_id, collection: @boards %>
-  <%= f.submit @inbox.persisted? ? t('.update') : t('.create'), class: 'btn btn-default' %>
+  <%= f.submit @inbox.persisted? ? t('.update') : t('.create'), class: 'btn btn-primary pull-right' %>
 <% end %>

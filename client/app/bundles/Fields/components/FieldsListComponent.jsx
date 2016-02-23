@@ -22,7 +22,7 @@ export default class FieldsListComponent extends React.Component {
             <th></th>
             <th></th>
             <th>{I18n.t('fields.index.title')}</th>
-            <th>{I18n.t('fields.index.description')}</th>
+            <th className="hidden-xs">{I18n.t('fields.index.description')}</th>
             <th>{I18n.t('fields.index.required')}</th>
           </tr>
         </thead>

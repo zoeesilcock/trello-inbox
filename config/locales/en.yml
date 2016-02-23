@@ -27,6 +27,7 @@ en:
       search:
         label: "Search..."
       no_ideas: "No ideas here."
+      no_matching_ideas: "No matching ideas here."
     show:
       comments: "Comments"
       activity: "Activity"

@@ -61,8 +61,17 @@ class IdeasListContainer extends React.Component {
   }
 
   render() {
+    let ideas = this.filterIdeas();
+    let ideaList = (<IdeasListComponent ideas={ideas} />);
+
+    if (ideas.length == 0) {
+      ideaList = I18n.t('ideas.index.no_matching_ideas');
+    }
+
     return (
-      <IdeasListComponent ideas={this.filterIdeas()} />
+      <div>
+        {ideaList}
+      </div>
     );
   }
 }

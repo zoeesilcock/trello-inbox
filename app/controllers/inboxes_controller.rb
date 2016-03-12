@@ -53,7 +53,7 @@ class InboxesController < ApplicationController
   private
 
   def inbox_parameters
-    params.require(:inbox).permit(:title, :board_id)
+    params.require(:inbox).permit(:title, :board_id, :description)
   end
 
   def load_boards

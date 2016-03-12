@@ -41,6 +41,7 @@ $rails: true;
 @import "inboxes";
 @import "labels";
 @import "users";
+@import "fields";
 
 body {
   background: $gray-lighter;

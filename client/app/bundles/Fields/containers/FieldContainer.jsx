@@ -25,8 +25,10 @@ export default class FieldContainer extends React.Component {
     return (
       <FieldComponent
         field={this.props.field}
+        index={this.props.index}
         editField={this.onEdit.bind(this)}
-        removeField={this.onRemove.bind(this)} />
+        removeField={this.onRemove.bind(this)}
+        />
     );
   }
 }

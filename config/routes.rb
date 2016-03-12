@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'visitors#index'
 
-  resources :inboxes, param: :inbox_id do
+  resources :inboxes, except: [:index], param: :inbox_id do
     member do
       resources :ideas do
         member do

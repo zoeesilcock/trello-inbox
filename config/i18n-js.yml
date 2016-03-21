@@ -27,6 +27,8 @@
 #
 
 fallbacks: false
+export_i18n_js: false
+js_extend: false
 
 translations:
    - file: "client/translations.js"

@@ -65,9 +65,9 @@ RSpec.describe FieldsController, type: :controller do
     let(:field3) { create :field, inbox: inbox }
     let(:new_order) do
       [
-        { id: field1.id.to_s, order: '3' },
-        { id: field2.id.to_s, order: '1' },
-        { id: field3.id.to_s, order: '2' }
+        { id: field1.id.to_s, sorting: '3' },
+        { id: field2.id.to_s, sorting: '1' },
+        { id: field3.id.to_s, sorting: '2' }
       ]
     end
 
@@ -92,9 +92,9 @@ RSpec.describe FieldsController, type: :controller do
       it 'changes the order of the fields' do
         put :update_order, inbox_id: inbox.id, order: new_order
 
-        expect(field1.reload.order).to eq(3)
-        expect(field2.reload.order).to eq(1)
-        expect(field3.reload.order).to eq(2)
+        expect(field1.reload.sorting).to eq(3)
+        expect(field2.reload.sorting).to eq(1)
+        expect(field3.reload.sorting).to eq(2)
       end
     end
   end

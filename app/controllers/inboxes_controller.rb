@@ -69,7 +69,7 @@ class InboxesController < ApplicationController
       title: t('fields.default.title'),
       description: t('fields.default.description'),
       required: true,
-      order: 0,
+      sorting: 0,
       inbox: @inbox
     )
   end

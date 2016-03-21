@@ -14,37 +14,35 @@ module.exports = {
 
     // See use of 'vendor' in the CommonsChunkPlugin inclusion below.
     vendor: [
+      'babel-polyfill',
       'jquery',
-      'jquery-ujs',
-      'react',
-      'react-dom',
       'react-bootstrap',
       'alt',
       'i18n-js',
       './translations'
     ],
 
-    // This will contain the app entry points defined by webpack.hot.config and webpack.rails.config
+    // This will contain the app entry points defined by webpack.hot.config and
+    // webpack.rails.config
     ideas: [
-      './app/bundles/Ideas/startup/serverGlobals',
+      './app/bundles/Ideas/startup/clientRegistration',
     ],
-
     users: [
-      './app/bundles/Users/startup/serverGlobals',
+      './app/bundles/Users/startup/clientRegistration',
     ],
-
     fields: [
-      './app/bundles/Fields/startup/serverGlobals',
+      './app/bundles/Fields/startup/clientRegistration',
     ],
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.scss', '.css', 'config.js'],
+    extensions: ['', '.js', '.jsx'],
     alias: {
       lib: path.join(process.cwd(), 'app', 'lib'),
+      react: path.resolve('./node_modules/react'),
+      'react-dom': path.resolve('./node_modules/react-dom'),
     },
   },
   plugins: [
-
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(nodeEnv),
@@ -67,16 +65,11 @@ module.exports = {
   ],
   module: {
     loaders: [
-
-      // React is necessary for the client rendering:
-      {test: require.resolve('react'), loader: 'expose?React'},
-      {test: require.resolve('react-dom'), loader: 'expose?ReactDOM'},
-      {test: require.resolve('jquery'), loader: 'expose?jQuery'},
-      {test: require.resolve('jquery'), loader: 'expose?$'},
-      {test: require.resolve('i18n-js'), loader: 'expose?I18n'},
+      // Not all apps require jQuery. Many Rails apps do, such as those using TurboLinks or
+      // bootstrap js
+      { test: require.resolve('jquery'), loader: 'expose?jQuery' },
+      { test: require.resolve('jquery'), loader: 'expose?$' },
+      { test: require.resolve('i18n-js'), loader: 'expose?I18n' },
     ],
   },
-  // externals: {
-  //   "i18n-js": "I18n"
-  // }
 };

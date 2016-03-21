@@ -1,4 +1,5 @@
-// This config file setups up the Webpack Dev Server: https://webpack.github.io/docs/webpack-dev-server.html
+// This config file setups up the Webpack Dev Server:
+//   https://webpack.github.io/docs/webpack-dev-server.html
 // Run like this:
 // cd client && node server.js
 
@@ -15,6 +16,7 @@ config.entry.ideas.push(
   // See: https://github.com/shakacode/bootstrap-sass-loader
   // We're using the bootstrap-sass loader.
   'bootstrap-sass!./bootstrap-sass.config.js'
+
 );
 
 config.output = {
@@ -32,32 +34,36 @@ config.module.loaders.push(
     test: /\.jsx?$/,
     loader: 'babel',
     exclude: /node_modules/,
-    // query: {
-    //   plugins: ['react-transform', {
-    //     transforms: [
-    //     {
-    //       transform: 'react-transform-hmr',
-    //       imports: ['react'],
-    //       locals: ['module'],
-    //     },
-    //     ],
-    //   },
-    //   ]
-    // },
+    query: {
+      plugins: [
+        [
+          'react-transform',
+          {
+            transforms: [
+              {
+                transform: 'react-transform-hmr',
+                imports: ['react'],
+                locals: ['module'],
+              },
+            ],
+          },
+        ],
+      ],
+    },
   },
-  {test: /\.css$/, loader: 'style-loader!css-loader'},
+  { test: /\.css$/, loader: 'style-loader!css-loader' },
   {
     test: /\.scss$/,
-    loader: 'style!css!sass?outputStyle=expanded&imagePath=/assets/images&includePaths[]=' +
-    path.resolve(__dirname, './assets/stylesheets'),
+    loader: `style!css!sass?outputStyle=expanded&imagePath=/assets/images&includePaths[]=\
+${path.resolve(__dirname, './assets/stylesheets')}`,
   },
 
   // The url-loader uses DataUrls. The file-loader emits files.
-  {test: /\.woff$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff'},
-  {test: /\.woff2$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff'},
-  {test: /\.ttf$/, loader: 'file-loader'},
-  {test: /\.eot$/, loader: 'file-loader'},
-  {test: /\.svg$/, loader: 'file-loader'}
+  { test: /\.woff$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
+  { test: /\.woff2$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
+  { test: /\.ttf$/, loader: 'file-loader' },
+  { test: /\.eot$/, loader: 'file-loader' },
+  { test: /\.svg$/, loader: 'file-loader' }
 );
 
 module.exports = config;

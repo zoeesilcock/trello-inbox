@@ -13,7 +13,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'pundit'
 gem 'rails', '4.2.5'
-gem 'react_on_rails'
+gem 'react_on_rails', '~> 4.0.3'
 gem 'ruby-trello'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
@@ -57,4 +57,5 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'puma'
 end

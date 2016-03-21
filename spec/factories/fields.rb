@@ -3,7 +3,7 @@ FactoryGirl.define do
     title 'Solution'
     description 'Describe your suggested solution.'
     required false
-    order 1
+    sorting 1
     inbox
   end
 end

@@ -13,7 +13,7 @@
 
 <div class="col-xs-12 col-sm-8">
   <%= react_component 'FieldsContainer',
-    render(template: 'inboxes/_fields.json.jbuilder', locals: { fields: @fields }), prerender: true %>
+    render(template: 'inboxes/_fields.json.jbuilder', locals: { fields: @fields, order_endpoint: order_fields_inbox_url(@inbox) }), prerender: true %>
 </div>
 
 <%= react_component 'FieldFormContainer', {

@@ -2,7 +2,7 @@ import alt from '../alt';
 
 class FieldsActions {
   constructor() {
-    this.generateActions('removeField', 'moveField');
+    this.generateActions('removeField', 'moveField', 'saveOrder');
   }
 }
 

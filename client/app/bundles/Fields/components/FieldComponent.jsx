@@ -53,7 +53,7 @@ let fieldSource = {
     return props.field.id === monitor.getItem().id;
   },
   endDrag: function(props, monitor, component) {
-    console.log("End drag");
+    FieldsActions.saveOrder();
   }
 };
 

@@ -63,17 +63,17 @@ RSpec.describe FieldsController, type: :controller do
     let(:field1) { create :field, inbox: inbox }
     let(:field2) { create :field, inbox: inbox }
     let(:field3) { create :field, inbox: inbox }
-    let(:new_order) { {} }
-
-    before do
-      new_order[field1.id] = 3
-      new_order[field2.id] = 1
-      new_order[field3.id] = 2
+    let(:new_order) do
+      [
+        { id: field1.id.to_s, order: '3' },
+        { id: field2.id.to_s, order: '1' },
+        { id: field3.id.to_s, order: '2' }
+      ]
     end
 
     context 'not signed in' do
       it 'responds with a redirect to root' do
-        put :update_order, inbox_id: inbox.id, order: new_order
+        put :update_order, inbox_id: inbox.id, 'order' => new_order
         expect(response).to redirect_to root_url
       end
     end
@@ -83,19 +83,18 @@ RSpec.describe FieldsController, type: :controller do
         inbox.update_attribute :user, current_user
       end
 
-      it 'redirects to the edit inbox page' do
+      it 'responds successfully with an HTTP 200 status code' do
         put :update_order, inbox_id: inbox.id, order: new_order
-        expect(response).to redirect_to edit_inbox_path(inbox)
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
       end
 
       it 'changes the order of the fields' do
         put :update_order, inbox_id: inbox.id, order: new_order
 
-        inbox.reload
-
-        expect(field1.reload.order).to eq(new_order[field1.id])
-        expect(field2.reload.order).to eq(new_order[field2.id])
-        expect(field3.reload.order).to eq(new_order[field3.id])
+        expect(field1.reload.order).to eq(3)
+        expect(field2.reload.order).to eq(1)
+        expect(field3.reload.order).to eq(2)
       end
     end
   end

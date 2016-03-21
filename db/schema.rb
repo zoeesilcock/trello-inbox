@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312154918) do
+ActiveRecord::Schema.define(version: 20160321141714) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "user_name"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20160312154918) do
     t.string   "title"
     t.text     "description"
     t.boolean  "required"
-    t.integer  "order"
+    t.integer  "sorting"
     t.integer  "inbox_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

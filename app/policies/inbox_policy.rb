@@ -26,6 +26,10 @@ class InboxPolicy < ApplicationPolicy
     creator? && owner?
   end
 
+  def update_order?
+    creator? && owner?
+  end
+
   def destroy?
     creator? && owner?
   end

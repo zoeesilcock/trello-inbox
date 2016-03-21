@@ -16,7 +16,8 @@ class FieldsContainer extends React.Component {
     FieldsStore.listen(this.onChange.bind(this));
     alt.bootstrap(JSON.stringify({
       FieldsStore: {
-        fields: this.props.initial_fields
+        fields: this.props.initial_fields,
+        orderPath: this.props.order_path
       }
     }));
   }

@@ -4,7 +4,9 @@ class FieldsController < ApplicationController
 
   def create
     authorize @inbox
-    Field.create(field_params.merge(inbox_id: @inbox.id, order: @inbox.fields.count))
+    Field.create(
+      field_params.merge(inbox_id: @inbox.id, sorting: @inbox.fields.count)
+    )
 
     redirect_to edit_inbox_path(@inbox)
   end
@@ -15,6 +17,17 @@ class FieldsController < ApplicationController
     field.update_attributes(field_params)
 
     redirect_to edit_inbox_path(@inbox)
+  end
+
+  def update_order
+    authorize @inbox
+
+    params['order'].each do |item|
+      field = Field.find(item['id'])
+      field.update_attributes(sorting: item['sorting'])
+    end
+
+    render nothing: true, status: 200
   end
 
   def destroy

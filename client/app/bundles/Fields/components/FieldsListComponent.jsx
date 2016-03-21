@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Table } from 'react-bootstrap';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 import FieldContainer from '../containers/FieldContainer';
 
-export default class FieldsListComponent extends React.Component {
+export class FieldsListComponent extends React.Component {
   static propTypes = {
     fields: PropTypes.array.isRequired
   };
@@ -33,3 +35,5 @@ export default class FieldsListComponent extends React.Component {
     );
   }
 }
+
+export default DragDropContext(HTML5Backend)(FieldsListComponent);

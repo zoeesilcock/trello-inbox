@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   end
 
   def owns(record)
-    fail 'Incorrect model' unless record.respond_to? :user
+    raise 'Incorrect model' unless record.respond_to? :user
     record.user == self
   end
 end

@@ -14,7 +14,7 @@ module WebhookConstants
     'removeMemberFromCard' => Activity.actions[:removed],
     'updateCheckItemStateOnCard' => Activity.actions[:updated],
     'updateCard' => Activity.actions['moved']
-  }
+  }.freeze
 
   TARGETS = {
     'addAttachmentToCard' => Activity.targets[:attachment],
@@ -31,7 +31,7 @@ module WebhookConstants
     'addMemberToCard' => Activity.targets[:member],
     'removeMemberFromCard' => Activity.targets[:member],
     'updateCard' => Activity.targets['card']
-  }
+  }.freeze
 
   DATA = {
     Activity.targets[:attachment] => {
@@ -64,5 +64,5 @@ module WebhookConstants
       toList: 'action.data.listAfter.name',
       toListId: 'action.data.listAfter.id'
     }
-  }
+  }.freeze
 end

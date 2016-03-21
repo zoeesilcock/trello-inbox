@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         end
       end
       resources :fields, only: [:create, :update, :destroy]
+      put 'order_fields' => 'fields#update_order'
     end
   end
 

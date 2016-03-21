@@ -59,6 +59,47 @@ RSpec.describe FieldsController, type: :controller do
     end
   end
 
+  describe 'POST #update_order' do
+    let(:field1) { create :field, inbox: inbox }
+    let(:field2) { create :field, inbox: inbox }
+    let(:field3) { create :field, inbox: inbox }
+    let(:new_order) { {} }
+
+    before do
+      new_order[field1.id] = 3
+      new_order[field2.id] = 1
+      new_order[field3.id] = 2
+    end
+
+    context 'not signed in' do
+      it 'responds with a redirect to root' do
+        put :update_order, inbox_id: inbox.id, order: new_order
+        expect(response).to redirect_to root_url
+      end
+    end
+
+    when_signed_in_as(:creator) do
+      before do
+        inbox.update_attribute :user, current_user
+      end
+
+      it 'redirects to the edit inbox page' do
+        put :update_order, inbox_id: inbox.id, order: new_order
+        expect(response).to redirect_to edit_inbox_path(inbox)
+      end
+
+      it 'changes the order of the fields' do
+        put :update_order, inbox_id: inbox.id, order: new_order
+
+        inbox.reload
+
+        expect(field1.reload.order).to eq(new_order[field1.id])
+        expect(field2.reload.order).to eq(new_order[field2.id])
+        expect(field3.reload.order).to eq(new_order[field3.id])
+      end
+    end
+  end
+
   describe 'DELETE #destroy' do
     let(:field) { create :field, inbox: inbox }
 

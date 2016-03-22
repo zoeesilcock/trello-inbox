@@ -1,11 +1,11 @@
 {
-  "name": "react-webpack-rails-tutorial",
-  "version": "1.1.1",
-  "description": "Built using the react_on_rails generator. Allows you to run npm install from root.",
+  "name": "trello-inbox",
+  "version": "1.0.0",
+  "description": "A tool for accepting and tracking ideas and suggestions submitted to Trello.",
   "main": "server.js",
   "engines": {
-    "node": "4.2.0",
-    "npm": "3.3.6"
+    "node": "5.0.0",
+    "npm": "3.5.0"
   },
   "scripts": {
     "postinstall": "cd client && npm install",
@@ -15,19 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shakacode/react-webpack-rails-tutorial.git"
+    "url": "https://github.com/zoeesilcock/trello-inbox.git"
   },
   "keywords": [
-    "react",
-    "tutorial",
-    "comment",
-    "example"
+    "trello",
+    "rails"
   ],
-  "author": "justin808",
+  "author": "Zoee Silcock",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shakacode/react-webpack-rails-tutorial/issues"
+    "url": "https://github.com/zoeesilcock/trello-inbox/issues"
   },
-  "homepage": "https://github.com/shakacode/react-webpack-rails-tutorial",
+  "homepage": "https://github.com/zoeesilcock/trello-inbox",
   "dependencies": {}
 }

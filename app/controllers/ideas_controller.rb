@@ -67,7 +67,15 @@ class IdeasController < ApplicationController
 
     field_parameters['ids'].each do |id, value|
       field_value = @idea.field_values.where(field_id: id).first
-      field_value.update_attributes(value: value)
+      if field_value
+        field_value.update_attributes(value: value)
+      else
+        FieldValue.create(
+          idea_id: @idea.id,
+          field_id: id,
+          value: value
+        )
+      end
     end
   end
 end

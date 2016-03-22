@@ -142,6 +142,24 @@ RSpec.describe IdeasController, type: :controller do
           fields: field_attributes
         expect(idea.reload.field_values.first.value).to eq new_field_value
       end
+
+      context 'with a custom field that does not have a value' do
+        let(:custom_field) { create :field, inbox: inbox }
+
+        before do
+          field_attributes['ids'][custom_field.id.to_s] = new_field_value
+        end
+
+        it 'creates a new field value' do
+          post :update,
+            inbox_id: inbox.id,
+            id: idea.id,
+            idea: idea_attributes,
+            fields: field_attributes
+
+          expect(idea.reload.field_values.last.value).to eq new_field_value
+        end
+      end
     end
   end
 end

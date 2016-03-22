@@ -16,6 +16,10 @@ bundle exec rake db:create
 bundle exec rake db:migrate
 ```
 
+Install postgres. On Mac the easiest way is using
+[Postgress.app](http://postgresapp.com/), for other options see the comments in
+`config/database.yml`.
+
 Install the frontend dependencies, note that it requires node version 4.2.x
 and npm version 3.3.x (the easiest way to run a specific version of node is
 [nvm](https://github.com/creationix/nvm)).

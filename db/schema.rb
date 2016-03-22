@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160321141714) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: :cascade do |t|
     t.string   "user_name"
     t.string   "user_avatar"

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :update]
 
+  get '/trello-callbacks/:type/:id' => 'trello_callbacks#imhere'
   post '/trello-callbacks/:type/:id' => 'trello_callbacks#webhook',
     as: :trello_callback
 

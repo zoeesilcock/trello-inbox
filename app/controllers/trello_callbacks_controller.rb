@@ -4,9 +4,14 @@ class TrelloCallbacksController < ApplicationController
   before_action :skip_authorization
   skip_before_action :verify_authenticity_token
 
-  before_action :find_idea
-  before_action :parse_data
-  after_action :update_labels
+  before_action :find_idea, only: [:webhook]
+  before_action :parse_data, only: [:webhook]
+  after_action :update_labels, only: [:webhook]
+
+  def imhere
+    return head :ok if request.head?
+    render nothing: true, status: 404
+  end
 
   def webhook
     Activity.create(

@@ -271,7 +271,11 @@ RSpec.describe TrelloCallbacksController, type: :controller do
       it 'creates a comment' do
         expect do
           post :webhook, data, format: :json, type: 'card', id: idea.id
-        end.to change(Comment, :count).from(0).to(1)
+        end.to change(idea.comments, :count).from(0).to(1)
+
+        comment = idea.comments.last
+        expect(comment.text).to eq('This is a test comment for testing purposes.')
+        expect(comment.comment_id).to eq('564d188310e524a228bda08d')
       end
     end
 

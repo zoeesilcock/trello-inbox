@@ -2,12 +2,12 @@ module Omniauth
   module Mock
     def auth_mock
       OmniAuth.config.mock_auth[:google_oauth2] = {
-        'provider': 'google_oauth2',
-        'uid': '123545',
-        'user_info': { 'name': 'mockuser' },
-        'credentials': {
-          'token': 'mock_token',
-          'secret': 'mock_secret'
+        'provider' => 'google_oauth2',
+        'uid' => '123545',
+        'user_info' => { 'name' => 'mockuser' },
+        'credentials' => {
+          'token' => 'mock_token',
+          'secret' => 'mock_secret'
         }
       }
     end

@@ -17,17 +17,13 @@ class Idea < ActiveRecord::Base
   end
 
   def create_in_trello
-    card = Trello::Card.create(
-      name: title,
-      desc: trello_description,
-      list_id: inbox.board.lists.first.id,
-      pos: 'bottom'
-    )
+    card = Trello::Card.create card_attributes
 
     update_attributes(
       card_id: card.id,
       list_id: inbox.board.lists.first.id
     )
+
     create_webhook
   end
 
@@ -63,5 +59,14 @@ class Idea < ActiveRecord::Base
     end
 
     desc
+  end
+
+  def card_attributes
+    {
+      name: title,
+      desc: trello_description,
+      list_id: inbox.board.lists.first.id,
+      pos: 'bottom'
+    }
   end
 end

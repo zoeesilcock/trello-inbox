@@ -274,7 +274,9 @@ RSpec.describe TrelloCallbacksController, type: :controller do
         end.to change(idea.comments, :count).from(0).to(1)
 
         comment = idea.comments.last
-        expect(comment.text).to eq('This is a test comment for testing purposes.')
+        expect(comment.text).to eq(
+          'This is a test comment for testing purposes.'
+        )
         expect(comment.comment_id).to eq('564d188310e524a228bda08d')
       end
     end

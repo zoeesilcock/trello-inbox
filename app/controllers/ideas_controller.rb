@@ -50,15 +50,19 @@ class IdeasController < ApplicationController
     @inbox = Inbox.find params[:inbox_id]
   end
 
+  def create_field_value(id, value)
+    FieldValue.create(
+      idea_id: @idea.id,
+      field_id: id,
+      value: value
+    )
+  end
+
   def create_field_values
     return if field_parameters['ids'].nil?
 
     field_parameters['ids'].each do |id, value|
-      FieldValue.create(
-        idea_id: @idea.id,
-        field_id: id,
-        value: value
-      )
+      create_field_value(id, value)
     end
   end
 
@@ -70,11 +74,7 @@ class IdeasController < ApplicationController
       if field_value
         field_value.update_attributes(value: value)
       else
-        FieldValue.create(
-          idea_id: @idea.id,
-          field_id: id,
-          value: value
-        )
+        create_field_value(id, value)
       end
     end
   end

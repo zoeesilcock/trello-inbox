@@ -14,16 +14,7 @@ class TrelloCallbacksController < ApplicationController
   end
 
   def webhook
-    Activity.create(
-      action_id: @data['action']['id'],
-      user_name: @data['action']['memberCreator']['fullName'],
-      user_avatar: @data['action']['memberCreator']['avatarHash'],
-      action: WebhookConstants::ACTIONS[@data['action']['type']],
-      target: WebhookConstants::TARGETS[@data['action']['type']],
-      data: extract_data,
-      idea: @idea
-    )
-
+    Activity.create activity_attributes
     render nothing: true, status: 200
   end
 
@@ -47,6 +38,18 @@ class TrelloCallbacksController < ApplicationController
     end
 
     data.to_json
+  end
+
+  def activity_attributes
+    {
+      action_id: @data['action']['id'],
+      user_name: @data['action']['memberCreator']['fullName'],
+      user_avatar: @data['action']['memberCreator']['avatarHash'],
+      action: WebhookConstants::ACTIONS[@data['action']['type']],
+      target: WebhookConstants::TARGETS[@data['action']['type']],
+      data: extract_data,
+      idea: @idea
+    }
   end
 
   def update_labels

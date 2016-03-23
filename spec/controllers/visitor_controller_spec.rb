@@ -13,12 +13,14 @@ RSpec.describe VisitorsController, type: :controller do
       expect(response).to render_template('index')
     end
 
-    context 'with only one inbox' do
-      let!(:inbox) { create :inbox }
+    when_signed_in_as(:user) do
+      context 'with only one inbox' do
+        let!(:inbox) { create :inbox }
 
-      it 'redirects to the inbox' do
-        get :index
-        expect(response).to redirect_to(inbox)
+        it 'redirects to the inbox' do
+          get :index
+          expect(response).to redirect_to(inbox)
+        end
       end
     end
   end

@@ -129,6 +129,29 @@ RSpec.describe Idea, type: :model do
         idea.update_in_trello
       end
     end
+
+    context 'update_list' do
+      let(:list) { double(:list, id: 42) }
+      let(:card) { double(:card, list: list) }
+
+      it 'updates the list_id to match the Trello card' do
+        expect(Trello::Card).to receive(:find).and_return(card)
+        expect(idea).to receive(:update_attribute).with(:list_id, list.id)
+
+        idea.update_list
+      end
+    end
+  end
+
+  describe '#fields_text' do
+    let(:value1) { 'potatoes' }
+    let(:value2) { 'carrots' }
+    let!(:field_value1) { create :field_value, idea: idea, value: value1 }
+    let!(:field_value2) { create :field_value, idea: idea, value: value2 }
+
+    it 'combines the values of all fields on the idea' do
+      expect(idea.fields_text).to eq("#{value1} #{value2}")
+    end
   end
 
   describe '#create_webhook' do

@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
     authorize Idea
 
-    comment = Comment.new comment_parameters
+    comment = Comment.new comment_attributes
     comment.create_in_trello current_user if comment.save
 
     redirect_to idea_path(@idea.inbox, @idea)

@@ -3,6 +3,22 @@ require 'rails_helper'
 RSpec.describe TrelloCallbacksController, type: :controller do
   let(:idea) { create :idea }
 
+  describe 'HEAD #imhere' do
+    context 'a GET request' do
+      it 'responds with a HTTP 404 status code' do
+        get :imhere, type: 'card', id: idea.id
+        expect(response).to have_http_status(404)
+      end
+    end
+
+    context 'a GET request' do
+      it 'responds with a HTTP 200 status code' do
+        head :imhere, type: 'card', id: idea.id
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
   describe 'POST #webhook' do
     let(:data) { webhook_fixture 'add_comment' }
 

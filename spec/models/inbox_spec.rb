@@ -82,13 +82,31 @@ RSpec.describe Inbox, type: :model do
       inbox.save
     end
 
-    it 'creates lists based on the board' do
-      expect(Trello::Board).to receive(:find).and_return(board)
+    context 'board without lists created yet' do
+      it 'creates lists based on the board' do
+        expect(Trello::Board).to receive(:find).and_return(board)
 
-      inbox.create_lists
+        inbox.create_lists
 
-      expect(inbox.lists.first.list_id).to eq(list1.id)
-      expect(inbox.lists.last.title).to eq(list2.name)
+        expect(inbox.lists.first.list_id).to eq(list1.id)
+        expect(inbox.lists.last.title).to eq(list2.name)
+      end
+    end
+
+    context 'board with lists already created' do
+      before do
+        create :list, inbox: inbox, list_id: list1.id
+        create :list, inbox: inbox, list_id: list2.id
+      end
+
+      it 'updates lists' do
+        expect(Trello::Board).to receive(:find).and_return(board)
+
+        inbox.create_lists
+
+        expect(inbox.lists.first.list_id).to eq(list1.id)
+        expect(inbox.lists.last.title).to eq(list2.name)
+      end
     end
   end
 end

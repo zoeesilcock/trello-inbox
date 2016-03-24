@@ -1,15 +1,16 @@
 import React, { PropTypes } from 'react';
+
 import IdeaContainer from '../containers/IdeaContainer';
 
-export default class IdeasListComponent extends React.Component {
+export class IdeasListComponent extends React.Component {
   static propTypes = {
-    ideas: PropTypes.array.isRequired
+    ideas: PropTypes.array.isRequired,
   };
 
   render() {
-    var ideas = [];
+    const ideas = [];
 
-    this.props.ideas.map(function(idea, index) {
+    this.props.ideas.forEach((idea, index) => {
       ideas.push(<IdeaContainer key={index} idea={idea} />);
     });
 
@@ -20,3 +21,5 @@ export default class IdeasListComponent extends React.Component {
     );
   }
 }
+
+export default IdeasListComponent;

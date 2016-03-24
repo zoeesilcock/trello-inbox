@@ -1,8 +1,9 @@
 import React from 'react';
+
 import NewFieldButtonComponent from '../components/NewFieldButtonComponent';
 import FieldActions from '../actions/FieldActions';
 
-export default class NewFieldButtonContainer extends React.Component {
+export class NewFieldButtonContainer extends React.Component {
   openModal() {
     FieldActions.updateId(null);
     FieldActions.updateTitle('');
@@ -16,3 +17,5 @@ export default class NewFieldButtonContainer extends React.Component {
     );
   }
 }
+
+export default NewFieldButtonContainer;

@@ -1,4 +1,5 @@
 import alt from '../alt';
+
 import IdeaActions from '../actions/IdeaActions';
 
 class IdeaStore {
@@ -10,7 +11,7 @@ class IdeaStore {
     this.bindListeners({
       handleIdUpdate: IdeaActions.UPDATE_ID,
       handleTitleUpdate: IdeaActions.UPDATE_TITLE,
-      handleModalUpdate: IdeaActions.UPDATE_SHOW_MODAL
+      handleModalUpdate: IdeaActions.UPDATE_SHOW_MODAL,
     });
   }
 

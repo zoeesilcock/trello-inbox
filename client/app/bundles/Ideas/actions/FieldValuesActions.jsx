@@ -10,7 +10,7 @@ class FieldValuesActions {
   }
 
   changeFieldValue(index, value, required) {
-    return { index: index, value: value, required: required };
+    return { index, value, required };
   }
 }
 

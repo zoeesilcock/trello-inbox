@@ -1,4 +1,5 @@
 import alt from '../alt';
+
 import FieldValuesActions from '../actions/FieldValuesActions';
 
 class FieldValuesStore {
@@ -8,7 +9,7 @@ class FieldValuesStore {
     this.bindListeners({
       handleEmptyFieldValues: FieldValuesActions.EMPTY_FIELD_VALUES,
       handleSetFieldValues: FieldValuesActions.SET_FIELD_VALUES,
-      handleChangeFieldValue: FieldValuesActions.CHANGE_FIELD_VALUE
+      handleChangeFieldValue: FieldValuesActions.CHANGE_FIELD_VALUE,
     });
   }
 

@@ -1,9 +1,10 @@
 import React from 'react';
+
 import IdeasFilterContainer from '../containers/IdeasFilterContainer';
 import IdeasSortContainer from '../containers/IdeasSortContainer';
 import IdeasSearchContainer from '../containers/IdeasSearchContainer';
 
-export default class IdeasHeaderComponent  extends React.Component {
+export class IdeasHeaderComponent  extends React.Component {
   render() {
     return (
       <div className="row">
@@ -14,3 +15,5 @@ export default class IdeasHeaderComponent  extends React.Component {
     );
   }
 }
+
+export default IdeasHeaderComponent;

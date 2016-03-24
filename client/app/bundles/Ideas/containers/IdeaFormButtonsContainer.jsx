@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
+
 import IdeaFormButtonsComponent from '../components/IdeaFormButtonsComponent';
 
-export default class IdeaFormButtonsContainer extends React.Component {
+export class IdeaFormButtonsContainer extends React.Component {
   static propTypes = {
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
     onHide: PropTypes.func.isRequired,
-    fields: PropTypes.array.isRequired
+    fields: PropTypes.array.isRequired,
   };
 
   ideaIsInvalid() {
@@ -18,11 +19,11 @@ export default class IdeaFormButtonsContainer extends React.Component {
       }
     });
 
-    return this.props.title.length == 0 || !fieldsValid;
+    return this.props.title.length === 0 || !fieldsValid;
   }
 
   ideaIsNew() {
-    return this.props.id == null;
+    return this.props.id === null;
   }
 
   render() {
@@ -30,7 +31,10 @@ export default class IdeaFormButtonsContainer extends React.Component {
       <IdeaFormButtonsComponent
         ideaIsInvalid={this.ideaIsInvalid()}
         ideaIsNew={this.ideaIsNew()}
-        onHide={this.props.onHide} />
+        onHide={this.props.onHide}
+      />
     );
   }
 }
+
+export default IdeaFormButtonsContainer;

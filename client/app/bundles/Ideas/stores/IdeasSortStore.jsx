@@ -6,7 +6,7 @@ class IdeasSortStore {
     this.sort = 'date';
 
     this.bindListeners({
-      handleUpdateSort: IdeasSortActions.UPDATE_SORT
+      handleUpdateSort: IdeasSortActions.UPDATE_SORT,
     });
   }
 

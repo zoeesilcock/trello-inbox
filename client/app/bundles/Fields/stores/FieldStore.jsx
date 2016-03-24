@@ -14,7 +14,7 @@ class FieldStore {
       handleTitleUpdate: FieldActions.UPDATE_TITLE,
       handleDescriptionUpdate: FieldActions.UPDATE_DESCRIPTION,
       handleRequiredUpdate: FieldActions.UPDATE_REQUIRED,
-      handleModalUpdate: FieldActions.UPDATE_SHOW_MODAL
+      handleModalUpdate: FieldActions.UPDATE_SHOW_MODAL,
     });
   }
 

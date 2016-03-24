@@ -10,30 +10,43 @@ import IdeaActions from '../actions/IdeaActions';
 import IdeaFormFieldsContainer from '../containers/IdeaFormFieldsContainer';
 import IdeaFormButtonsContainer from '../containers/IdeaFormButtonsContainer';
 
-class IdeaFormContainer extends React.Component {
+export class IdeaFormContainer extends React.Component {
   static propTypes = {
+    id: PropTypes.number,
+    title: PropTypes.string.isRequired,
+    fields: PropTypes.array.isRequired,
+    csrfToken: PropTypes.string.isRequired,
     actionPath: PropTypes.string.isRequired,
+    showModal: PropTypes.bool.isRequired,
+    initial_fields: PropTypes.string.isRequired,
   };
 
   static getStores() {
     return [IdeaStore, FieldValuesStore];
-  };
+  }
 
   static getPropsFromStores() {
     return {
       ...IdeaStore.getState(),
-      ...FieldValuesStore.getState()
+      ...FieldValuesStore.getState(),
     };
-  };
+  }
+
+  constructor() {
+    super();
+
+    this.onHide = this.onHide.bind(this);
+  }
 
   componentDidMount() {
-    let data = JSON.parse(this.props.initial_fields);
-    alt.bootstrap(JSON.stringify({
-      FieldValuesStore: {
-        fields: data.initial_fields
-      }
-    }));
+    const data = JSON.parse(this.props.initial_fields);
+    const initialData = {
+      FieldValuesStore: {
+        fields: data.initial_fields,
+      },
+    };
 
+    alt.bootstrap(JSON.stringify(initialData));
     FieldValuesActions.emptyFieldValues();
   }
 
@@ -43,54 +56,62 @@ class IdeaFormContainer extends React.Component {
   }
 
   headerText() {
-    if (this.props.id != null) {
+    if (this.props.id !== null) {
       return I18n.t('ideas.form.title_edit');
-    } else {
-      return I18n.t('ideas.form.title_new');
     }
+
+    return I18n.t('ideas.form.title_new');
   }
 
   formAction() {
-    if (this.props.id != null) {
-      return this.props.actionPath + '/' + this.props.id;
-    } else {
-      return this.props.actionPath;
+    if (this.props.id !== null) {
+      return `${this.props.actionPath}/${this.props.id}`;
     }
+
+    return this.props.actionPath;
   }
 
   patch() {
-    if (this.props.id != null) {
+    if (this.props.id !== null) {
       return (
         <input type="hidden" name="_method" value="patch" />
       );
     }
+
+    return null;
   }
 
   render() {
     return (
       <div>
-          <Modal show={this.props.showModal} onHide={this.onHide} backdrop>
-            <form action={this.formAction()} method="POST">
-              <input type="hidden" name="authenticity_token" value={this.props.csrfToken} />
-              {this.patch()}
+        <Modal show={this.props.showModal} onHide={this.onHide} backdrop={true}>
+          <form action={this.formAction()} method="POST">
+            <input
+              type="hidden"
+              name="authenticity_token"
+              value={this.props.csrfToken}
+            />
+            {this.patch()}
 
-              <Modal.Header>
-                <h4 className="modal-title">{this.headerText()}</h4>
-              </Modal.Header>
-              <Modal.Body>
-                <IdeaFormFieldsContainer
-                  title={this.props.title}
-                  fields={this.props.fields} />
-              </Modal.Body>
-              <Modal.Footer>
-                <IdeaFormButtonsContainer
-                  id={this.props.id}
-                  title={this.props.title}
-                  fields={this.props.fields}
-                  onHide={this.onHide} />
-              </Modal.Footer>
-            </form>
-          </Modal>
+            <Modal.Header>
+              <h4 className="modal-title">{this.headerText()}</h4>
+            </Modal.Header>
+            <Modal.Body>
+              <IdeaFormFieldsContainer
+                title={this.props.title}
+                fields={this.props.fields}
+              />
+            </Modal.Body>
+            <Modal.Footer>
+              <IdeaFormButtonsContainer
+                id={this.props.id}
+                title={this.props.title}
+                fields={this.props.fields}
+                onHide={this.onHide}
+              />
+            </Modal.Footer>
+          </form>
+        </Modal>
       </div>
     );
   }

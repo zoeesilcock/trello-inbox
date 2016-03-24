@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Button } from 'react-bootstrap';
 
-export default class NewFieldButtonComponent extends React.Component {
+export class NewFieldButtonComponent extends React.Component {
+  static propTypes = {
+    openModal: PropTypes.func.isRequired,
+  };
+
   render() {
     return (
       <Button className="btn btn-primary pull-right" onClick={this.props.openModal}>
@@ -10,3 +14,5 @@ export default class NewFieldButtonComponent extends React.Component {
     );
   }
 }
+
+export default NewFieldButtonComponent;

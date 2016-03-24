@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
 import connectToStores from 'alt-utils/lib/connectToStores';
+
 import ListComponent from '../components/ListComponent';
 import IdeasStore from '../stores/IdeasStore';
 
 export class ListContainer extends React.Component {
   static propTypes = {
-    list: PropTypes.object.isRequired
+    list: PropTypes.object.isRequired,
+    ideas: PropTypes.array.isRequired,
   };
 
   static getStores() {
@@ -17,13 +19,17 @@ export class ListContainer extends React.Component {
   }
 
   getListIdeas() {
-    var list_id = this.props.list.list_id;
-    return this.props.ideas.filter(function(i) { return i.list_id == list_id });
+    const listId = this.props.list.list_id;
+
+    return this.props.ideas.filter((i) => i.list_id === listId);
   }
 
   render() {
     return (
-      <ListComponent list={this.props.list} ideas={this.getListIdeas()} index={this.props.index} />
+      <ListComponent
+        list={this.props.list}
+        ideas={this.getListIdeas()}
+      />
     );
   }
 }

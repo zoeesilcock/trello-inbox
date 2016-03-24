@@ -1,4 +1,7 @@
 import alt from '../alt';
+import request from 'superagent';
+require('superagent-rails-csrf')(request);
+
 import UsersActions from '../actions/UsersActions';
 
 class UsersStore {
@@ -7,7 +10,7 @@ class UsersStore {
 
     this.bindListeners({
       handleUpdateCreator: UsersActions.UPDATE_CREATOR,
-      handleUpdateAdmin: UsersActions.UPDATE_ADMIN
+      handleUpdateAdmin: UsersActions.UPDATE_ADMIN,
     });
   }
 
@@ -22,12 +25,13 @@ class UsersStore {
   }
 
   saveUser(id, change) {
-    $.ajax('/users/' + id, {
-      method: 'PUT',
-      data: {
-        user: change
-      }
-    });
+    request
+      .put(`/users/${id}`)
+      .send({ user: change })
+      .setCsrfToken()
+      .end((err, res) => {
+        // no-op
+      });
   }
 }
 

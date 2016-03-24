@@ -6,7 +6,7 @@ class IdeasFilterStore {
     this.filter = 'all';
 
     this.bindListeners({
-      handleUpdateFilter: IdeasFilterActions.UPDATE_FILTER
+      handleUpdateFilter: IdeasFilterActions.UPDATE_FILTER,
     });
   }
 

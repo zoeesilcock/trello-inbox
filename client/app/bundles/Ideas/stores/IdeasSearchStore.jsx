@@ -6,7 +6,7 @@ class IdeasSearchStore {
     this.search = '';
 
     this.bindListeners({
-      handleUpdateSearch: IdeasSearchActions.UPDATE_SEARCH
+      handleUpdateSearch: IdeasSearchActions.UPDATE_SEARCH,
     });
   }
 

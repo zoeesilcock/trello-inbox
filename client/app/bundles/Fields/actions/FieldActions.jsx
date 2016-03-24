@@ -2,7 +2,13 @@ import alt from '../alt';
 
 class FieldActions {
   constructor() {
-    this.generateActions('updateId', 'updateTitle', 'updateDescription', 'updateRequired', 'updateShowModal');
+    this.generateActions(
+      'updateId',
+      'updateTitle',
+      'updateDescription',
+      'updateRequired',
+      'updateShowModal'
+    );
   }
 }
 

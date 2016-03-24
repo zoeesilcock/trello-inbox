@@ -1,21 +1,22 @@
 import React, { PropTypes } from 'react';
 import { Table } from 'react-bootstrap';
+
 import UserContainer from '../containers/UserContainer';
 
-export default class UsersListComponent extends React.Component {
+export class UsersListComponent extends React.Component {
   static propTypes = {
-    users: PropTypes.array.isRequired
+    users: PropTypes.array.isRequired,
   };
 
   render() {
-    var users = [];
+    const users = [];
 
-    this.props.users.map(function(user, index) {
+    this.props.users.forEach((user, index) => {
       users.push(<UserContainer key={index} index={index} user={user} />);
     });
 
     return (
-      <Table id="users" striped>
+      <Table id="users" striped={true}>
         <thead>
           <tr>
             <th>{I18n.t('users.index.name')}</th>
@@ -30,3 +31,5 @@ export default class UsersListComponent extends React.Component {
     );
   }
 }
+
+export default UsersListComponent;

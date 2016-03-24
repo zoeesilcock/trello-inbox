@@ -1,5 +1,5 @@
 import alt from '../alt';
-var lunr = require('lunr');
+const lunr = require('lunr');
 
 class IdeasStore {
   constructor() {
@@ -7,13 +7,13 @@ class IdeasStore {
     this.index = null;
 
     this.on('bootstrap', () => {
-      this.index = lunr(function() {
+      this.index = lunr(function handle() {
         this.ref('id');
         this.field('title', { boost: 10 });
         this.field('fields_text', { boost: 5 });
       });
 
-      for (var i = 0; i < this.ideas.length; i++) {
+      for (let i = 0; i < this.ideas.length; i++) {
         this.index.add(this.ideas[i]);
       }
     });

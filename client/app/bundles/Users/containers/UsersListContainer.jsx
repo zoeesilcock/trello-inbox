@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+
 import UsersListComponent from '../components/UsersListComponent';
 
-export default class UsersListContainer extends React.Component {
+export class UsersListContainer extends React.Component {
   static propTypes = {
-    users: PropTypes.array.isRequired
+    users: PropTypes.array.isRequired,
   };
 
   render() {
@@ -12,3 +13,5 @@ export default class UsersListContainer extends React.Component {
     );
   }
 }
+
+export default UsersListContainer;

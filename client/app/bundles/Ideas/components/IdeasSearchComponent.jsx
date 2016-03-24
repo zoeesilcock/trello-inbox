@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Input } from 'react-bootstrap';
-import I18n from 'i18n-js';
 
-export default class IdeasSearchComponent extends React.Component {
+export class IdeasSearchComponent extends React.Component {
+  static propTypes = {
+    search: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+  };
+
   render() {
     return (
       <div className="col-xs-12 col-sm-3 col-sm-offset-3 header-right">
@@ -11,9 +15,12 @@ export default class IdeasSearchComponent extends React.Component {
             name="search"
             defaultValue={this.props.search}
             onChange={this.props.onChange}
-            placeholder={I18n.t('ideas.index.search.label')} />
+            placeholder={I18n.t('ideas.index.search.label')}
+          />
         </form>
       </div>
     );
   }
 }
+
+export default IdeasSearchComponent;

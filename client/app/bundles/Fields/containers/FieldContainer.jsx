@@ -1,15 +1,23 @@
 import React, { PropTypes } from 'react';
+
 import FieldComponent from '../components/FieldComponent';
 import FieldActions from '../actions/FieldActions';
 import FieldsActions from '../actions/FieldsActions';
 
-export default class FieldContainer extends React.Component {
+export class FieldContainer extends React.Component {
   static propTypes = {
     field: PropTypes.object.isRequired,
-    index: PropTypes.number.isRequired
+    index: PropTypes.number.isRequired,
   };
 
-  onEdit(event) {
+  constructor() {
+    super();
+
+    this.onEdit = this.onEdit.bind(this);
+    this.onRemove = this.onRemove.bind(this);
+  }
+
+  onEdit() {
     FieldActions.updateId(this.props.field.id);
     FieldActions.updateTitle(this.props.field.title);
     FieldActions.updateDescription(this.props.field.description);
@@ -17,7 +25,7 @@ export default class FieldContainer extends React.Component {
     FieldActions.updateShowModal(true);
   }
 
-  onRemove(event) {
+  onRemove() {
     FieldsActions.removeField(this.props.index);
   }
 
@@ -26,9 +34,11 @@ export default class FieldContainer extends React.Component {
       <FieldComponent
         field={this.props.field}
         index={this.props.index}
-        editField={this.onEdit.bind(this)}
-        removeField={this.onRemove.bind(this)}
-        />
+        editField={this.onEdit}
+        removeField={this.onRemove}
+      />
     );
   }
 }
+
+export default FieldContainer;

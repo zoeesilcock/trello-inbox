@@ -1,19 +1,19 @@
 import React, { PropTypes } from 'react';
 import FieldFormButtonsComponent from '../components/FieldFormButtonsComponent';
 
-export default class FieldFormButtonsContainer extends React.Component {
+export class FieldFormButtonsContainer extends React.Component {
   static propTypes = {
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
-    onHide: PropTypes.func.isRequired
+    onHide: PropTypes.func.isRequired,
   };
 
   fieldIsInvalid() {
-    return this.props.title.length == 0;
+    return this.props.title.length === 0;
   }
 
   fieldIsNew() {
-    return this.props.id == null;
+    return this.props.id === null;
   }
 
   render() {
@@ -21,7 +21,10 @@ export default class FieldFormButtonsContainer extends React.Component {
       <FieldFormButtonsComponent
         fieldIsInvalid={this.fieldIsInvalid()}
         fieldIsNew={this.fieldIsNew()}
-        onHide={this.props.onHide} />
+        onHide={this.props.onHide}
+      />
     );
   }
 }
+
+export default FieldFormButtonsContainer;

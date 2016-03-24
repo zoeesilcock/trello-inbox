@@ -2,22 +2,23 @@ import React, { PropTypes } from 'react';
 import { Table } from 'react-bootstrap';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
+
 import FieldContainer from '../containers/FieldContainer';
 
 export class FieldsListComponent extends React.Component {
   static propTypes = {
-    fields: PropTypes.array.isRequired
+    fields: PropTypes.array.isRequired,
   };
 
   render() {
-    var fields = [];
+    const fields = [];
 
-    this.props.fields.map(function(field, index) {
+    this.props.fields.forEach((field, index) => {
       fields.push(<FieldContainer key={index} index={index} field={field} />);
     });
 
     return (
-      <Table id="fields" striped>
+      <Table id="fields" striped={true}>
         <thead>
           <tr>
             <th></th>
@@ -36,4 +37,4 @@ export class FieldsListComponent extends React.Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(FieldsListComponent);
+export default new DragDropContext(HTML5Backend)(FieldsListComponent);

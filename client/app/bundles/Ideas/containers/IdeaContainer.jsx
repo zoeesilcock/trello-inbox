@@ -1,12 +1,20 @@
 import React, { PropTypes } from 'react';
+
 import IdeaComponent from '../components/IdeaComponent';
 import IdeaActions from '../actions/IdeaActions';
 import FieldValuesActions from '../actions/FieldValuesActions';
 
-export default class IdeaContainer extends React.Component {
+export class IdeaContainer extends React.Component {
   static propTypes = {
-    idea: PropTypes.object.isRequired
+    idea: PropTypes.object.isRequired,
   };
+
+  constructor() {
+    super();
+
+    this.onEdit = this.onEdit.bind(this);
+    this.onShow = this.onShow.bind(this);
+  }
 
   onEdit(event) {
     IdeaActions.updateId(this.props.idea.id);
@@ -17,7 +25,7 @@ export default class IdeaContainer extends React.Component {
     event.stopPropagation();
   }
 
-  onShow(event) {
+  onShow() {
     window.location = this.props.idea.show_path;
   }
 
@@ -25,8 +33,11 @@ export default class IdeaContainer extends React.Component {
     return (
       <IdeaComponent
         idea={this.props.idea}
-        onEdit={this.onEdit.bind(this)}
-        onShow={this.onShow.bind(this)} />
+        onEdit={this.onEdit}
+        onShow={this.onShow}
+      />
     );
   }
 }
+
+export default IdeaContainer;

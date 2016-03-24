@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Button } from 'react-bootstrap';
 
-export default class NewIdeaButtonComponent extends React.Component {
+export class NewIdeaButtonComponent extends React.Component {
+  static propTypes = {
+    openModal: PropTypes.func.isRequired,
+  };
+
   render() {
     return (
       <Button className="btn btn-success navbar-btn" onClick={this.props.openModal}>
@@ -10,3 +14,5 @@ export default class NewIdeaButtonComponent extends React.Component {
     );
   }
 }
+
+export default NewIdeaButtonComponent;

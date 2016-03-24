@@ -28,13 +28,16 @@ group :development do
   gem 'byebug'
   gem 'guard-bundler'
   gem 'guard-rails'
+  gem 'guard-rake'
   gem 'guard-rspec'
   gem 'guard-rubocop'
+  gem 'guard-scss_lint'
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'rb-fchange', require: false
   gem 'rb-fsevent', require: false
   gem 'rb-inotify', require: false
+  gem 'scss_lint'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'ultrahook', require: false

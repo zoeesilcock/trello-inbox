@@ -15,6 +15,8 @@
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
+logger level: :warn
+
 guard :bundler do
   require 'guard/bundler'
   require 'guard/bundler/verify'
@@ -105,4 +107,20 @@ end
 guard :rubocop do
   watch(%r{.+\.rb$})
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
+end
+
+guard 'scss_lint' do
+  watch(%r{^app/assets/stylesheets/.+.scss})
+end
+
+guard 'rake', :task => 'lint:eslint:single', :run_on_start => false, :run_on_all => false do
+  watch(/client\/app\/*/)
+end
+
+guard 'rake', :task => 'lint:jscs:single', :run_on_start => false, :run_on_all => false do
+  watch(/client\/app\/*/)
+end
+
+guard 'rake', :task => 'lint:js:guard', :run_on_start => false, :run_on_all => true do
+  watch(/client\/app\/*/)
 end

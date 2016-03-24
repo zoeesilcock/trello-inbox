@@ -32,7 +32,9 @@
     "build:dev:server": "webpack -w --config webpack.server.rails.config.js",
     "lint": "npm run eslint && npm run jscs",
     "eslint": "eslint --ext .js,.jsx .",
-    "jscs": "jscs --verbose ."
+    "jscs": "jscs .",
+    "eslint:single": "eslint",
+    "jscs:single": "jscs --reporter=unix"
   },
   "dependencies": {
     "alt": "^0.18.3",
